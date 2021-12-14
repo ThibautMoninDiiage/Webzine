@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers
 {
@@ -6,7 +7,12 @@ namespace Webzine.WebApplication.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new HomeViewModel
+            {
+                Styles = "Jazz"
+            };
+
+            return this.View(model);
         }
     }
 }

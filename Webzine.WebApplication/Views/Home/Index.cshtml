@@ -1,6 +1,23 @@
-﻿@{
+﻿@model Webzine.WebApplication.ViewModels.HomeViewModel
+
+@{
     Layout = "_Layout";
     ViewData["title"] = "Home";
 }
 
-<h1 class="text-center">Derniers titres chroniqués</h1>
+<div>
+    <div class="row">
+        <div class="col-md-9">
+            <h1 class="bg-danger">Derniers titres chroniques</h1>
+        </div>
+        <div class="col-md-3">
+            <h1 style="height : 10vh" class="bg-warning text-center">A propos</h1>
+            <div style="height : 90vh" class="bg-success text-center">
+                <h1>Styles</h1>
+                <div>
+                    @Model.Styles
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
