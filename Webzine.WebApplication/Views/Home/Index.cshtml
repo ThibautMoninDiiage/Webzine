@@ -7,17 +7,85 @@
 
 <div>
     <div class="row">
+
+        @*Partie principale de la chronique*@
         <div class="col-md-9">
-            <h1 class="bg-danger">Derniers titres chroniques</h1>
+            <h1 class="bg-success">Derniers titres chroniqués</h1>
+            <div class="row col-md-10 m-auto bg-warning">
+
+                @*Image*@
+                <div class="col-md-3">
+                    <img style="width: 200px; height: 200px;" class="p-3" src="https://st3.depositphotos.com/16163280/18497/i/600/depositphotos_184971890-stock-photo-80s-synthwave-and-retrowave-background.jpg"/>
+                </div>
+
+                @*Contenu*@
+                <div class="col-md-9">
+                    @*Titre*@
+                    <h4>Titre de la chronique</h4>
+                    @*Description*@
+                    <div>
+                        Et tortor consequat id porta nibh venenatis cras sed felis. Quis auctor elit sed vulputate mi. Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa. Id faucibus nisl tincidunt eget nullam non nisi est. Cursus risus at ultrices mi tempus imperdiet nulla. Magna sit amet purus gravida quis. Bibendum at varius vel pharetra vel turpis. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Fringilla phasellus faucibus scelerisque eleifend. Tellus elementum sagittis vitae et leo duis ut. Morbi tristique senectus et netus et malesuada. Malesuada fames ac turpis egestas sed tempus urna et. Mi ipsum faucibus vitae aliquet nec ullamcorper sit. Amet dictum sit amet justo donec enim diam vulputate ut. Diam sit amet nisl suscipit adipiscing bibendum est ultricies.
+                    </div>
+                    @*Boutons / Informations*@
+                    <div class="row col-md-12 m-auto">
+                        <button class="btn btn-primary col-md-4">Lire la suite</button>
+                        <h4 class="col-md-4 text-center">03/10/2021 | 19:45:14</h4>
+                        <h4 class="col-md-4 text-center">Style</h4>
+                    </div>
+                </div>
+            </div>
+
+            @*Boutons*@
+            <div class="row justify-content-around m-auto">
+                <button class="btn btn-secondary w-10 col-md-4">Titres plus récents</button>
+                <button class="btn btn-secondary w-10 col-md-4">Titres plus anciens</button>
+            </div>
+
+            <h1>
+                Titres les plus populaires
+            </h1>
+
+            <div class="row col-md-12 m-auto bg-primary">
+                <div class="col-md-4">
+                    <img style="width: 200px; height: 200px;" class="p-3" src="https://st3.depositphotos.com/16163280/18497/i/600/depositphotos_184971890-stock-photo-80s-synthwave-and-retrowave-background.jpg"/>
+                    <h4>Titre</h4>
+                    <h4>Artiste</h4>
+                </div>
+                <div class="col-md-4">
+                    <img style="width: 200px; height: 200px;" class="p-3" src="https://st3.depositphotos.com/16163280/18497/i/600/depositphotos_184971890-stock-photo-80s-synthwave-and-retrowave-background.jpg"/>
+                    <h4>Titre</h4>
+                    <h4>Artiste</h4>
+                </div>
+                <div class="col-md-4">
+                    <img style="width: 200px; height: 200px;" class="p-3" src="https://st3.depositphotos.com/16163280/18497/i/600/depositphotos_184971890-stock-photo-80s-synthwave-and-retrowave-background.jpg"/>
+                    <h4>Titre</h4>
+                    <h4>Artiste</h4>
+                </div>
+            </div>
+
         </div>
+        
+        @*Partie "A propos" + "Styles"*@
         <div class="col-md-3">
-            <h1 style="height : 10vh" class="bg-warning text-center">A propos</h1>
-            <div style="height : 90vh" class="bg-success text-center">
-                <h1>Styles</h1>
+            <div>
+                <h1 class="bg-warning text-center h-50">A propos</h1>
                 <div>
-                    @Model.Styles
+                    <h5>Retrouvez les dernières pépites de note webzine.</h5>
+                </div>
+            </div>
+
+            <div class="bg-success vh-100">
+                <h1 class="text-center">Styles</h1>
+                <div>
+                    @foreach (var @style in @Model.Styles)
+                    {
+                        <ul>
+                            <li>@style</li>
+                        </ul>
+                    }
                 </div>
             </div>
         </div>
+
     </div>
 </div>

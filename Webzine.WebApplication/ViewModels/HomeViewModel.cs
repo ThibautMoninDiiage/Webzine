@@ -3,6 +3,6 @@ namespace Webzine.WebApplication.ViewModels
 {
     public class HomeViewModel
     {
-        public string Styles { get; set; }
+        public List<string> Styles { get; set; }
     }
 }

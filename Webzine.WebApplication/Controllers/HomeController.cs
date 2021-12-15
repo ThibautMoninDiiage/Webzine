@@ -9,7 +9,7 @@ namespace Webzine.WebApplication.Controllers
         {
             var model = new HomeViewModel
             {
-                Styles = "Jazz"
+                Styles = new List<string> { "Jazz", "Rap", "Zumba", "Rock", "Electro", "Country", "Classique" }
             };
 
             return this.View(model);
