@@ -1,28 +1,39 @@
 ﻿
-<h1>Artist @*Retrieve selected preview page*@ </h1>
-    <hr />
-<button class="btn btn-primary btn-lg"><i class="fas fa-plus"></i> Add a new Artist@*Retrieve selected preview page*@</button>
-<br /><br />
 
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      @*foreach*@
-      <th class="table-secondary" scope="col">#</th>
-      <th class="table-secondary" scope="col">First</th>
-      <th class="table-secondary" scope="col">Last</th>
-      <th class="text-center table-secondary" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      @*foreach*@
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="text-center">
-          <a href="#"><i class="fas fa-edit"></i> </a>
-          <a href="#"><i class="fas fa-trash"></i></a>
-    </tr>
-  </tbody>
-</table>
+    <div class="container">
+        <div class="row">
+            <h1>Artist @*Retrieve selected preview page*@ </h1>
+            <hr />
+            <button onclick="location.href='@Url.Action("", "createedit", new { area = "admin" })'" class="btn btn-primary btn-lg"><i class="fas fa-plus"></i> Add a new Artist@*Retrieve selected preview page*@</button>
+            <br />
+            <br />
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        @*foreach*@
+                        <th class="table-secondary" scope="col">#</th>
+                        <th class="table-secondary" scope="col">First</th>
+                        <th class="table-secondary" scope="col">Last</th>
+                        <th class="text-center table-secondary" scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @*foreach*@
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+
+                        <td class="text-center">
+                            <a href='@Url.Action("", "createedit", new { area = "admin" })'> <i class="fas fa-edit"></i> </a>
+                            <a href='@Url.Action("", "delete", new { area = "admin" })'><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+

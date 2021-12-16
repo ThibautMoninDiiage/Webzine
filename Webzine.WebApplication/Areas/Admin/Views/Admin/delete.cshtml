@@ -1,18 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Admin Delete</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Admin Delete</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<div>
-    <h1>Delete an XX @*Retrieve selected preview page*@ </h1>
-    <hr />
-    <h3>Are you sure you want to delete the XX : "YY"</h3>
-    <br />
-    <button class="btn btn-danger btn-lg">Delete</button>
-</div>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div>
+                <h1>Delete an XX @*Retrieve selected preview page*@ </h1>
+                <hr />
+                <h3>Are you sure you want to delete the XX : "YY"</h3>
+                <br />
+                <button class="btn btn-danger btn-lg">Delete</button>
+            </div>
+            <br /><br /><br />
+            <a href='@Url.Action("", "", new { area = "admin" })'>Go back</a>
+        </div>
+    </div>
+</body>
+</html>
 
