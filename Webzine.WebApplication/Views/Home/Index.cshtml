@@ -1,7 +1,6 @@
 ﻿@model Webzine.WebApplication.ViewModels.HomeViewModel
 
 @{
-    Layout = "_Layout";
     ViewData["title"] = "Home";
 }
 
@@ -9,7 +8,7 @@
     <div class="row">
 
         @*Partie principale de la chronique*@
-        <div class="col-md-9">
+        <div>
             <h1>Derniers titres chroniqués</h1>
             <div class="row col-md-10 m-auto bg-light">
 
@@ -68,28 +67,5 @@
             </div>
 
         </div>
-        
-        @*Partie "A propos" + "Styles"*@
-        <div class="col-md-3">
-            <div>
-                <h1 class="text-center h-50">A propos</h1>
-                <div>
-                    <h5>Retrouvez les dernières pépites de note webzine.</h5>
-                </div>
-            </div>
-
-            <div class="vh-100">
-                <h1 class="text-center">Styles</h1>
-                <div>
-                    @foreach (var @style in @Model.Styles)
-                    {
-                        <ul>
-                            <li>@style</li>
-                        </ul>
-                    }
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
