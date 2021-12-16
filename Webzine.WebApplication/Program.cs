@@ -10,6 +10,7 @@ app.UseEndpoints(endpoints =>
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 });
+app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 app.UseStaticFiles();
 
 
