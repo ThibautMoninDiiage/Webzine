@@ -19,19 +19,19 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-home"></i>Accueil</a>
+                            <a class="nav-link" href="#"><i class="fas fa-home"></i> Accueil</a>
                         </li>
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-tools"></i>Administration</a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i>Artistes</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-comments"></i>Commentaires</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-tags"></i>Styles</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-music"></i>Titres</a></li>
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-tools"></i> Administration</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> Artistes</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-comments"></i> Commentaires</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-tags"></i> Styles</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-music"></i> Titres</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact </a>
+                            <a class="nav-link" href="#"><i class="fas fa-envelope"></i> Contact </a>
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
@@ -43,10 +43,33 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid p-4">
-		    @RenderBody()
-        </div>
+        <section class="row" style="margin:0">
+            <div class="col-md-8 p-3">
+                @RenderBody()
+            </div>
+
+            <div class="col-md-4 p-3">
+                <div class="text-center">
+                    <h1>A propos</h1>
+                    <p>Retrouvez les dernières pépites sur notre webzine.</p>
+
+                </div>
+                <div class="p-3">
+                    <h1 class="text-center">Styles</h1>
+                    <div>
+                        <ul>
+                            <li><a href="">Acid house</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
+    <footer class="bg-dark text-center text-lg-start">
+        <div class="text-center p-3 text-light">
+            DIIAGE 2024 D1-P3-E2
+        </div>
+    </footer>
 </html>
 
 
