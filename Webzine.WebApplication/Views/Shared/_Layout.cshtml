@@ -9,7 +9,14 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
+
     <body>
+        <style>
+            a {
+                text-decoration: none;
+            }
+        </style>
+
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
                 <a asp-controller="home" class="navbar-brand">Webzine</a>
@@ -24,10 +31,10 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-tools"></i> Administration</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> Artistes</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-comments"></i> Commentaires</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-tags"></i> Styles</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-music"></i> Titres</a></li>
+                                <li><a asp-controller="admin" class="dropdown-item"><i class="fas fa-users"></i> Artistes</a></li>
+                                <li><a class="dropdown-item"><i class="fas fa-comments"></i> Commentaires</a></li>
+                                <li><a class="dropdown-item"><i class="fas fa-tags"></i> Styles</a></li>
+                                <li><a class="dropdown-item"><i class="fas fa-music"></i> Titres</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -58,7 +65,14 @@
                     <h1 class="text-center">Styles</h1>
                     <div>
                         <ul>
-                            <li><a href="">Acid house</a></li>
+                            @if (ViewBag.Styles != null)
+                            {
+                                @foreach (var style in ViewBag.Styles)
+                                {
+                                    <li><a href="">@style</a></li>
+
+                                }
+                            }
                         </ul>
                     </div>
                 </div>
