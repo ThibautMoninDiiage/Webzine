@@ -7,18 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Artist\" />
-    <Folder Include="Views\Title\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
-    <Folder Include="Controllers\Title\" />
-    <Folder Include="Controllers\Home\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <None Remove="Controllers\Title\" />
-    <None Remove="Controllers\Home\" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
   </ItemGroup>
 </Project>
