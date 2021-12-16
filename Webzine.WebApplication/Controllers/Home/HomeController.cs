@@ -12,6 +12,8 @@ namespace Webzine.WebApplication.Controllers
                 Styles = new List<string> { "Jazz", "Rap", "Zumba", "Rock", "Electro", "Country", "Classique" }
             };
 
+            ViewBag.Styles = new List<string> { "Jazz", "Rap", "Zumba", "Rock", "Electro", "Country", "Classique" };
+
             return this.View(model);
         }
     }
