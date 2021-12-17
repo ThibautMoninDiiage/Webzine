@@ -1,110 +1,95 @@
 ﻿@model Webzine.WebApplication.ViewModels.HomeViewModel
 
 @{
-	Layout = "_Layout";
 	ViewData["title"] = "Home";
 }
 
 <div class="row">
 
 	@*Partie principale de la chronique*@
-	<div>
-		<h1>Derniers titres chroniqués</h1>
-		<br />
+    <div>
+        <h1>Derniers titres chroniqués</h1>
+        <br />
 
-		<div class="row bg-light">
+        @foreach (var title in this.Model.LastReleasedTitles)
+        {
+            <div class="row bg-light">
 
-			@*Image*@
-			<div class="col-sm-2 p-4">
-				<img class="img-thumbnail" src="https://www.son-video.com/images/article/sony-music/SON0888430246812/jean-michel-jarre-oxygene-1-lp_5d1232cf1dbcc_1200.jpg" />
-			</div>
+                @*Image*@
+                <div class="col-sm-2 p-4">
+                    <img class="img-thumbnail" src="@title.UrlJaquette" />
+                </div>
 
-			@*Contenu*@
-			<div class="col-md-9">
-				@*Titre*@
-				<div class="card-title"><h4>Titre de la chronique</h4></div>
-				@*Description*@
-				<div style="text-align: justify">
-					Et tortor consequat id porta nibh venenatis cras sed felis. Quis auctor elit sed vulputate mi.
-					Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed.
-					Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa.
-					Id faucibus nisl tincidunt eget nullam non nisi est. Cursus risus at ultrices mi tempus imperdiet nulla.
-					Magna sit amet purus gravida quis. Bibendum at varius vel pharetra vel turpis.
-					Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla.
-				</div>
-				<br />
+                @*Contenu*@
+                <div class="col-md-9">
+                    @*Titre*@
+                    <div class="card-title"><h4>@title.Libelle</h4></div>
+                    @*Description*@
+                    <div style="text-align: justify">
+                        @title.Chronique
+                    </div>
+                    <br />
 
-				@*Boutons / Informations*@
-				<div class="row align-self-end">
-					<div class="row align-items-center">
-						<div class="col-auto ">
-							<p>
-								<a class="btn btn-primary">Lire la suite</a>
-							</p>
-						</div>
-						<div class="col-auto ">
-							<p>
-								<i class="fas fa-calendar-week"></i>&nbsp;
-								03/10/2021 | 19:45:14
-							</p>
-						</div>
-						<div class="col-auto ">
-							<p>
-								<i class="fas fa-tags"></i>&nbsp;
-								<a class="text-decoration-none text-primary">Style</a>
-							</p>
-						</div>
-					</div>
-				</div>
+                    @*Boutons / Informations*@
+                    <div class="row align-self-end">
+                        <div class="row align-items-center">
+                            <div class="col-auto ">
+                                <p>
+                                    <a asp-controller="Title" class="btn btn-primary">Lire la suite</a>
+                                </p>
+                            </div>
+                            <div class="col-auto ">
+                                <p>
+                                    <i class="fas fa-calendar-week"></i>&nbsp;
+                                    @title.DateCreation | @title.DateSortie
+                                </p>
+                            </div>
+                            <div class="col-auto ">
+                                <p>
+                                    <i class="fas fa-tags"></i>&nbsp;
+                                    @foreach (var @style in title.TitresStyles)
+                                    {
+                                        <a class="text-decoration-none text-primary">@style.Libelle</a>
 
-			</div>
-		</div>
-		<br />
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-		@*Boutons*@
-		<div class="d-flex justify-content-between mt-4">
-			<button class="btn btn-secondary w-10 col-md-4">Titres plus récents</button>
-			<button class="btn btn-secondary w-10 col-md-4">Titres plus anciens</button>
-		</div>
-		<br />
+                </div>
+            </div>
+        }
 
-		<h1>Titres les plus populaires</h1>
-		<br />
+        <br />
 
-		@*Liste des titres populaires*@
-		<div class="row mt-4">
-			@*1er*@
-			<div class="col-md-4">
-				<div class="card">
-					<img class="card-img-top" src="https://www.son-video.com/images/article/sony-music/SON0888430246812/jean-michel-jarre-oxygene-1-lp_5d1232cf1dbcc_1200.jpg" />
-					<div class="card-body">
-						<h5 class="card-title">Titre</h5>
-						<h4 class="card-text">par Artiste</h4>
-					</div>
-				</div>
-			</div>
-			@*2eme*@
-			<div class="col-md-4">
-				<div class="card">
-					<img class="card-img-top" src="https://www.son-video.com/images/article/sony-music/SON0888430246812/jean-michel-jarre-oxygene-1-lp_5d1232cf1dbcc_1200.jpg" />
-					<div class="card-body">
-						<h5 class="card-title">Titre</h5>
-						<h4 class="card-text">par Artiste</h4>
-					</div>
-				</div>
+        @*Boutons*@
+        <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-secondary w-10 col-md-4">Titres plus récents</button>
+            <button class="btn btn-secondary w-10 col-md-4">Titres plus anciens</button>
+        </div>
+        <br />
 
-			</div>
-			@*3eme*@
-			<div class="col-sm-4">
-				<div class="card">
-					<img class="card-img-top" src="https://www.son-video.com/images/article/sony-music/SON0888430246812/jean-michel-jarre-oxygene-1-lp_5d1232cf1dbcc_1200.jpg" />
-					<div class="card-body">
-						<h5 class="card-title">Titre</h5>
-						<h4 class="card-text">par Artiste</h4>
-					</div>
-				</div>
-			</div>
+        <h1>Titres les plus populaires</h1>
+        <br />
 
-		</div>
-	</div>
+        @*Liste des titres populaires*@
+
+        
+    <div class="row mt-4">
+        @foreach (var @title in this.Model.MostPopularTitles)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="@title.UrlJaquette" />
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="">@title.Libelle</a></h5>
+                        <h4 class="card-text">par <a href="">@title.Artiste.Nom</a></h4>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    </div>
 </div>
