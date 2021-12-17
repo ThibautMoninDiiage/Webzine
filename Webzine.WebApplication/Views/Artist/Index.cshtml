@@ -44,7 +44,11 @@
                                 @foreach (var titre in Distincttitre.Artiste.Titres.Where(t => t.Album == Distincttitre.Album))
                                 {
                                     <tr>
-                                        <td>@titre.Duree</td>
+                                        <td>@{
+                                            TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
+                                            var formatedTime = time.ToString(@"mm\:ss");
+                                        }
+                                        @formatedTime</td>
                                         <td><a asp-controller="Title">@titre.Libelle</a></td>
                                     </tr>
                                 }

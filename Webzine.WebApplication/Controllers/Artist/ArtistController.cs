@@ -20,13 +20,6 @@ namespace Webzine.WebApplication.Controllers
                 Artist = this.Artist
             };
 
-
-            //foreach (var title in model.Artist.Titres)
-            //{
-            //    TimeSpan time = TimeSpan.FromSeconds(seconds);
-            //    title.Duree = time.ToString(@"mm\:ss");
-            //}
-
             ViewBag.Styles = this.Styles.ToList();
             return this.View(model);
         }
