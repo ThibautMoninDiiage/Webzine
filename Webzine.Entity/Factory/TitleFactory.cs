@@ -27,6 +27,50 @@ namespace Webzine.Entity.Factory
             artists[0].Titres.Add(papillon);
             titles.Add(papillon);
 
+            Titre broBro = new Titre()
+            {
+                IdTitre = 4,
+                IdArtiste = artists[0].IdArtiste,
+                Artiste = artists[0],
+                Album = "Survie",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2020, 12, 17),
+                DateSortie = new DateTime(2020, 11, 19),
+                Duree = 173,
+                Libelle = "Bro Bro",
+                NbLikes = 897,
+                NbLectures = 1218279,
+                TitresStyles = StyleFactory.GetStyles(3).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=dIA8yFCGjl0",
+                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/08/c5/c2/12764424/1540-1/tsp20201019142053/Survie.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+            artists[0].Titres.Add(broBro);
+            titles.Add(broBro);
+
+
+
+            Titre papers = new Titre()
+            {
+                IdTitre = 5,
+                IdArtiste = artists[0].IdArtiste,
+                Artiste = artists[0],
+                Album = "Cicatrices",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2019, 12, 17),
+                DateSortie = new DateTime(2019, 4, 5),
+                Duree = 203,
+                Libelle = "Papers",
+                NbLikes = 76454655,
+                NbLectures = 8971247,
+                TitresStyles = StyleFactory.GetStyles(3).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=RrLUlS17GrI",
+                UrlJaquette = "https://m.media-amazon.com/images/I/81HLWg0lpJL._SL1500_.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+            artists[0].Titres.Add(papers);
+            titles.Add(papers);
+
 
             Titre troisSabresZero = new Titre
             {
@@ -61,7 +105,7 @@ namespace Webzine.Entity.Factory
                 DateSortie = new DateTime(2017, 7, 6),
                 Duree = 206,
                 Libelle = "Macarena",
-                NbLikes = 17901,
+                NbLikes = 7861298,
                 NbLectures = 76964,
                 TitresStyles = StyleFactory.GetStyles(5).ToList(),
                 UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
