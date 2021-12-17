@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity;
+using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.Title
 {

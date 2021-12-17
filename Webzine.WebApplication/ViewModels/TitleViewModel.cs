@@ -1,6 +1,8 @@
-﻿namespace Webzine.Entity
+﻿using Webzine.Entity;
+
+namespace Webzine.WebApplication.ViewModels
 {
-    public class TitleViewModel
+    public class TitleViewModel : BaseViewModel
     {
         public int IdTitle { get; set; }
         public string Name { get; set; }

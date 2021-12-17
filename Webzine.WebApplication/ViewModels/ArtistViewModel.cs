@@ -2,10 +2,9 @@
 
 namespace Webzine.WebApplication.ViewModels
 {
-    public class ArtistViewModel
+    public class ArtistViewModel : BaseViewModel
     {
         public Artiste Artist { get; set; }
-        public List<Style> Styles { get; set; }
     }
 }
 
