@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.Contact
 {
@@ -6,7 +7,9 @@ namespace Webzine.WebApplication.Controllers.Contact
     {
         public IActionResult Index()
         {
-            return this.View();
+            var model = new ContactViewModel();
+
+            return this.View(model);
         }
     }
 }

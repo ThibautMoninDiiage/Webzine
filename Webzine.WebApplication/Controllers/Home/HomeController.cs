@@ -8,7 +8,6 @@ namespace Webzine.WebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        public IEnumerable<Style> Styles => StyleFactory.CreateStyles();
         public IEnumerable<Titre> MostPopularTitles => TitleFactory.CreateTitles().OrderByDescending(t => t.NbLikes).Take(3);
         public IEnumerable<Titre> LastReleasedTitles => TitleFactory.CreateTitles().OrderByDescending(t => t.DateCreation).Take(3);
 
@@ -16,12 +15,12 @@ namespace Webzine.WebApplication.Controllers
         {
             var model = new HomeViewModel
             {
-                Styles = this.Styles.ToList(),
                 MostPopularTitles = this.MostPopularTitles.ToList(),
                 LastReleasedTitles = this.LastReleasedTitles.ToList()
             };
 
-            ViewBag.Styles = this.Styles.ToList();
+            Console.WriteLine(model.Styles);
+
 
             return this.View(model);
         }
