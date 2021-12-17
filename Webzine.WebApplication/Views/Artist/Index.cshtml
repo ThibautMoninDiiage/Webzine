@@ -25,62 +25,34 @@
         <h1 class="mt-5">Albums</h1>
         <hr />
 
-        <section class="row mt-4">
-            <p class="col-md-3"></p>
-            <h3 class="col-md-9">Blade Runner</h3>
-            <div class="row mb-5">
-                <img class="col-md-3" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440" />
-                <div class="col-md-9">
-                    <table class="table">
-                        <thead class="table-secondary">
-                            <tr>
-                                <th>Durée</th>
-                                <th>Titre</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>03:43</td>
-                                <td><a href="">Blade Runner - End Titles</a></td>
-                            </tr>
-                            <tr>
-                                <td>03:43</td>
-                                <td><a href="">Blade Runner - End Titles</a></td>
-                            </tr>
-                            <tr>
-                                <td>03:43</td>
-                                <td><a href="">Blade Runner - End Titles</a></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+        @foreach (var Distincttitre in this.Model.Artist.Titres.DistinctBy(t => t.Album))
+        {
+            <section class="row mt-4">
+                <p class="col-md-3"></p>
+                <h3 class="col-md-9">@Distincttitre.Album</h3>
+                <div class="row mb-5">
+                    <img class="col-md-3" src="@Distincttitre.UrlJaquette" />
+                    <div class="col-md-9">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Durée</th>
+                                    <th>Titre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var titre in Distincttitre.Artiste.Titres.Where(t => t.Album == Distincttitre.Album))
+                                {
+                                    <tr>
+                                        <td>@titre.Duree</td>
+                                        <td><a asp-controller="Title">@titre.Libelle</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="row mt-4">
-            <p class="col-md-3"></p>
-            <h3 class="col-md-9">Blade Runner</h3>
-            <div class="row mb-5">
-                <img class="col-md-3" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pride-album-cover-art-design-template-d2bf21df8ead7742d0af24f0143097df_screen.jpg?ts=1596467888" />
-                <div class="col-md-9">
-                    <table class="table">
-                        <thead class="table-secondary">
-                            <tr>
-                                <th>Durée</th>
-                                <th>Titre</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>03:43</td>
-                                <td><a href="">oui</a></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+            </section>
+        }
     </div>
 </section>
