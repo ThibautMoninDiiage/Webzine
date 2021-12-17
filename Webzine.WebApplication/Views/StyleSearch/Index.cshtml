@@ -1,43 +1,34 @@
-﻿<div class="container">
+﻿@model Webzine.WebApplication.ViewModels.StyleSearchViewModel
+
+@{
+    ViewData["title"] = "Titres par styles";
+}
+
+<div class="container">
     <div class="row">
-        <h1>Titles with the style XXX</h1>
+        <h1>Titles with the style @this.Model.Style.Libelle</h1>
         <hr />
     </div>
 </div>
-<div class="container">
-    <div class="row mb-3">
-        <div class="col-xs-12 col-sm-6 col-lg-2">
-            <img style="height:150px; width: auto" class="img-fluid" src="https://picsum.photos/100/100">
-        </div>
-        <div class="col-xs-12 col-sm-10">
-            <div class="row">
-                <h5><a href="#">Artist</a> - <a href="#">Title</a></h5>
-                <h5>Lenght</h5>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-xs-12 col-sm-6 col-lg-2">
-            <img style="height:150px; width: auto" class="img-fluid" src="https://picsum.photos/100/100">
-        </div>
-        <div class="col-xs-12 col-sm-10">
-            <div class="row">
-                <h5><a href="#">Artist</a> - <a href="#">Title</a></h5>
-                <h5>Lenght</h5>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-xs-12 col-sm-6 col-lg-2">
-            <img style="height:150px; width: auto" class="img-fluid" src="https://picsum.photos/100/100">
-        </div>
-        <div class="col-xs-12 col-sm-10">
-            <div class="row">
-                <h5><a href="#">Artist</a> - <a href="#">Title</a></h5>
-                <h5>Lenght</h5>
-            </div>
-        </div>
-    </div>
 
+@foreach (var titre in this.Model.Titles)
+{
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-xs-12 col-sm-6 col-lg-2">
+                <img style="height:150px; width: auto" class="img-fluid" src="@titre.UrlJaquette">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <div class="row">
+                    <h5><a asp-controller="Artist">@titre.Artiste.Nom</a> - <a asp-controller="Title">@titre.Libelle</a></h5>
+                    @{
+                        TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
+                        var formatedTime = time.ToString(@"mm\:ss");
+                    }
+                    <h5>Durée : @formatedTime</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
-</div>
