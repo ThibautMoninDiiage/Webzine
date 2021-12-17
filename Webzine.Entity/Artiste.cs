@@ -23,5 +23,11 @@ namespace Webzine.Entity
 
         [Required]
         public List<Titre> Titres { get; set; }
+
+        [Required]
+        public DateTime DateNaissance { get; set; }
+
+        [Required]
+        public string UrlSite { get; set; }
     }
 }
