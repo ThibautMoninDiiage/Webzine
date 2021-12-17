@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Webzine.WebApplication.ViewModels.ArtistViewModel
+
+@{
     ViewData["title"] = "Artist";
 }
 
@@ -11,15 +13,13 @@
 
 <section>
     <div>
-        <h1>Vangelis</h1>
+        <h1>@this.Model.Artist.Nom</h1>
         <hr />
-        <p style="text-align:justify">
-            Lorem ipsum dolor sit amet. Qui dolores dolores et eaque quaerat qui facere deleniti ea nesciunt rerum et rerum tempora id similique amet nam consequatur omnis. Non voluptatem itaque et cupiditate reprehenderit est corrupti facere! Aut quis adipisci a ducimus esse sit sunt omnis? Ut praesentium praesentium id recusandae dolores et placeat tempora. Sed sunt consectetur est rerum harum sed nihil tempore et repudiandae quod. Hic ratione sapiente est quia quis est galisum amet. Aut minima odio qui dolores obcaecati est obcaecati quidem? In esse velit eos odit dolor est consequatur nihil aut internos error non corrupti sint vel sint voluptas.
-        </p>
+        <p style="text-align:justify">@this.Model.Artist.Biographie</p>
 
-        <p>Date de naissance : 29/03/1934</p>
+        <p>Date de naissance : @this.Model.Artist.DateNaissance.ToString("dd/M/yyyy")</p>
 
-        <p>Site web : <a href="">http://www.vangelisworld.com/</a></p>
+        <p>Site web : <a href="@this.Model.Artist.UrlSite">@this.Model.Artist.UrlSite</a></p>
 
 
         <h1 class="mt-5">Albums</h1>

@@ -1,11 +1,11 @@
-﻿namespace Webzine.Entity
+﻿using Webzine.Entity;
+
+namespace Webzine.WebApplication.ViewModels
 {
     public class ArtistViewModel
     {
-        public int IdArtist { get; set; }
-        public string Name { get; set; }
-        //*public Title Title { get; set; }
-
+        public Artiste Artist { get; set; }
+        public List<Style> Styles { get; set; }
     }
 }
 
