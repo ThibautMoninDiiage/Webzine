@@ -18,7 +18,7 @@ namespace Webzine.WebApplication.Controllers
                 Artist = this.Artist
             };
 
-
+            ViewBag.Styles = this.Styles.ToList();
             return this.View(model);
         }
     }
