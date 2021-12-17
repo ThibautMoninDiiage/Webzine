@@ -24,7 +24,7 @@ namespace Webzine.Entity.Factory
 
 
 
-        public static IEnumerable<Style> CreateStyles(int numberOfStyles)
+        public static IEnumerable<Style> GetStyles(int numberOfStyles)
         {
             Random random = new Random();
 
