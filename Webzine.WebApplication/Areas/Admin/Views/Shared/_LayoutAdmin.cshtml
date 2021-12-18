@@ -19,7 +19,7 @@
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a asp-controller="home" class="navbar-brand">Webzine</a>
+            <a asp-area="" asp-controller="home" class="navbar-brand">Webzine</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,10 +41,10 @@
                         <a asp-area="" asp-controller="contact" class="nav-link"><i class="fas fa-envelope"></i> Contact </a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form method="post" asp-area="" asp-controller="Search" class="form-inline my-2 my-lg-0">
                     <div class="input-group">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Trouver un artiste / titre" aria-label="Trouver un artiste / titre" aria-describedby="search-addon">
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit" id="search-addon"><i class="fas fa-search"></i></button>
+                        <input name="keyword" id="searchbar" class="form-control mr-sm-2" type="search" placeholder="Trouver un artiste / titre" aria-label="Trouver un artiste / titre" aria-describedby="search-addon">
+                        <button type="submit" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
             </div>
