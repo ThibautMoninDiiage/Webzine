@@ -10,13 +10,13 @@ namespace Webzine.WebApplication.Controllers.StyleSearch
         public IEnumerable<Titre> Titles => TitleFactory.CreateTitles();
         public Style Style { get; set; }
 
-        public IActionResult Index(string styleId)
+        public IActionResult Index(int styleId)
         {
-            this.Style = StyleFactory.CreateStyles().Where(s => s.IdStyle.ToString() == styleId).First();
+            this.Style = StyleFactory.CreateStyles().Where(s => s.IdStyle == styleId).FirstOrDefault();
             var model = new StyleSearchViewModel()
             {
                 Style = this.Style,
-                Titles = this.Titles.Where(t => t.TitresStyles.Any(s => s.IdStyle.ToString() == styleId)).ToList()
+                Titles = this.Titles.Where(t => t.TitresStyles.Any(s => s.IdStyle == styleId)).ToList()
             };
 
             return this.View(model);

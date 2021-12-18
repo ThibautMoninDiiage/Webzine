@@ -19,9 +19,6 @@ namespace Webzine.WebApplication.Controllers
                 LastReleasedTitles = this.LastReleasedTitles.ToList()
             };
 
-            Console.WriteLine(model.Styles);
-
-
             return this.View(model);
         }
     }

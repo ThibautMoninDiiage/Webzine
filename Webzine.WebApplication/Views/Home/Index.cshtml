@@ -11,22 +11,22 @@
         <h1>Derniers titres chroniqués</h1>
         <br />
 
-        @foreach (var title in this.Model.LastReleasedTitles)
+        @foreach (var titre in this.Model.LastReleasedTitles)
         {
             <div class="row bg-light">
 
                 @*Image*@
                 <div class="col-sm-2 p-4">
-                    <img class="img-thumbnail" src="@title.UrlJaquette" />
+                    <img class="img-thumbnail" src="@titre.UrlJaquette" />
                 </div>
 
                 @*Contenu*@
                 <div class="col-md-9">
                     @*Titre*@
-                    <div class="card-title"><h4>@title.Libelle</h4></div>
+                    <div class="card-title"><h4>@titre.Libelle</h4></div>
                     @*Description*@
                     <div style="text-align: justify">
-                        @title.Chronique
+                        @titre.Chronique
                     </div>
                     <br />
 
@@ -35,23 +35,21 @@
                         <div class="row align-items-center">
                             <div class="col-auto ">
                                 <p>
-                                    <a asp-controller="Title" class="btn btn-primary">Lire la suite</a>
+                                    <a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre" class="btn btn-primary">Lire la suite</a>
                                 </p>
                             </div>
                             <div class="col-auto ">
                                 <p>
                                     <i class="fas fa-calendar-week"></i>&nbsp;
-                                    @title.DateCreation.ToString("dd-M-yyyy") | @title.DateSortie.ToString("dd:M:yyyy")
+                                    @titre.DateCreation.ToString("dd-M-yyyy") | @titre.DateSortie.ToString("dd:M:yyyy")
                                 </p>
                             </div>
                             <div class="col-auto ">
                                 <p>
                                     <i class="fas fa-tags"></i>&nbsp;
-                                    @foreach (var @style in title.TitresStyles)
+                                    @foreach (var @style in titre.TitresStyles)
                                         {
-                                         var parameters = new Dictionary<string, string>();
-                                         parameters.Add("styleId", style.IdStyle.ToString());
-                                        <a asp-controller="StyleSearch" asp-all-route-data="parameters" class="text-decoration-none text-primary">@style.Libelle</a>
+                                        <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
 
                                     }
                                 </p>
@@ -79,14 +77,14 @@
 
         
     <div class="row mt-4">
-        @foreach (var @title in this.Model.MostPopularTitles)
+        @foreach (var titre in this.Model.MostPopularTitles)
         {
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" src="@title.UrlJaquette" />
+                    <img class="card-img-top" src="@titre.UrlJaquette" />
                     <div class="card-body">
-                        <h5 class="card-title"><a asp-controller="Title">@title.Libelle</a></h5>
-                        <h4 class="card-text">par <a asp-controller="Artist">@title.Artiste.Nom</a></h4>
+                        <h5 class="card-title"><a asp-controller="Title">@titre.Libelle</a></h5>
+                        <h4 class="card-text">par <a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
                     </div>
                 </div>
             </div>
