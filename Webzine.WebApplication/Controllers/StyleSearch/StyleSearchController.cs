@@ -12,7 +12,7 @@ namespace Webzine.WebApplication.Controllers.StyleSearch
 
         public IActionResult Index(string styleId)
         {
-            this.Style = StyleFactory.CreateStyles().Where(s => s.IdStyle.ToString() == styleId).First();
+            this.Style = StyleFactory.CreateStyles().Where(s => s.IdStyle.ToString() == styleId).FirstOrDefault();
             var model = new StyleSearchViewModel()
             {
                 Style = this.Style,

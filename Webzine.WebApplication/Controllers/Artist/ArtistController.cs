@@ -13,7 +13,7 @@ namespace Webzine.WebApplication.Controllers
 
         public IActionResult Index(int IdArtiste)
         {
-            this.Artist = ArtistFactory.CreateArtists().Where(a => a.IdArtiste == IdArtiste).First();
+            this.Artist = ArtistFactory.GetArtist(IdArtiste);
 
             var model = new ArtistViewModel
             {
