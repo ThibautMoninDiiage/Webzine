@@ -19,6 +19,8 @@
     <Folder Include="Areas\Admin\Controllers\Comment\" />
     <Folder Include="Areas\Admin\Views\Style\" />
     <Folder Include="Areas\Admin\Controllers\Style\" />
+    <Folder Include="Areas\Admin\Controllers\Title\" />
+    <Folder Include="Areas\Admin\Views\Title\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Shared\" />
@@ -30,6 +32,8 @@
     <None Remove="Areas\Admin\Controllers\Comment\" />
     <None Remove="Areas\Admin\Views\Style\" />
     <None Remove="Areas\Admin\Controllers\Style\" />
+    <None Remove="Areas\Admin\Controllers\Title\" />
+    <None Remove="Areas\Admin\Views\Title\" />
   </ItemGroup>
 
   <ItemGroup>
