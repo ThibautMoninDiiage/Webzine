@@ -12,9 +12,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\Artist\" />
+    <Folder Include="Areas\Admin\ViewModels\" />
+    <Folder Include="Areas\Admin\Controllers\Artist\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Shared\" />
+    <None Remove="Areas\Admin\Controllers\Controllers\" />
+    <None Remove="Areas\Admin\Views\Artist\" />
+    <None Remove="Areas\Admin\ViewModels\" />
+    <None Remove="Areas\Admin\Controllers\Artist\" />
   </ItemGroup>
 
   <ItemGroup>
