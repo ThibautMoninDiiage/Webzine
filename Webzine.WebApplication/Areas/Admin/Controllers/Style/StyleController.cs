@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Webzine.Entity.Factory;
+using Webzine.WebApplication.Areas.Admin.ViewModels;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 {
@@ -8,7 +10,12 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
     {
         public IActionResult Index()
         {
-            return this.View();
+            var model = new StyleViewModel
+            {
+                Styles = StyleFactory.CreateStyles()
+            };
+
+            return this.View(model);
         }
 
         public IActionResult Create()

@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["title"] = "Styles";
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.StyleViewModel
+@{
+    ViewData["title"] = "Admin - Styles";
 }
 
 <div class="container">
@@ -16,13 +17,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Pop</td>
-                    <td class="text-center">
-                        <a asp-action="Create"> <i class="fas fa-edit"></i> </a>
-                        <a asp-action="Delete"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                @foreach (var style in Model.Styles)
+                {
+                    <tr>
+                        <td>@style.Libelle</td>
+                        <td class="text-center">
+                            <a asp-action="Create"> <i class="fas fa-edit"></i> </a>
+                            <a asp-action="Delete"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+
             </tbody>
         </table>
     </div>
