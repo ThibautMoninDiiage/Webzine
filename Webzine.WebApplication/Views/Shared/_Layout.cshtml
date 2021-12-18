@@ -46,12 +46,7 @@
                     <form class="form-inline my-2 my-lg-0">
                         <div class="input-group">
                             <input id="searchbar" class="form-control mr-sm-2" type="search" placeholder="Trouver un artiste / titre" aria-label="Trouver un artiste / titre" aria-describedby="search-addon">
-                            @{
-                                
-                                var searchParameters = new Dictionary<string, string>();
-                                searchParameters.Add("keyword", "Zola");
-                            }
-                             <a asp-controller="Search" asp-all-route-data="searchParameters"class="btn btn-primary my-2 my-sm-0"><i class="fas fa-search"></i></a>
+                             <a asp-controller="Search" asp-route-keyword="a" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-search"></i></a>
                         </div>
                     </form>
                 </div>
@@ -74,10 +69,8 @@
                         <ul>
                             @foreach (var style in Model.Styles.ToList())
                                 {
-                                    var styleParameters = new Dictionary<string, string>();
-                                    styleParameters.Add("styleId", style.IdStyle.ToString());
-                                   <li><a asp-all-route-data="styleParameters" asp-action="index" asp-controller="StyleSearch">@style.Libelle</a></li>
-                            }
+                                   <li><a asp-route-styleId="@style.IdStyle" asp-controller="StyleSearch">@style.Libelle</a></li>
+                                    }
                         </ul>
                     </div>
                 </div>

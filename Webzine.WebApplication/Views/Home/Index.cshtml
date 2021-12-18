@@ -49,9 +49,7 @@
                                     <i class="fas fa-tags"></i>&nbsp;
                                     @foreach (var @style in title.TitresStyles)
                                         {
-                                         var parameters = new Dictionary<string, string>();
-                                         parameters.Add("styleId", style.IdStyle.ToString());
-                                        <a asp-controller="StyleSearch" asp-all-route-data="parameters" class="text-decoration-none text-primary">@style.Libelle</a>
+                                        <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
 
                                     }
                                 </p>
@@ -86,12 +84,7 @@
                     <img class="card-img-top" src="@titre.UrlJaquette" />
                     <div class="card-body">
                         <h5 class="card-title"><a asp-controller="Title">@titre.Libelle</a></h5>
-
-                        @{
-                            var artistParameters = new Dictionary<string, string>();
-                            artistParameters.Add("IdArtiste", titre.IdArtiste.ToString());
-                        }
-                        <h4 class="card-text">par <a asp-controller="Artist" asp-all-route-data="artistParameters">@titre.Artiste.Nom</a></h4>
+                        <h4 class="card-text">par <a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
                     </div>
                 </div>
             </div>

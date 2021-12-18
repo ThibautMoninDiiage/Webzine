@@ -18,10 +18,7 @@
 
     @foreach (var artiste in Model.Artistes)
     {
-        var artistParameters = new Dictionary<string, string>();
-        artistParameters.Add("IdArtiste", artiste.IdArtiste.ToString());
-
-        <h5><i class="fas fa-user"></i> <a asp-controller="Artist" asp-all-route-data="artistParameters" asp>@artiste.Nom</a></h5>
+        <h5><i class="fas fa-user"></i> <a asp-controller="Artist" asp-route-IdArtiste="artiste.IdArtiste">@artiste.Nom</a></h5>
     }
 
 </div>
@@ -39,12 +36,7 @@
             </div>
             <div class="col-xs-12 col-sm-10">
                 <div class="row">
-                    @{
-                        var artistParameters = new Dictionary<string, string>();
-                        artistParameters.Add("IdArtiste", titre.Artiste.IdArtiste.ToString());
-                    }
-
-                    <h5><a asp-controller="Artist" asp-all-route-data="artistParameters">@titre.Artiste.Nom</a> - <a href="#">@titre.Libelle</a></h5>
+                    <h5><a asp-controller="Artist" asp-route-IdArtiste="titre.Artiste.IdArtiste">@titre.Artiste.Nom</a> - <a href="#">@titre.Libelle</a></h5>
 
 
                     @{
