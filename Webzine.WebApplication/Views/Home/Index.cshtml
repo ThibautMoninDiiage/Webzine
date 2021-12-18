@@ -48,8 +48,10 @@
                                 <p>
                                     <i class="fas fa-tags"></i>&nbsp;
                                     @foreach (var @style in title.TitresStyles)
-                                    {
-                                        <a class="text-decoration-none text-primary">@style.Libelle</a>
+                                        {
+                                         var parameters = new Dictionary<string, string>();
+                                         parameters.Add("styleId", style.IdStyle.ToString());
+                                        <a asp-controller="StyleSearch" asp-all-route-data="parameters" class="text-decoration-none text-primary">@style.Libelle</a>
 
                                     }
                                 </p>

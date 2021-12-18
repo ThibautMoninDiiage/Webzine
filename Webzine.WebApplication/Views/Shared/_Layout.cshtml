@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Webzine.WebApplication.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -65,12 +67,11 @@
                     <h1 class="text-center">Styles</h1>
                     <div>
                         <ul>
-                            @if (ViewBag.Styles != null)
-                            {
-                                @foreach (var style in ViewBag.Styles)
+                            @foreach (var style in Model.Styles.ToList())
                                 {
-                                    <li><a asp-controller="StyleSearch">@style.Libelle</a></li>
-                                }
+                                    var parameters = new Dictionary<string, string>();
+                                    parameters.Add("styleId", style.IdStyle.ToString());
+                                   <li><a asp-all-route-data="parameters" asp-action="index" asp-controller="StyleSearch">@style.Libelle</a></li>
                             }
                         </ul>
                     </div>
