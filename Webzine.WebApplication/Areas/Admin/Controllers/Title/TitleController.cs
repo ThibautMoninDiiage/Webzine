@@ -17,6 +17,18 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
             };
             return this.View(model);
         }
+
+
+        public IActionResult Create()
+        {
+            return this.View("Create");
+        }
+
+
+        public IActionResult Delete()
+        {
+            return this.View("Delete");
+        }
     }
 }
 
