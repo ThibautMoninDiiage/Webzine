@@ -15,6 +15,10 @@
     <Folder Include="Areas\Admin\Views\Artist\" />
     <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Admin\Controllers\Artist\" />
+    <Folder Include="Areas\Admin\Views\Comment\" />
+    <Folder Include="Areas\Admin\Controllers\Comment\" />
+    <Folder Include="Areas\Admin\Views\Style\" />
+    <Folder Include="Areas\Admin\Controllers\Style\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Shared\" />
@@ -22,6 +26,10 @@
     <None Remove="Areas\Admin\Views\Artist\" />
     <None Remove="Areas\Admin\ViewModels\" />
     <None Remove="Areas\Admin\Controllers\Artist\" />
+    <None Remove="Areas\Admin\Views\Comment\" />
+    <None Remove="Areas\Admin\Controllers\Comment\" />
+    <None Remove="Areas\Admin\Views\Style\" />
+    <None Remove="Areas\Admin\Controllers\Style\" />
   </ItemGroup>
 
   <ItemGroup>
