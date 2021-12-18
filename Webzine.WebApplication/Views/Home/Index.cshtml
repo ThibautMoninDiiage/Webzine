@@ -79,14 +79,19 @@
 
         
     <div class="row mt-4">
-        @foreach (var @title in this.Model.MostPopularTitles)
+        @foreach (var titre in this.Model.MostPopularTitles)
         {
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" src="@title.UrlJaquette" />
+                    <img class="card-img-top" src="@titre.UrlJaquette" />
                     <div class="card-body">
-                        <h5 class="card-title"><a asp-controller="Title">@title.Libelle</a></h5>
-                        <h4 class="card-text">par <a asp-controller="Artist">@title.Artiste.Nom</a></h4>
+                        <h5 class="card-title"><a asp-controller="Title">@titre.Libelle</a></h5>
+
+                        @{
+                            var artistParameters = new Dictionary<string, string>();
+                            artistParameters.Add("IdArtiste", titre.IdArtiste.ToString());
+                        }
+                        <h4 class="card-text">par <a asp-controller="Artist" asp-all-route-data="artistParameters">@titre.Artiste.Nom</a></h4>
                     </div>
                 </div>
             </div>

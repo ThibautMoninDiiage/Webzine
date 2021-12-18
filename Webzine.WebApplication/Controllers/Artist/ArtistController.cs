@@ -8,19 +8,18 @@ namespace Webzine.WebApplication.Controllers
 {
     public class ArtistController : Controller
     {
-        public Artiste Artist => ArtistFactory.GetArtist();
+        private Artiste Artist;
         public IEnumerable<Style> Styles => StyleFactory.CreateStyles(); 
 
-        public IActionResult Index()
+        public IActionResult Index(int IdArtiste)
         {
-           
+            this.Artist = ArtistFactory.CreateArtists().Where(a => a.IdArtiste == IdArtiste).First();
 
             var model = new ArtistViewModel
             {
                 Artist = this.Artist
             };
 
-            ViewBag.Styles = this.Styles.ToList();
             return this.View(model);
         }
     }
