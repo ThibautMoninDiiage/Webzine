@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.TitleViewModel
+
+@{
     ViewData["title"] = "Admin - Titres - Création";
 }
 
@@ -15,7 +17,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control">
                 </div>
             </div>
 
@@ -25,7 +27,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control">
                 </div>
             </div>
 
@@ -35,7 +37,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" />
                 </div>
             </div>
 
@@ -46,28 +48,47 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <textarea type="text" class="form-control" placeholder=""></textarea>
+                    <textarea type="text" class="form-control"></textarea>
                 </div>
             </div>
 
 
             <div class="row mb-4">
-                <div class="col-sm-3 col-lg-1">
+                <div class="col-sm-4 col-lg-2">
                     <label>Date de sortie</label>
                 </div>
 
-                <div class="col-xs-6 col-sm-3 col-lg-5">
-                    <input type="date" class="form-control" placeholder="">
+                <div class="col-xs-5 col-sm-2 col-lg-4">
+                    <input type="date" class="form-control">
                 </div>
 
-                <div class="col-sm-3 col-lg-1">
+                <div class="col-sm-4 col-lg-2">
                     <label>Durée en seconde</label>
                 </div>
 
-                <div class="col-xs-6 col-sm-3 col-lg-5">
-                    <input type="number" class="form-control" placeholder="">
+                <div class="col-xs-5 col-sm-2 col-lg-4">
+                    <input type="number" class="form-control">
                 </div>
             </div>
+
+
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Styles</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    @foreach (var style in Model.Styles)
+                        {
+                    <div class="col-md-2">
+                        <input type="checkbox" name="styleInput" />
+                        <label for="styleInput">@style.Libelle</label>
+                    </div>
+                            
+                        }
+                </div>
+            </div>
+
 
 
 

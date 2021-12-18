@@ -21,7 +21,12 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
 
         public IActionResult Create()
         {
-            return this.View("Create");
+            var model = new TitleViewModel
+            {
+                Styles = StyleFactory.CreateStyles()
+            };
+
+            return this.View("Create", model);
         }
 
 

@@ -6,6 +6,7 @@ namespace Webzine.WebApplication.Areas.Admin.ViewModels
     public class TitleViewModel
     {
         public IEnumerable<Titre> Titres { get; set; }
+        public IEnumerable<Style> Styles { get; set; }
     }
 }
 
