@@ -20,7 +20,7 @@
             </div>
             <div class="col-xs-12 col-sm-10">
                 <div class="row">
-                    <h5><a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a> - <a asp-controller="Title">@titre.Libelle</a></h5>
+                    <h5><a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a> - <a asp-route-IdTitre="@titre.IdTitre" asp-controller="Title">@titre.Libelle</a></h5>
                     @{
                         TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
                         var formatedTime = time.ToString(@"mm\:ss");
@@ -31,4 +31,3 @@
         </div>
     </div>
 }
-

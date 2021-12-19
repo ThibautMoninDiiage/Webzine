@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Entity", "Webzine.E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Entity.Tests", "Webzine.Entity.Tests\Webzine.Entity.Tests.csproj", "{CAF61CEA-909C-4AB3-8CBB-7111628A4831}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webzine.Documentation", "Webzine.Documentation\Webzine.Documentation.csproj", "{1A0027F7-C9AF-4A38-9E90-DB15DC648E8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Documentation", "Webzine.Documentation\Webzine.Documentation.csproj", "{1A0027F7-C9AF-4A38-9E90-DB15DC648E8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
