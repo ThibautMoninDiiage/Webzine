@@ -11,8 +11,8 @@ namespace Webzine.WebApplication.Controllers.Contact
             var model = new SearchViewModel
             {
                 Keyword = keyword,
-                Artistes = ArtistFactory.CreateArtists().Where(a => a.Nom.Contains(keyword)),
-                Titres = TitleFactory.CreateTitles().Where(t => t.Libelle.Contains(keyword))
+                Artistes = ArtistFactory.CreateArtists().Where(a => a.Nom.ToLower().Contains(keyword.ToLower())),
+                Titres = TitleFactory.CreateTitles().Where(t => t.Libelle.ToLower().Contains(keyword.ToLower()))
             };
 
             return this.View(model);

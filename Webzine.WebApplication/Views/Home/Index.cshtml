@@ -1,23 +1,32 @@
 ﻿@model Webzine.WebApplication.ViewModels.HomeViewModel
 
 @{
-	ViewData["title"] = "Home";
+	ViewData["title"] = "Accueil";
 }
 
 <div class="row">
 
 	@*Partie principale de la chronique*@
     <div>
-        <h1>Derniers titres chroniqués</h1>
-        <br />
 
-        @foreach (var titre in this.Model.LastReleasedTitles)
+        @if (Model.IsLastReleased)
+        {
+            <h1>Derniers titres chroniqués</h1>
+        }
+        else
+        {
+            <h1>Premiers titres chroniqués</h1>
+        }
+
+        <br/>
+
+        @foreach (var titre in this.Model.OrderedTitles)
         {
             <div class="row bg-light">
 
                 @*Image*@
                 <div class="col-sm-2 p-4">
-                    <img class="img-thumbnail" src="@titre.UrlJaquette" />
+                    <a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre"><img class="img-thumbnail" src="@titre.UrlJaquette" /></a>
                 </div>
 
                 @*Contenu*@
@@ -26,9 +35,13 @@
                     <div class="card-title"><h4>@titre.Libelle</h4></div>
                     @*Description*@
                     <div style="text-align: justify">
-                        @titre.Chronique
+                       @if (@titre.Chronique.Length >= 200)
+                       {
+                           @titre.Chronique.Substring(0, 200)<span>...</span>
+                       }
+                       else @titre.Chronique
                     </div>
-                    <br />
+                    <br/>
 
                     @*Boutons / Informations*@
                     <div class="row align-self-end">
@@ -50,7 +63,6 @@
                                     @foreach (var @style in titre.TitresStyles)
                                         {
                                         <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
-
                                     }
                                 </p>
                             </div>
@@ -65,13 +77,13 @@
 
         @*Boutons*@
         <div class="d-flex justify-content-between mt-4">
-            <button class="btn btn-secondary w-10 col-md-4">Titres plus récents</button>
-            <button class="btn btn-secondary w-10 col-md-4">Titres plus anciens</button>
+            <a asp-route-isLastReleased="true" class="btn btn-secondary w-10 col-md-4">Titres plus récents</a>
+            <a asp-route-isLastReleased="false" class="btn btn-secondary w-10 col-md-4">Titres plus anciens</a>
         </div>
-        <br />
+        <br/>
 
         <h1>Titres les plus populaires</h1>
-        <br />
+        <br/>
 
         @*Liste des titres populaires*@
 
@@ -83,7 +95,7 @@
                 <div class="card">
                     <img class="card-img-top" src="@titre.UrlJaquette" />
                     <div class="card-body">
-                        <h5 class="card-title"><a asp-controller="Title">@titre.Libelle</a></h5>
+                        <h5 class="card-title"><a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
                         <h4 class="card-text">par <a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
                     </div>
                 </div>

@@ -25,7 +25,8 @@ namespace Webzine.Entity.Factory
                 NbLectures = 100,
                 TitresStyles = StyleFactory.CreateStyles().Where(s => s.IdStyle == 1 || s.IdStyle == 3).ToList(),
                 UrlEcoute = "https://www.youtube.com/watch?v=diSQuucDoBA",
-                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/08/c5/c2/12764424/1540-1/tsp20201019142053/Survie.jpg", Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/08/c5/c2/12764424/1540-1/tsp20201019142053/Survie.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and oui oui oui"
             };
             artists[0].Titres.Add(papillon);
             titles.Add(papillon);
