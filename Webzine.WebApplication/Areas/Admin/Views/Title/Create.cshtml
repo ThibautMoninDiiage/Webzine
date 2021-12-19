@@ -1,0 +1,109 @@
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.TitleViewModel
+
+@{
+    ViewData["title"] = "Admin - Titres - Création";
+}
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h1>Créer un titre</h1>
+            <hr />
+        </div>
+        <form>
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Nom de l'artiste</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Titre</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Album</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Chronique</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    <textarea type="text" class="form-control"></textarea>
+                </div>
+            </div>
+
+
+            <div class="row mb-4">
+                <div class="col-sm-4 col-lg-2">
+                    <label>Date de sortie</label>
+                </div>
+
+                <div class="col-xs-5 col-sm-2 col-lg-4">
+                    <input type="date" class="form-control">
+                </div>
+
+                <div class="col-sm-4 col-lg-2">
+                    <label>Durée en seconde</label>
+                </div>
+
+                <div class="col-xs-5 col-sm-2 col-lg-4">
+                    <input type="number" class="form-control">
+                </div>
+            </div>
+
+
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Styles</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    @foreach (var style in Model.Styles)
+                        {
+                    <div class="col-md-2">
+                        <input type="checkbox" name="styleInput" />
+                        <label for="styleInput">@style.Libelle</label>
+                    </div>
+                            
+                        }
+                </div>
+            </div>
+
+
+
+
+
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-sm-6 col-lg-2">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    <a asp-action="" class="btn btn-primary">Sauvegarder</a>
+                </div>
+            </div>
+            <br />
+            <a asp-action="">Retour à l'administration des titres</a>
+        </form>
+    </div>
+</div>
