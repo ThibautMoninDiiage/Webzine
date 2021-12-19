@@ -1,0 +1,107 @@
+﻿@model Webzine.WebApplication.ViewModels.HomeViewModel
+
+@{
+	ViewData["title"] = "Accueil";
+}
+
+<div class="row">
+
+	@*Partie principale de la chronique*@
+    <div>
+
+        @if (Model.IsLastReleased)
+        {
+            <h1>Derniers titres chroniqués</h1>
+        }
+        else
+        {
+            <h1>Premiers titres chroniqués</h1>
+        }
+
+        <br/>
+
+        @foreach (var titre in this.Model.OrderedTitles)
+        {
+            <div class="row bg-light">
+
+                @*Image*@
+                <div class="col-sm-2 p-4">
+                    <a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre"><img class="img-thumbnail" src="@titre.UrlJaquette" /></a>
+                </div>
+
+                @*Contenu*@
+                <div class="col-md-9">
+                    @*Titre*@
+                    <div class="card-title"><h4>@titre.Libelle</h4></div>
+                    @*Description*@
+                    <div style="text-align: justify">
+                       @if (@titre.Chronique.Length >= 200)
+                       {
+                           @titre.Chronique.Substring(0, 200)<span>...</span>
+                       }
+                       else @titre.Chronique
+                    </div>
+                    <br/>
+
+                    @*Boutons / Informations*@
+                    <div class="row align-self-end">
+                        <div class="row align-items-center">
+                            <div class="col-auto ">
+                                <p>
+                                    <a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre" class="btn btn-primary">Lire la suite</a>
+                                </p>
+                            </div>
+                            <div class="col-auto ">
+                                <p>
+                                    <i class="fas fa-calendar-week"></i>&nbsp;
+                                    @titre.DateCreation.ToString("dd-M-yyyy") | @titre.DateSortie.ToString("dd:M:yyyy")
+                                </p>
+                            </div>
+                            <div class="col-auto ">
+                                <p>
+                                    <i class="fas fa-tags"></i>&nbsp;
+                                    @foreach (var @style in titre.TitresStyles)
+                                        {
+                                        <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+        <br />
+
+        @*Boutons*@
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-route-isLastReleased="true" class="btn btn-secondary w-10 col-md-4">Titres plus récents</a>
+            <a asp-route-isLastReleased="false" class="btn btn-secondary w-10 col-md-4">Titres plus anciens</a>
+        </div>
+        <br/>
+
+        <h1>Titres les plus populaires</h1>
+        <br/>
+
+        @*Liste des titres populaires*@
+
+        
+    <div class="row mt-4">
+        @foreach (var titre in this.Model.MostPopularTitles)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="@titre.UrlJaquette" />
+                    <div class="card-body">
+                        <h5 class="card-title"><a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
+                        <h4 class="card-text">par <a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    </div>
+</div>

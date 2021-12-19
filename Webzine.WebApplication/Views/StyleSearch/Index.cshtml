@@ -1,0 +1,33 @@
+﻿@model Webzine.WebApplication.ViewModels.StyleSearchViewModel
+
+@{
+    ViewData["title"] = "Titres par styles";
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Titres ayant le style @this.Model.Style.Libelle</h1>
+        <hr />
+    </div>
+</div>
+
+@foreach (var titre in this.Model.Titles)
+{
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-xs-12 col-sm-6 col-lg-2">
+                <img style="height:150px; width: auto" class="img-fluid" src="@titre.UrlJaquette">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <div class="row">
+                    <h5><a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a> - <a asp-route-IdTitre="@titre.IdTitre" asp-controller="Title">@titre.Libelle</a></h5>
+                    @{
+                        TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
+                        var formatedTime = time.ToString(@"mm\:ss");
+                    }
+                    <h5>Durée : @formatedTime</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+}

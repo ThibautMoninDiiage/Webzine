@@ -1,0 +1,53 @@
+﻿@model Webzine.WebApplication.ViewModels.SearchViewModel
+
+@{
+    ViewData["title"] = "Recherche";
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Résultat de la recherche pour @Model.Keyword</h1>
+        <hr />
+    </div>
+</div>
+
+
+
+<div class="container">
+    <h3>Artistes</h3>
+
+    @foreach (var artiste in Model.Artistes)
+    {
+        <h5><i class="fas fa-user"></i> <a asp-controller="Artist" asp-route-IdArtiste="@artiste.IdArtiste">@artiste.Nom</a></h5>
+    }
+
+</div>
+
+<br />
+<br />
+<div class="container">
+    <h3>Titles</h3>
+
+    @foreach (var titre in Model.Titres)
+    {
+        <div class="row mb-3">
+            <div class="col-xs-12 col-sm-6 col-lg-2">
+                <img style="height:150px; width: auto" class="img-fluid" src="@titre.UrlJaquette">
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <div class="row">
+                    <h5><a asp-controller="Artist" asp-route-IdArtiste="@titre.Artiste.IdArtiste">@titre.Artiste.Nom</a> - <a href="#">@titre.Libelle</a></h5>
+
+
+                    @{
+                        TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
+                        var formatedTime = time.ToString(@"mm\:ss");
+
+                    }
+                    <h5>@formatedTime</h5>
+                </div>
+            </div>
+        </div>
+                        }
+
+</div>
