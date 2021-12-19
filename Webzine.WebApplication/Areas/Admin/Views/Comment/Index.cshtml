@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.CommentViewModel
+
+@{
     ViewData["title"] = "Commentaires";
 }
 
@@ -19,19 +21,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a href="">Bro bro</a></td>
-                    <td>Thomas</td>
-                    <td>Très bonne musique</td>
-                    <td class="text-center">18/12/2021 20:45</td>
-                    <td class="text-center">
-                        <a asp-action="Delete"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                @foreach (var commentaire in Model.Commentaires)
+                {
+                    <tr>
+                        <td><a asp-area="" asp-action="" asp-controller="Title" asp-route-IdTitre="@commentaire.Titre.IdTitre">@commentaire.Titre.Libelle</a></td>
+                        <td>@commentaire.Auteur</td>
+                        <td>@commentaire.Contenu</td>
+                        <td class="text-center">@commentaire.DateCreation</td>
+                        <td class="text-center">
+                            <a asp-action="Delete"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
-
-
-

@@ -10,7 +10,6 @@
     }
 </style>
 
-
 <section>
     <div>
         <h1>@this.Model.Artist.Nom</h1>
@@ -49,7 +48,7 @@
                                             var formatedTime = time.ToString(@"mm\:ss");
                                         }
                                         @formatedTime</td>
-                                        <td><a asp-controller="Title">@titre.Libelle</a></td>
+                                        <td><a asp-route-IdTitre="@titre.IdTitre" asp-controller="Title">@titre.Libelle</a></td>
                                     </tr>
                                 }
                             </tbody>

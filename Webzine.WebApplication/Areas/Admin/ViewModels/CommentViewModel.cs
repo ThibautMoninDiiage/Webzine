@@ -9,4 +9,3 @@ namespace Webzine.WebApplication.Areas.Admin.ViewModels
 
     }
 }
-
