@@ -13,7 +13,10 @@ namespace Webzine.Entity.Factory
                 IdArtiste = artists[0].IdArtiste,
                 Artiste = artists[0],
                 Album = "Survie",
-                Commentaires = new List<Commentaire>(),
+                Commentaires = new List<Commentaire>()
+                {
+                    new Commentaire() { Auteur = "Drizzy", Contenu = "Le son est super.", DateCreation = DateTime.Now, IdTitre = 1 }
+                },
                 DateCreation = new DateTime(2020, 12, 17),
                 DateSortie = new DateTime(2020, 11, 19),
                 Duree = 123,

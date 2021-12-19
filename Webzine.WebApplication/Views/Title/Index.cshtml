@@ -89,9 +89,16 @@
                 <div class="clearfix">
                     <img style="height:100px; width: auto" src="https://picsum.photos/100/100" class="img-fluid col-md-4 mb-3 me-3 ms-md-3 rounded float-sm-start" alt="...">
                     <h5>
-                        Name - date
+                        @foreach (var @commentaire in @Model.Titre.Commentaires)
+                        {
+                            <span>@commentaire.Auteur,</span> 
+                            <span> le @commentaire.DateCreation</span>
+                        }
                     </h5>
-                    Comment
+                    @foreach (var @commentaire in @Model.Titre.Commentaires)
+                    {
+                        <span>@commentaire.Contenu</span>
+                    }
                 </div>
             </div>
         </div>
