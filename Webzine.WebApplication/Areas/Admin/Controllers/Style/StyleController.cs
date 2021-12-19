@@ -2,17 +2,20 @@
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity.Factory;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
+using Webzine.Entity;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 {
     [Area("Admin")]
     public class StyleController : Controller
     {
+        private IEnumerable<Entity.Style> _styles => StyleFactory.CreateStyles();
+
         public IActionResult Index()
         {
             var model = new StyleViewModel
             {
-                Styles = StyleFactory.CreateStyles()
+                Styles = this._styles
             };
 
             return this.View(model);

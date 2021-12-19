@@ -8,12 +8,14 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
     [Area("Admin")]
     public class TitleController : Controller
     {
+        private IEnumerable<Entity.Style> _styles => StyleFactory.CreateStyles();
+        private IEnumerable<Entity.Titre> _titres => TitleFactory.CreateTitles();
 
         public IActionResult Index()
         {
             var model = new TitleViewModel
             {
-                Titres = TitleFactory.CreateTitles()
+                Titres = this._titres
             };
             return this.View(model);
         }
@@ -23,7 +25,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
         {
             var model = new TitleViewModel
             {
-                Styles = StyleFactory.CreateStyles()
+                Styles = _styles
             };
 
             return this.View("Create", model);
