@@ -16,7 +16,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         {
             var model = new ArtistViewModel
             {
-                Artistes = this._artistes.ToList()
+                Artistes = this._artistes
             };
 
             return this.View(model);
