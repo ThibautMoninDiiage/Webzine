@@ -15,5 +15,9 @@ namespace Webzine.Repository.Contracts
         void Delete(Style style);
         // Retourne le style de musique demandé.
         Style Find(int id);
+        // Retourne tous les styles de musique.
+        IEnumerable<Style> FindAll();
+        // Met à jour un style de musique.
+        void Update(Style style);
     }
 }
