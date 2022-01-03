@@ -6,8 +6,6 @@ namespace Webzine.WebApplication.ViewModels
 {
     public class BaseViewModel
     {
-
         public IEnumerable<Style> Styles => StyleFactory.CreateStyles();
     }
 }
-
