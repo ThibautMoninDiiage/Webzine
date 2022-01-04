@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Webzine.Entity;
-using Webzine.Entity.Factory;
+﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
