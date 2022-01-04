@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IArtisteRepository, FactoryArtisteRepository>();
 builder.Services.AddScoped<ITitreRepository, FactoryTitreRepository>();
 builder.Services.AddScoped<IStyleRepository, FactoryStyleRepository>();
+builder.Services.AddScoped<ICommentaireRepository, FactoryCommentaireRepository>();
 
 #endregion
 
