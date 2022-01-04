@@ -2,6 +2,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
 
+
+# region container IOC
+
+// builder.Services.AddScoped<>
+#endregion
+
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
