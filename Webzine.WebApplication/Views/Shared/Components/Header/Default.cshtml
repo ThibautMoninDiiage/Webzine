@@ -12,17 +12,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-tools"></i> Administration</a>
                     <ul class="dropdown-menu">
-                        <li><a asp-area="admin" asp-controller="artist" class="dropdown-item"><i class="fas fa-users"></i> Artistes</a></li>
-                        <li><a asp-area="admin" asp-controller="comment" class="dropdown-item"><i class="fas fa-comments"></i> Commentaires</a></li>
-                        <li><a asp-area="admin" asp-controller="style" class="dropdown-item"><i class="fas fa-tags"></i> Styles</a></li>
-                        <li><a asp-area="admin" asp-controller="title" class="dropdown-item"><i class="fas fa-music"></i> Titres</a></li>
+                        <li><a asp-area="administration" asp-controller="artiste" class="dropdown-item"><i class="fas fa-users"></i> Artistes</a></li>
+                        <li><a asp-area="administration" asp-controller="commentaire" class="dropdown-item"><i class="fas fa-comments"></i> Commentaires</a></li>
+                        <li><a asp-area="administration" asp-controller="style" class="dropdown-item"><i class="fas fa-tags"></i> Styles</a></li>
+                        <li><a asp-area="administration" asp-controller="titre" class="dropdown-item"><i class="fas fa-music"></i> Titres</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a asp-controller="contact" class="nav-link"><i class="fas fa-envelope"></i> Contact </a>
                 </li>
             </ul>
-            <form method="post" asp-controller="Search" class="form-inline my-2 my-lg-0">
+            <form method="post" asp-controller="recherche" class="form-inline my-2 my-lg-0">
                 <div class="input-group">
                     <input name="keyword" id="searchbar" class="form-control mr-sm-2" type="search" placeholder="Trouver un artiste / titre" aria-label="Trouver un artiste / titre" aria-describedby="search-addon">
                     <button type="submit" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-search"></i></button>
