@@ -3,31 +3,31 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>@ViewData["title"]</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="~/lib/font-awesome/css/all.css" rel="stylesheet">
-        <link href="~/lib/js/bootstrap.bundle.min.js" rel="stylesheet">
-        <link href="~/lib/bootstrap/js/bootstrap.bundle.min.js">
-    </head>
+<head>
+    <title>@ViewData["title"]</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet">
+    <link href="~/lib/js/bootstrap.bundle.min.js" rel="stylesheet">
+    <link href="~/lib/bootstrap/js/bootstrap.bundle.min.js">
+</head>
 
-    <body>
-        <style>
-            a {
-                text-decoration: none;
-            }
-        </style>
-        @await Component.InvokeAsync("Header")
-        <section class="row" style="margin:0">
-            <div class="col-md-9 p-3">
-                @RenderBody()
-            </div>
-            @await Component.InvokeAsync("Styles")
-        </section>
-    </body>
+<body>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+    @await Component.InvokeAsync("Header")
+    <section class="row" style="margin:0">
+        <div class="col-md-9 p-3">
+            @RenderBody()
+        </div>
+        @await Component.InvokeAsync("Styles")
+    </section>
+</body>
     @await Component.InvokeAsync("Footer")
 
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
 </html>
