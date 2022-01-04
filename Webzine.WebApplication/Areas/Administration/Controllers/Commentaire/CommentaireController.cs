@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity;
 using Webzine.Entity.Factory;
+using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
@@ -9,11 +10,18 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
     [Area("Administration")]
     public class CommentaireController : Controller
     {
+        private ICommentaireRepository _commentaireRepository;
+
+        public CommentaireController(ICommentaireRepository commentaireRepository)
+        {
+            _commentaireRepository = commentaireRepository;
+        }
+
         public IActionResult Index()
         {
             var model = new CommentViewModel
             {
-                Commentaires = new List<Commentaire>() { new Commentaire { Auteur = "Drizzy", Contenu = "Bien", DateCreation = DateTime.Now, IdCommentaire = 1, IdTitre = 1, Titre = TitleFactory.CreateTitles().First() } }
+                Commentaires = _commentaireRepository.FindAll()
             };
 
             return this.View(model);
