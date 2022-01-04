@@ -12,14 +12,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\Artist\" />
+    <Folder Include="Areas\Admin\Views\Artiste\" />
     <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Admin\Controllers\Artiste\" />
     <Folder Include="Areas\Admin\Views\Comment\" />
     <Folder Include="Areas\Admin\Controllers\Comment\" />
     <Folder Include="Areas\Admin\Views\Style\" />
     <Folder Include="Areas\Admin\Controllers\Style\" />
-    <Folder Include="Areas\Admin\Controllers\Title\" />
+    <Folder Include="Areas\Admin\Controllers\Titre\" />
     <Folder Include="Areas\Admin\Views\Title\" />
   </ItemGroup>
   <ItemGroup>

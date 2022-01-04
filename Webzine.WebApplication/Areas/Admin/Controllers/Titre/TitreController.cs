@@ -6,7 +6,7 @@ using Webzine.WebApplication.Areas.Admin.ViewModels;
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
 {
     [Area("Admin")]
-    public class TitleController : Controller
+    public class TitreController : Controller
     {
         private IEnumerable<Entity.Style> _styles => StyleFactory.CreateStyles();
         private IEnumerable<Entity.Titre> _titres => TitleFactory.CreateTitles();
