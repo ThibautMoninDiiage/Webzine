@@ -1,5 +1,6 @@
 ﻿using System;
 using Webzine.Entity;
+using Webzine.Entity.Factory;
 using Webzine.Repository.Contracts;
 
 namespace Webzine.Repository.Factory
@@ -27,7 +28,9 @@ namespace Webzine.Repository.Factory
 
         public IEnumerable<Commentaire> FindAll()
         {
-            throw new NotImplementedException();
+            var commentaire = TitleFactory.CreateTitles().SelectMany(t => t.Commentaires);
+
+            return commentaire;
         }
     }
 }
