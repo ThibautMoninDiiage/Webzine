@@ -2,17 +2,25 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity;
 using Webzine.Entity.Factory;
+using Webzine.Repository.Contracts;
 using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.Title
 {
     public class TitreController : Controller
     {
-        public IActionResult Index(int IdTitre)
+        private ITitreRepository _titreRepository;
+
+        public TitreController(ITitreRepository titreRepository)
+        {
+            this._titreRepository = titreRepository;
+        }
+
+        public IActionResult Index(int idTitre)
         {
             var model = new TitleViewModel()
             {
-                Titre = TitleFactory.CreateTitles().Where(t => t.IdTitre == IdTitre).FirstOrDefault()
+                Titre = _titreRepository.Find(idTitre)
             };
 
             return this.View(model);

@@ -12,6 +12,7 @@ namespace Webzine.WebApplication.Controllers
         public IEnumerable<Titre> AllTitles => TitleFactory.CreateTitles();
         public IEnumerable<Titre> OrderedTitles { get; set; }
 
+
         public IActionResult Index(bool isLastReleased = true)
         {
 
