@@ -6,7 +6,7 @@ using Webzine.WebApplication.Areas.Admin.ViewModels;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
 {
-    [Area("Admin")]
+    [Area("Administration")]
     public class CommentaireController : Controller
     {
         public IActionResult Index()
