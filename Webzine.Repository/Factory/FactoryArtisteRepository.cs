@@ -24,7 +24,7 @@ namespace Webzine.Repository.Factory
 
         public Artiste Find(int id)
         {
-            var artiste = ArtistFactory.CreateArtists().Where(a => a.IdArtiste == id).FirstOrDefault();
+            var artiste = ArtistFactory.GetArtist(id);
 
             return artiste;
         }
