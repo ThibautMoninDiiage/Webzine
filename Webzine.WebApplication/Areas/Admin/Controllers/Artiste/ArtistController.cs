@@ -8,7 +8,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
 {
 
     [Area("Admin")]
-    public class ArtistController : Controller
+    public class ArtisteController : Controller
     {
         private IEnumerable<Artiste> _artistes => ArtistFactory.CreateArtists();
 
