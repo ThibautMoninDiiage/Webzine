@@ -31,7 +31,7 @@ namespace Webzine.Repository.Factory
 
         public IEnumerable<Titre> FindAll()
         {
-            throw new NotImplementedException();
+            return TitleFactory.CreateTitles();
         }
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
