@@ -6,7 +6,7 @@ using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.Title
 {
-    public class TitleController : Controller
+    public class TitreController : Controller
     {
         public IActionResult Index(int IdTitre)
         {

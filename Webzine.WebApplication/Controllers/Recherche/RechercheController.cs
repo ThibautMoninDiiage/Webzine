@@ -4,7 +4,7 @@ using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.Contact
 {
-    public class SearchController : Controller
+    public class RechercheController : Controller
     {
         public IActionResult Index(string keyword = "")
         {
