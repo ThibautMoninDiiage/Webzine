@@ -1,7 +1,7 @@
 ﻿@model Webzine.WebApplication.ViewModels.ArtistViewModel
 
 @{
-    ViewData["title"] = "Artist";
+    ViewData["title"] = "Artiste";
 }
 
 <style>
@@ -43,12 +43,9 @@
                                 @foreach (var titre in Distincttitre.Artiste.Titres.Where(t => t.Album == Distincttitre.Album))
                                 {
                                     <tr>
-                                        <td>@{
-                                            TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
-                                            var formatedTime = time.ToString(@"mm\:ss");
-                                        }
-                                        @formatedTime</td>
-                                        <td><a asp-route-IdTitre="@titre.IdTitre" asp-controller="Title">@titre.Libelle</a></td>
+                                        <td>
+                                        @TimeSpan.FromSeconds(titre.Duree).ToString(@"mm\:ss")</td>
+                                        <td><a asp-route-IdTitre="@titre.IdTitre" asp-controller="titre">@titre.Libelle</a></td>
                                     </tr>
                                 }
                             </tbody>

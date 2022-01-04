@@ -1,27 +1,25 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Webzine.Entity;
 using Webzine.Entity.Factory;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
+using Webzine.Entity;
 
-namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
+namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 {
-
-    [Area("Admin")]
-    public class ArtistController : Controller
+    [Area("Administration")]
+    public class StyleController : Controller
     {
-        private IEnumerable<Artiste> _artistes => ArtistFactory.CreateArtists();
+        private IEnumerable<Entity.Style> _styles => StyleFactory.CreateStyles();
 
         public IActionResult Index()
         {
-            var model = new ArtistViewModel
+            var model = new StyleViewModel
             {
-                Artistes = this._artistes
+                Styles = this._styles
             };
 
             return this.View(model);
         }
-
 
         public IActionResult Create()
         {
@@ -30,10 +28,9 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
 
         public IActionResult Delete()
         {
+
             return this.View("Delete");
         }
-
-
     }
 }
 

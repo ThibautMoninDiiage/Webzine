@@ -2,35 +2,39 @@
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity.Factory;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
-using Webzine.Entity;
 
-namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
+namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
 {
-    [Area("Admin")]
-    public class StyleController : Controller
+    [Area("Administration")]
+    public class TitreController : Controller
     {
         private IEnumerable<Entity.Style> _styles => StyleFactory.CreateStyles();
+        private IEnumerable<Entity.Titre> _titres => TitleFactory.CreateTitles();
 
         public IActionResult Index()
         {
-            var model = new StyleViewModel
+            var model = new TitleViewModel
             {
-                Styles = this._styles
+                Titres = this._titres
             };
-
             return this.View(model);
         }
 
+
         public IActionResult Create()
         {
-            return this.View("Create");
+            var model = new TitleViewModel
+            {
+                Styles = _styles
+            };
+
+            return this.View("Create", model);
         }
+
 
         public IActionResult Delete()
         {
-
             return this.View("Delete");
         }
     }
 }
-

@@ -26,7 +26,7 @@
 
                 @*Image*@
                 <div class="col-sm-2 p-4">
-                    <a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre"><img class="img-thumbnail" src="@titre.UrlJaquette" /></a>
+                    <a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre"><img class="img-thumbnail" src="@titre.UrlJaquette" /></a>
                 </div>
 
                 @*Contenu*@
@@ -48,7 +48,7 @@
                         <div class="row align-items-center">
                             <div class="col-auto ">
                                 <p>
-                                    <a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre" class="btn btn-primary">Lire la suite</a>
+                                    <a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre" class="btn btn-primary">Lire la suite</a>
                                 </p>
                             </div>
                             <div class="col-auto ">
@@ -95,8 +95,8 @@
                 <div class="card">
                     <img class="card-img-top" src="@titre.UrlJaquette" />
                     <div class="card-body">
-                        <h5 class="card-title"><a asp-controller="Title" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
-                        <h4 class="card-text">par <a asp-controller="Artist" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
+                        <h5 class="card-title"><a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
+                        <h4 class="card-text">par <a asp-controller="artiste" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
                     </div>
                 </div>
             </div>

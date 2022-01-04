@@ -7,20 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Models\" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\Artist\" />
-    <Folder Include="Areas\Admin\ViewModels\" />
-    <Folder Include="Areas\Admin\Controllers\Artist\" />
-    <Folder Include="Areas\Admin\Views\Comment\" />
-    <Folder Include="Areas\Admin\Controllers\Comment\" />
-    <Folder Include="Areas\Admin\Views\Style\" />
-    <Folder Include="Areas\Admin\Controllers\Style\" />
-    <Folder Include="Areas\Admin\Controllers\Title\" />
-    <Folder Include="Areas\Admin\Views\Title\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Administration\Views\Artiste\" />
+    <Folder Include="Areas\Administration\ViewModels\" />
+    <Folder Include="Areas\Administration\Controllers\Artiste\" />
+    <Folder Include="Areas\Administration\Views\Commentaire\" />
+    <Folder Include="Areas\Administration\Controllers\Commentaire\" />
+    <Folder Include="Areas\Administration\Views\Style\" />
+    <Folder Include="Areas\Administration\Controllers\Style\" />
+    <Folder Include="Areas\Administration\Controllers\Titre\" />
+    <Folder Include="Areas\Administration\Views\Titre\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Shared\" />

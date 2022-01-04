@@ -6,18 +6,18 @@ using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers
 {
-    public class ArtistController : Controller
+    public class ArtisteController : Controller
     {
-        private Artiste Artist;
+        private Artiste _artiste;
         public IEnumerable<Style> Styles => StyleFactory.CreateStyles(); 
 
         public IActionResult Index(int IdArtiste)
         {
-            this.Artist = ArtistFactory.GetArtist(IdArtiste);
+            this._artiste = ArtistFactory.GetArtist(IdArtiste);
 
             var model = new ArtistViewModel
             {
-                Artist = this.Artist
+                Artist = this._artiste
             };
 
             return this.View(model);
