@@ -10,7 +10,7 @@ namespace Webzine.WebApplication.Controllers.Contact
         {
             if (!String.IsNullOrWhiteSpace(keyword) || !String.IsNullOrEmpty(keyword))
             {
-                keyword.ToLower();
+                keyword = keyword.ToLower();
             } else
             {
                 keyword = "";
