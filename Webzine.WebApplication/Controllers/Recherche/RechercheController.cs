@@ -10,7 +10,7 @@ namespace Webzine.WebApplication.Controllers.Contact
         {
             if (!String.IsNullOrWhiteSpace(keyword) || !String.IsNullOrEmpty(keyword))
             {
-                keyword.ToLower();
+                keyword = keyword.ToLower();
             } else
             {
                 keyword = "";
@@ -19,8 +19,8 @@ namespace Webzine.WebApplication.Controllers.Contact
             var model = new SearchViewModel
             {
                 Keyword = keyword,
-                Artistes = ArtistFactory.CreateArtists().Where(a => a.Nom.ToLower().Contains(keyword.ToLower())),
-                Titres = TitleFactory.CreateTitles().Where(t => t.Libelle.ToLower().Contains(keyword.ToLower()))
+                Artistes = ArtistFactory.CreateArtists().Where(a => a.Nom.ToLower().Contains(keyword)),
+                Titres = TitleFactory.CreateTitles().Where(t => t.Libelle.ToLower().Contains(keyword))
             };
 
             return this.View(model);
