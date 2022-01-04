@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Webzine.Entity;
-using Webzine.Entity.Factory;
+﻿using Microsoft.AspNetCore.Mvc;
+using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
@@ -10,13 +8,19 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
     [Area("Administration")]
     public class ArtisteController : Controller
     {
-        private IEnumerable<Artiste> _artistes => ArtistFactory.CreateArtists();
+        private IArtisteRepository _artisteRepository;
+
+        public ArtisteController(IArtisteRepository artisteRepository)
+        {
+            _artisteRepository = artisteRepository;
+        }
+
 
         public IActionResult Index()
         {
             var model = new ArtistViewModel
             {
-                Artistes = this._artistes
+                Artistes = _artisteRepository.FindAll()
             };
 
             return this.View(model);

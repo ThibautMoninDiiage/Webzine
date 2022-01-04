@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity.Factory;
+using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
@@ -8,14 +9,21 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
     [Area("Administration")]
     public class TitreController : Controller
     {
-        private IEnumerable<Entity.Style> _styles => StyleFactory.CreateStyles();
-        private IEnumerable<Entity.Titre> _titres => TitleFactory.CreateTitles();
+        private ITitreRepository _titreRepository;
+        private IStyleRepository _styleRepository;
+
+
+        public TitreController(ITitreRepository titreRepository, IStyleRepository styleRepository)
+        {
+            _titreRepository = titreRepository;
+            _styleRepository = styleRepository;
+        }
 
         public IActionResult Index()
         {
             var model = new TitleViewModel
             {
-                Titres = this._titres
+                Titres = _titreRepository.FindAll()
             };
             return this.View(model);
         }
@@ -25,7 +33,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
         {
             var model = new TitleViewModel
             {
-                Styles = _styles
+                Styles = _styleRepository.FindAll()
             };
 
             return this.View("Create", model);

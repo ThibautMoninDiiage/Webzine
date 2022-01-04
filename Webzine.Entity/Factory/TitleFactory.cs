@@ -13,10 +13,7 @@ namespace Webzine.Entity.Factory
                 IdArtiste = artists[0].IdArtiste,
                 Artiste = artists[0],
                 Album = "Survie",
-                Commentaires = new List<Commentaire>()
-                {
-                    new Commentaire() { Auteur = "Drizzy", Contenu = "Le son est super.", DateCreation = DateTime.Now, IdTitre = 1 }
-                },
+                Commentaires = new List<Commentaire>(),
                 DateCreation = new DateTime(2020, 12, 17),
                 DateSortie = new DateTime(2020, 11, 19),
                 Duree = 123,
@@ -28,6 +25,12 @@ namespace Webzine.Entity.Factory
                 UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/08/c5/c2/12764424/1540-1/tsp20201019142053/Survie.jpg",
                 Chronique = "Lorem Ipsum is simply dummy text of the printing and oui oui oui"
             };
+
+            papillon.Commentaires.Add(
+                new Commentaire() { Auteur = "Drizzy", Contenu = "Le son est super.", DateCreation = DateTime.Now, IdTitre = 1, IdCommentaire = 1, Titre = papillon }
+                );
+            
+
             artists[0].Titres.Add(papillon);
             titles.Add(papillon);
 

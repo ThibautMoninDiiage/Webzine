@@ -1,16 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity;
 using System.Linq; // Import Linq
-using Webzine.Entity.Factory;
 using Webzine.WebApplication.ViewModels;
+using Webzine.Repository.Contracts;
 
 namespace Webzine.WebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        public IEnumerable<Titre> MostPopularTitles => TitleFactory.CreateTitles().OrderByDescending(t => t.NbLikes).Take(3);
-        public IEnumerable<Titre> AllTitles => TitleFactory.CreateTitles();
+        public IEnumerable<Titre> AllTitles => _titreRepository.FindAll();
+        public IEnumerable<Titre> MostPopularTitles => AllTitles.OrderByDescending(t => t.NbLikes).Take(3);
         public IEnumerable<Titre> OrderedTitles { get; set; }
+        private ITitreRepository _titreRepository;
+
+
+        public HomeController(ITitreRepository titreRepository)
+        {
+            _titreRepository = titreRepository;
+        }
+
 
         public IActionResult Index(bool isLastReleased = true)
         {
