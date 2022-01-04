@@ -15,12 +15,12 @@
     <Folder Include="Areas\Admin\Views\Artiste\" />
     <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Admin\Controllers\Artiste\" />
-    <Folder Include="Areas\Admin\Views\Comment\" />
+    <Folder Include="Areas\Admin\Views\Commentaire\" />
     <Folder Include="Areas\Admin\Controllers\Comment\" />
     <Folder Include="Areas\Admin\Views\Style\" />
     <Folder Include="Areas\Admin\Controllers\Style\" />
     <Folder Include="Areas\Admin\Controllers\Titre\" />
-    <Folder Include="Areas\Admin\Views\Title\" />
+    <Folder Include="Areas\Admin\Views\Titre\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Shared\" />
