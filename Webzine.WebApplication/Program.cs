@@ -15,9 +15,6 @@ builder.Services.AddScoped<ICommentaireRepository, FactoryCommentaireRepository>
 
 #endregion
 
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-var app = builder.Build();
-
 #region NLog
 
 builder.Logging.ClearProviders();
@@ -25,6 +22,9 @@ builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
 builder.Host.UseNLog();
 
 #endregion
+
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+var app = builder.Build();
 
 app.UseRouting();
 app.UseEndpoints(endpoints =>
