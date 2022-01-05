@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.ArtistViewModel
+
+@{
     ViewData["title"] = "Suppression artiste";
 }
 
@@ -8,7 +10,7 @@
         <div>
             <h1>Supprimer un artiste</h1>
             <hr />
-            <h3>Etes vous sur de vouloir supprimer l'artiste XX ?</h3>
+            <h3>Etes vous sur de vouloir supprimer l'artiste @Model.Artiste.Nom ?</h3>
             <br />
             <a asp-action="" class="btn btn-danger btn-lg">Supprimer</a>
         </div>

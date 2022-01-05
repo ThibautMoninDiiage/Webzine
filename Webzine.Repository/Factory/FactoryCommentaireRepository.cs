@@ -23,14 +23,22 @@ namespace Webzine.Repository.Factory
 
         public Commentaire Find(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var commentaire = TitleFactory.CreateTitles().SelectMany(t => t.Commentaires).Where(c => c.IdCommentaire == id).First();
+                return commentaire;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public IEnumerable<Commentaire> FindAll()
         {
-            var commentaire = TitleFactory.CreateTitles().SelectMany(t => t.Commentaires);
+            var commentaires = TitleFactory.CreateTitles().SelectMany(t => t.Commentaires);
 
-            return commentaire;
+            return commentaires;
         }
     }
 }

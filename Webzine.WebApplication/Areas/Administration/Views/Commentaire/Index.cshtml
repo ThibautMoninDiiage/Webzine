@@ -29,7 +29,7 @@
                         <td>@commentaire.Contenu</td>
                         <td class="text-center">@commentaire.DateCreation</td>
                         <td class="text-center">
-                            <a asp-action="delete"><i class="fas fa-trash"></i></a>
+                            <a asp-action="delete" asp-route-idCommentaire="@commentaire.IdCommentaire"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 }

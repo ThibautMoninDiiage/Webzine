@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.CommentViewModel
+
+@{
     ViewData["title"] = "Suppression commentaire";
 }
 
@@ -9,6 +11,7 @@
             <hr />
             <h3>Etes vous sûr de vouloir supprimer le commentaire suivant ?</h3>
             <br />
+            <h6>@Model.Commentaire.Contenu</h6>
             <a asp-action="" class="btn btn-danger btn-lg">Supprimer</a>
         </div>
         <br /><br /><br />

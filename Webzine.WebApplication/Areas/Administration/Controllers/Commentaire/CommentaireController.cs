@@ -27,9 +27,16 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
             return this.View(model);
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int idCommentaire)
         {
-            return this.View("Delete");
+            var commentaire = _commentaireRepository.Find(idCommentaire);
+
+            var model = new CommentViewModel
+            {
+                Commentaire = commentaire
+            };
+
+            return this.View("Delete", model);
         }
     }
 }

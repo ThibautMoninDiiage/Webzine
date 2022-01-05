@@ -21,12 +21,19 @@ namespace Webzine.Entity.Factory
 
         public static Artiste GetArtist(int IdArtiste)
         {
-            Artiste artist = CreateArtists().Where(a => a.IdArtiste == IdArtiste).FirstOrDefault();
+            try
+            {
+                Artiste artist = CreateArtists().Where(a => a.IdArtiste == IdArtiste).FirstOrDefault();
 
-            artist.Titres = TitleFactory.CreateTitles().Where(t => t.IdArtiste == artist.IdArtiste).ToList();
+                artist.Titres = TitleFactory.CreateTitles().Where(t => t.IdArtiste == artist.IdArtiste).ToList();
 
 
-            return artist;
+                return artist;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
