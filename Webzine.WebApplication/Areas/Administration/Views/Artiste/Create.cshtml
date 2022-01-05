@@ -2,12 +2,15 @@
 
 
 @{
+    var action = "";
     if (Model == null)
     {
+        action = "create";
         ViewData["title"] = "Création artiste";
     }
     else
     {
+        action = "edit";
         ViewData["title"] = "Edition artiste";
     }
 
@@ -28,7 +31,14 @@
             }
             <hr />
         </div>
-        <form method="post" asp-action="create">
+
+        <form method="post" asp-action="@action">
+
+            @if (Model != null)
+            {
+                <input name="idArtiste" value="@Model.Artiste.IdArtiste" type="hidden" />
+            }
+
             <div class="row">
                 <div class="col-sm-6 col-lg-2">
                     <label>Nom de l'artiste</label>
@@ -74,5 +84,5 @@
             <br />
             <a asp-action="">Retour à l'administration des artistes</a>
         </form>
-    </div>
+    </div>    
 </div>
