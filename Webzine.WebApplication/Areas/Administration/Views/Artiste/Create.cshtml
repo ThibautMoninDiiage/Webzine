@@ -1,12 +1,31 @@
-﻿@{
-    ViewData["title"] = "Création artiste";
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.ArtistViewModel
+
+
+@{
+    if (Model == null)
+    {
+        ViewData["title"] = "Création artiste";
+    }
+    else
+    {
+        ViewData["title"] = "Edition artiste";
+    }
+
 }
 
 
 <div class="container">
     <div class="row">
         <div>
-            <h1>Editer un artiste</h1>
+            @if (Model == null)
+            {
+                <h1>Créer un artiste</h1>
+            }
+            else
+            {
+                <h1>Editer un artiste</h1>
+
+            }
             <hr />
         </div>
         <form>
@@ -16,7 +35,15 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control">
+
+                    @if (Model == null)
+                    {
+                        <input type="text" class="form-control">
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" placeholder="@Model.Artiste.Nom">
+                    }
                 </div>
             </div>
             <br />
@@ -25,7 +52,15 @@
                     <label>Biographie</label>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <textarea type="text" class="form-control"></textarea>
+                    @if (Model == null)
+                    {
+                        <textarea type="text" class="form-control"></textarea>
+
+                    }
+                    else
+                    {
+                        <textarea type="text" class="form-control" placeholder="@Model.Artiste.Biographie"></textarea>
+                    }
                 </div>
             </div>
             <br />

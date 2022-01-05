@@ -32,6 +32,18 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
             return this.View("Create");
         }
 
+        public IActionResult Edit(int idArtiste)
+        {
+            var artiste = _artisteRepository.Find(idArtiste);
+
+            var model = new ArtistViewModel
+            {
+                Artiste = artiste
+            };
+
+            return this.View("Create", model);
+        }
+
         public IActionResult Delete(int idArtiste)
         {
             var artiste = _artisteRepository.Find(idArtiste);
