@@ -24,7 +24,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
                 Commentaires = _commentaireRepository.FindAll()
             };
 
-            return this.View(model);
+            return this.View("Index", model);
         }
 
         public IActionResult Delete(int idCommentaire)
@@ -37,6 +37,16 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
             };
 
             return this.View("Delete", model);
+        }
+
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeletePost(int idCommentaire)
+        {
+            _commentaireRepository.Delete(new Commentaire() { IdCommentaire = idCommentaire });
+
+            return Index();
         }
     }
 }

@@ -18,7 +18,6 @@ namespace Webzine.Repository.Factory
 
         public void Delete(Commentaire commentaire)
         {
-            throw new NotImplementedException();
         }
 
         public Commentaire Find(int id)
