@@ -24,7 +24,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
                 Styles = _styleRepository.FindAll()
             };
 
-            return this.View(model);
+            return this.View("Index", model);
         }
 
         public IActionResult Create()
@@ -32,10 +32,48 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
             return this.View("Create");
         }
 
-        public IActionResult Delete()
+        [HttpPost]
+        [ActionName("Create")]
+        public IActionResult CreatePost(string libelle)
         {
+            _styleRepository.Add(new Entity.Style() { Libelle = libelle });
+            return Index();
+        }
 
-            return this.View("Delete");
+        public IActionResult Edit(int idStyle)
+        {
+            var model = new StyleViewModel
+            {
+                Style = _styleRepository.Find(idStyle)
+            };
+
+            return this.View("Create", model);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        public IActionResult EditPost(int idStyle, string libelle)
+        {
+            _styleRepository.Update(new Entity.Style() {IdStyle = idStyle, Libelle = libelle });
+            return Index();
+        }
+
+        public IActionResult Delete(int idStyle)
+        {
+            var model = new StyleViewModel
+            {
+                Style = _styleRepository.Find(idStyle)
+            };
+            return this.View("Delete", model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeletePost(int idStyle)
+        {
+            _styleRepository.Delete(new Entity.Style() { IdStyle = idStyle });
+
+            return Index();
         }
     }
 }
