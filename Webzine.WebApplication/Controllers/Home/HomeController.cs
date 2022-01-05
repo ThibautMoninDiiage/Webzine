@@ -8,20 +8,22 @@ namespace Webzine.WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         public IEnumerable<Titre> AllTitles => _titreRepository.FindAll();
         public IEnumerable<Titre> MostPopularTitles => AllTitles.OrderByDescending(t => t.NbLikes).Take(3);
         public IEnumerable<Titre> OrderedTitles { get; set; }
         private ITitreRepository _titreRepository;
 
 
-        public HomeController(ITitreRepository titreRepository)
+        public HomeController(ITitreRepository titreRepository, ILogger<HomeController> logger)
         {
             _titreRepository = titreRepository;
+            _logger = logger;
         }
-
 
         public IActionResult Index(bool isLastReleased = true)
         {
+            _logger.LogInformation("Accès à la page d'accueil.");
 
             if (isLastReleased)
             {

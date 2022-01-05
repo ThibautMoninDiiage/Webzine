@@ -6,12 +6,21 @@ namespace Webzine.WebApplication.Controllers.Contact
 {
     public class RechercheController : Controller
     {
+        private readonly ILogger<RechercheController> _logger;
+        public RechercheController(ILogger<RechercheController> logger)
+        {
+            _logger = logger;
+        }
+
         public IActionResult Index(string keyword = "")
         {
+            _logger.LogInformation("L'utilisateur recherche un mot clé.");
+
             if (!String.IsNullOrWhiteSpace(keyword) || !String.IsNullOrEmpty(keyword))
             {
                 keyword = keyword.ToLower();
-            } else
+            }
+            else
             {
                 keyword = "";
             }

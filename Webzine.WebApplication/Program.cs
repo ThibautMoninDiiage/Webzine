@@ -2,8 +2,7 @@ using Webzine.Repository.Contracts;
 using Webzine.Repository.Factory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
-
-
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +18,13 @@ builder.Services.AddScoped<ICommentaireRepository, FactoryCommentaireRepository>
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
 
+#region NLog
 
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Host.UseNLog();
 
+#endregion
 
 app.UseRouting();
 app.UseEndpoints(endpoints =>
@@ -35,7 +39,5 @@ app.UseEndpoints(endpoints =>
 });
 app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 app.UseStaticFiles();
-
-
 
 app.Run();

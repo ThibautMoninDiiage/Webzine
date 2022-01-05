@@ -9,15 +9,19 @@ namespace Webzine.WebApplication.Controllers.Title
 {
     public class TitreController : Controller
     {
+        private readonly ILogger<TitreController> _logger;
         private ITitreRepository _titreRepository;
 
-        public TitreController(ITitreRepository titreRepository)
+        public TitreController(ITitreRepository titreRepository, ILogger<TitreController> logger)
         {
             this._titreRepository = titreRepository;
+            _logger = logger;
         }
 
         public IActionResult Index(int idTitre)
         {
+            _logger.LogInformation("Accès à la page titre.");
+
             var model = new TitleViewModel()
             {
                 Titre = _titreRepository.Find(idTitre)
