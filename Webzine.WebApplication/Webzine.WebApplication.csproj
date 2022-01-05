@@ -10,6 +10,7 @@
     <Folder Include="Areas\Administration\Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.14.0" />
     <Folder Include="Areas\Administration\Views\Shared\" />
@@ -38,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Webzine.EntitiesContext\Webzine.EntitiesContext.csproj" />
     <ProjectReference Include="..\Webzine.Entity\Webzine.Entity.csproj" />
     <ProjectReference Include="..\Webzine.Repository.Contracts\Webzine.Repository.Contracts.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>

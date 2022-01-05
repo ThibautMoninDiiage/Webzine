@@ -3,10 +3,28 @@ using Webzine.Repository.Factory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using NLog.Web;
+using Microsoft.EntityFrameworkCore;
+using Webzine.EntitiesContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
-# region container IOC
+#region EFCore / SQLite
+
+builder.Services.AddDbContext<WebzineDbContext>(
+    options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
+);
+
+var context = new WebzineDbContext()
+{
+    
+};
+
+context.Database.EnsureDeleted();
+context.Database.EnsureCreated();
+
+#endregion
+
+#region container IOC
 
 builder.Services.AddScoped<IArtisteRepository, FactoryArtisteRepository>();
 builder.Services.AddScoped<ITitreRepository, FactoryTitreRepository>();
