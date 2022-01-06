@@ -5,7 +5,7 @@ using Webzine.Entity.Factory;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
-namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
+namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
 {
     [Area("Administration")]
     public class TitreController : Controller
@@ -47,7 +47,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
         [ActionName("Create")]
         public IActionResult CreatePost(int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles)
         {
-            var titre = new Titre()
+            var titre = new Entity.Titre()
             {
                 IdArtiste = idArtiste,
                 Artiste = _artisteRepository.Find(idArtiste),
@@ -80,7 +80,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
         [ActionName("Edit")]
         public IActionResult EditPost(int idTitre, int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles)
         {
-            var titre = new Titre()
+            var titre = new Entity.Titre()
             {
                 IdTitre = idTitre,
                 IdArtiste = idArtiste,
