@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity;
 using Webzine.Entity.Factory;
@@ -13,7 +12,7 @@ namespace Webzine.WebApplication.Controllers
         private Artiste _artiste;
         public IEnumerable<Style> Styles => StyleFactory.CreateStyles();
         public IArtisteRepository _artisteRepository;
-        
+
         public ArtisteController(IArtisteRepository artisteRepository, ILogger<ArtisteController> logger)
         {
             _artisteRepository = artisteRepository;

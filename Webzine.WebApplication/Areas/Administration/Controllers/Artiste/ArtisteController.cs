@@ -38,7 +38,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         [ActionName("Create")]
         public IActionResult CreatePost(string nom, string biographie)
         {
-            var artiste = new Artiste() { Nom = nom, Biographie = biographie};
+            var artiste = new Artiste() { Nom = nom, Biographie = biographie };
             _artisteRepository.AddArtiste(artiste);
 
             return Index(); // redirect to index page
@@ -48,7 +48,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         {
             var artiste = _artisteRepository.Find(idArtiste);
 
-            if(artiste == null)
+            if (artiste == null)
             {
                 return this.View("Create");
             }

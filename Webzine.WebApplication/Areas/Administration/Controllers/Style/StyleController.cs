@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Webzine.WebApplication.Areas.Admin.ViewModels;
-using Webzine.Entity;
+﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Repository.Contracts;
+using Webzine.WebApplication.Areas.Admin.ViewModels;
 
 namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 {
@@ -54,7 +52,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Edit")]
         public IActionResult EditPost(int idStyle, string libelle)
         {
-            _styleRepository.Update(new Entity.Style() {IdStyle = idStyle, Libelle = libelle });
+            _styleRepository.Update(new Entity.Style() { IdStyle = idStyle, Libelle = libelle });
             return Index();
         }
 

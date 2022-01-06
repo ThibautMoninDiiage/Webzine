@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-namespace Webzine.Entity.Factory
+﻿namespace Webzine.Entity.Factory
 {
     public class StyleFactory
     {
@@ -30,7 +28,7 @@ namespace Webzine.Entity.Factory
 
             return CreateStyles().ToList().OrderBy(s => random.Next()).Take(3);
         }
-        
+
     }
 }
 

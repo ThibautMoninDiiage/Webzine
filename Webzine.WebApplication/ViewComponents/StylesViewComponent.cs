@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Webzine.Entity;
 using Webzine.Repository.Contracts;
 
 namespace Webzine.WebApplication.ViewComponents

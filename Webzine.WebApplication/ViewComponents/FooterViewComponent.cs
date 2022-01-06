@@ -5,12 +5,12 @@ namespace Webzine.WebApplication.ViewComponents
     public class FooterViewComponent : ViewComponent
     {
 
-            public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke()
+        {
             {
-                {
-                    return View();
-                }
+                return View();
             }
-        
+        }
+
     }
 }

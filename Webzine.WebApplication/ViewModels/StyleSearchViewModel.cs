@@ -1,5 +1,4 @@
-﻿using System;
-using Webzine.Entity;
+﻿using Webzine.Entity;
 
 namespace Webzine.WebApplication.ViewModels
 {
