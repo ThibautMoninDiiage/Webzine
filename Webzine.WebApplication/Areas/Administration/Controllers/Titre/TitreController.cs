@@ -11,12 +11,14 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
     {
         private ITitreRepository _titreRepository;
         private IStyleRepository _styleRepository;
+        private IArtisteRepository _artisteRepository;
 
 
-        public TitreController(ITitreRepository titreRepository, IStyleRepository styleRepository)
+        public TitreController(ITitreRepository titreRepository, IStyleRepository styleRepository, IArtisteRepository artisteRepository)
         {
             _titreRepository = titreRepository;
             _styleRepository = styleRepository;
+            _artisteRepository = artisteRepository;
         }
 
         public IActionResult Index()
@@ -25,7 +27,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
             {
                 Titres = _titreRepository.FindAll()
             };
-            return this.View(model);
+            return this.View("Index", model);
         }
 
 
@@ -33,9 +35,29 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
         {
             var model = new TitleViewModel
             {
-                Styles = _styleRepository.FindAll()
+                Styles = _styleRepository.FindAll(),
+                Artistes = _artisteRepository.FindAll()
             };
 
+            return this.View("Create", model);
+        }
+
+        [HttpPost]
+        [ActionName("Create")]
+        public IActionResult CreatePost()
+        {
+
+            return Index();
+        }
+
+        public IActionResult Edit(int idTitre)
+        {
+            var model = new TitleViewModel
+            {
+                Styles = _styleRepository.FindAll(),
+                Artistes = _artisteRepository.FindAll(),
+                Titre = _titreRepository.Find(idTitre)
+            };
             return this.View("Create", model);
         }
 
