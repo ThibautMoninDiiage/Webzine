@@ -39,11 +39,13 @@ namespace Webzine.EntitiesContext
             {
                 // Défini le nom de la table dans la base de données
                 entity.ToTable("ARTISTE");
+
+                entity.HasMany<Titre>(e => e.Titres).WithOne(a => a.Artiste).HasForeignKey(t => t.IdTitre);
+
                 // Défini le nom des champs dans la base de données
                 entity.Property(e => e.IdArtiste).HasColumnName("Id");
                 entity.Property(e => e.Nom).HasColumnName("Nom");
                 entity.Property(e => e.Biographie).HasColumnName("Biographie");
-                entity.Property(e => e.Titres).HasColumnName("Titre");
                 entity.Property(e => e.DateNaissance).HasColumnName("DateNaissance");
                 entity.Property(e => e.UrlSite).HasColumnName("UrlSite");
             });
@@ -51,6 +53,9 @@ namespace Webzine.EntitiesContext
             modelBuilder.Entity<Commentaire>(entity =>
             {
                 entity.ToTable("COMMENTAIRE");
+
+                modelBuilder.Entity<Commentaire>().HasOne<Titre>().WithMany(t => t.Commentaires).HasForeignKey(c => c.IdTitre);
+
                 entity.Property(e => e.IdCommentaire).HasColumnName("Id");
                 entity.Property(e => e.Contenu).HasColumnName("Contenu");
                 entity.Property(e => e.Auteur).HasColumnName("Auteur");
@@ -70,9 +75,12 @@ namespace Webzine.EntitiesContext
             modelBuilder.Entity<Titre>(entity =>
             {
                 entity.ToTable("TITRE");
+
+                modelBuilder.Entity<Titre>().HasOne<Artiste>(a => a.Artiste).WithMany(t => t.Titres)
+                .HasForeignKey(t => t.IdArtiste);
+
                 entity.Property(e => e.IdTitre).HasColumnName("Id");
                 entity.Property(e => e.IdArtiste).HasColumnName("IdArtiste");
-                entity.Property(e => e.Artiste).HasColumnName("Artiste");
                 entity.Property(e => e.Libelle).HasColumnName("Libelle");
                 entity.Property(e => e.Chronique).HasColumnName("Chronique");
                 entity.Property(e => e.DateCreation).HasColumnName("DateCreation");
