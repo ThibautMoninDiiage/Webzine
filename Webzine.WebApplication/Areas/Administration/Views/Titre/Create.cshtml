@@ -6,10 +6,12 @@
 
     @if (Model.Titre == null)
         {
+            action = "Create";
             titre = "Créer";
         }
         else
         {
+            action = "Edit";
             titre = "Editer";
         }
 
@@ -29,10 +31,10 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <select class="w-100">
+                    <select name="idArtiste" class="w-100">
                         @foreach (var artiste in Model.Artistes)
                         {
-                            <option>@artiste.Nom</option>
+                            <option value="@artiste.IdArtiste">@artiste.Nom</option>
 
                         }
                     </select>
@@ -47,11 +49,12 @@
                 <div class="col-xs-12 col-sm-6 col-lg-10">
                     @if (Model.Titre == null)
                     {
-                        <input type="text" class="form-control">
+                        <input name="nomTitre" type="text" class="form-control">
                     }
                     else
                     {
-                        <input type="text" class="form-control" value="@Model.Titre.Libelle">
+                            <input value="@Model.Titre.IdTitre" name="idTitre" type="hidden"/>
+                        <input name="nomTitre" type="text" class="form-control" value="@Model.Titre.Libelle">
                     }
                 </div>
             </div>
@@ -64,11 +67,11 @@
                 <div class="col-xs-12 col-sm-6 col-lg-10">
                     @if (Model.Titre == null)
                     {
-                        <input type="text" class="form-control" />
+                        <input name="nomAlbum" type="text" class="form-control" />
                     }
                     else
                     {
-                        <input type="text" class="form-control" value="@Model.Titre.Album"/>
+                        <input name="nomAlbum" type="text" class="form-control" value="@Model.Titre.Album"/>
                     }
                 </div>
             </div>
@@ -82,12 +85,12 @@
                 <div class="col-xs-12 col-sm-6 col-lg-10">
                     @if (Model.Titre == null)
                     {
-                        <textarea type="text" class="form-control"></textarea>
+                        <textarea name="chronique" type="text" class="form-control"></textarea>
 
                     }
                     else
                     {
-                        <textarea type="text" class="form-control">@Model.Titre.Chronique</textarea>
+                        <textarea name="chronique" type="text" class="form-control">@Model.Titre.Chronique</textarea>
                     }
                 </div>
             </div>
@@ -101,13 +104,13 @@
                 <div class="col-xs-5 col-sm-2 col-lg-4">
                     @if (Model.Titre == null)
                     {
-                        <input type="date" class="form-control">
+                        <input name="datesortie" type="date" class="form-control">
 
 
                     }
                     else
                     {
-                        <input type="date" class="form-control" value="@Model.Titre.DateSortie">
+                        <input name="datesortie" type="date" class="form-control" value="@Model.Titre.DateSortie">
 
                     }
                 </div>
@@ -119,11 +122,11 @@
                 <div class="col-xs-5 col-sm-2 col-lg-4">
                     @if (Model.Titre == null)
                     {
-                        <input type="number" class="form-control">
+                        <input name="duree" type="number" class="form-control">
                     }
                     else
                     {
-                        <input type="number" class="form-control" value="@Model.Titre.Duree">
+                        <input name="duree" type="number" class="form-control" value="@Model.Titre.Duree">
                     }
                 </div>
             </div>
@@ -144,16 +147,16 @@
                         {
                             @if (Model.Titre.TitresStyles.FirstOrDefault(t => t.IdStyle == style.IdStyle) != null)
                             {
-                                <input type="checkbox" name="styleInput" checked />
+                                <input value="@style.IdStyle" type="checkbox" name="idStyles" checked />
                             }
                             else
                             {
-                                <input type="checkbox" name="styleInput" />
+                                <input value="@style.IdStyle" type="checkbox" name="idStyles" />
                             }
                         }
                         else
                         {
-                            <input type="checkbox" name="styleInput" />
+                            <input value="@style.IdStyle" type="checkbox" name="idStyles" />
                         }
                         <label for="styleInput">@style.Libelle</label>
                     </div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Webzine.Entity;
 using Webzine.Entity.Factory;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
@@ -44,8 +45,22 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
 
         [HttpPost]
         [ActionName("Create")]
-        public IActionResult CreatePost()
+        public IActionResult CreatePost(int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles)
         {
+            var titre = new Titre()
+            {
+                IdArtiste = idArtiste,
+                Artiste = _artisteRepository.Find(idArtiste),
+                Libelle = nomTitre,
+                Album = nomAlbum,
+                Chronique = chronique,
+                DateSortie = datesortie,
+                DateCreation = DateTime.Now,
+                Duree = duree,
+                TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
+            };
+
+            _titreRepository.AddTitre(titre);
 
             return Index();
         }
@@ -59,6 +74,28 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Title
                 Titre = _titreRepository.Find(idTitre)
             };
             return this.View("Create", model);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        public IActionResult EditPost(int idTitre, int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles)
+        {
+            var titre = new Titre()
+            {
+                IdTitre = idTitre,
+                IdArtiste = idArtiste,
+                Artiste = _artisteRepository.Find(idArtiste),
+                Libelle = nomTitre,
+                Album = nomAlbum,
+                Chronique = chronique,
+                DateSortie = datesortie,
+                Duree = duree,
+                TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList(),
+            };
+
+            _titreRepository.Update(titre);
+
+            return Index();
         }
 
 
