@@ -1,9 +1,9 @@
 ﻿namespace Webzine.Entity.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Méthodes utilitaires permettant de tester les entités. 

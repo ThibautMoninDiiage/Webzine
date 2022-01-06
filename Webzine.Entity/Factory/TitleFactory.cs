@@ -1,5 +1,4 @@
-﻿using System;
-namespace Webzine.Entity.Factory
+﻿namespace Webzine.Entity.Factory
 {
     public class TitleFactory
     {
@@ -8,7 +7,8 @@ namespace Webzine.Entity.Factory
             List<Artiste> artists = ArtistFactory.CreateArtists().ToList(); // Generate artists
             List<Titre> titles = new List<Titre>(); // init the listof all artists
 
-            Titre papillon = new Titre() {
+            Titre papillon = new Titre()
+            {
                 IdTitre = 1,
                 IdArtiste = artists[0].IdArtiste,
                 Artiste = artists[0],
@@ -29,7 +29,7 @@ namespace Webzine.Entity.Factory
             papillon.Commentaires.Add(
                 new Commentaire() { Auteur = "Drizzy", Contenu = "Le son est super.", DateCreation = DateTime.Now, IdTitre = 1, IdCommentaire = 1, Titre = papillon }
                 );
-            
+
 
             artists[0].Titres.Add(papillon);
             titles.Add(papillon);

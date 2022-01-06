@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Entity;
-using System.Linq; // Import Linq
-using Webzine.WebApplication.ViewModels;
 using Webzine.Repository.Contracts;
+using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers
 {
@@ -28,7 +27,8 @@ namespace Webzine.WebApplication.Controllers
             if (isLastReleased)
             {
                 OrderedTitles = AllTitles.OrderByDescending(t => t.DateCreation).Take(3);
-            } else
+            }
+            else
             {
                 OrderedTitles = AllTitles.OrderBy(t => t.DateCreation).Take(3);
             }

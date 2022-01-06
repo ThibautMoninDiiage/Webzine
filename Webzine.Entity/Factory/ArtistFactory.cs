@@ -1,5 +1,4 @@
-﻿using System;
-namespace Webzine.Entity.Factory
+﻿namespace Webzine.Entity.Factory
 {
     public class ArtistFactory
     {
