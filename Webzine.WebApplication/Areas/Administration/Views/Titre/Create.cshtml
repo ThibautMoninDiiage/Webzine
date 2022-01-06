@@ -1,23 +1,43 @@
 ﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.TitleViewModel
 
 @{
+    var action = "";
+    var titre = "";
+
+    @if (Model.Titre == null)
+        {
+            action = "Create";
+            titre = "Créer";
+        }
+        else
+        {
+            action = "Edit";
+            titre = "Editer";
+        }
+
     ViewData["title"] = "Admin - Titres - Création";
 }
 
 <div class="container">
     <div class="row">
         <div>
-            <h1>Créer un titre</h1>
+            <h1>@titre un titre</h1>
             <hr />
         </div>
-        <form>
+        <form asp-action="@action" method="post">
             <div class="row mb-4">
                 <div class="col-sm-6 col-lg-2">
                     <label>Nom de l'artiste</label>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control">
+                    <select name="idArtiste" class="w-100">
+                        @foreach (var artiste in Model.Artistes)
+                        {
+                            <option value="@artiste.IdArtiste">@artiste.Nom</option>
+
+                        }
+                    </select>
                 </div>
             </div>
 
@@ -27,7 +47,15 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control">
+                    @if (Model.Titre == null)
+                    {
+                        <input name="nomTitre" type="text" class="form-control">
+                    }
+                    else
+                    {
+                            <input value="@Model.Titre.IdTitre" name="idTitre" type="hidden"/>
+                        <input name="nomTitre" type="text" class="form-control" value="@Model.Titre.Libelle">
+                    }
                 </div>
             </div>
 
@@ -37,7 +65,14 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <input type="text" class="form-control" />
+                    @if (Model.Titre == null)
+                    {
+                        <input name="nomAlbum" type="text" class="form-control" />
+                    }
+                    else
+                    {
+                        <input name="nomAlbum" type="text" class="form-control" value="@Model.Titre.Album"/>
+                    }
                 </div>
             </div>
 
@@ -48,7 +83,15 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <textarea type="text" class="form-control"></textarea>
+                    @if (Model.Titre == null)
+                    {
+                        <textarea name="chronique" type="text" class="form-control"></textarea>
+
+                    }
+                    else
+                    {
+                        <textarea name="chronique" type="text" class="form-control">@Model.Titre.Chronique</textarea>
+                    }
                 </div>
             </div>
 
@@ -59,7 +102,17 @@
                 </div>
 
                 <div class="col-xs-5 col-sm-2 col-lg-4">
-                    <input type="date" class="form-control">
+                    @if (Model.Titre == null)
+                    {
+                        <input name="datesortie" type="date" class="form-control">
+
+
+                    }
+                    else
+                    {
+                        <input name="datesortie" type="date" class="form-control" value="@Model.Titre.DateSortie">
+
+                    }
                 </div>
 
                 <div class="col-sm-4 col-lg-2">
@@ -67,7 +120,14 @@
                 </div>
 
                 <div class="col-xs-5 col-sm-2 col-lg-4">
-                    <input type="number" class="form-control">
+                    @if (Model.Titre == null)
+                    {
+                        <input name="duree" type="number" class="form-control">
+                    }
+                    else
+                    {
+                        <input name="duree" type="number" class="form-control" value="@Model.Titre.Duree">
+                    }
                 </div>
             </div>
 
@@ -80,11 +140,26 @@
                 <div class="col-xs-12 col-sm-6 col-lg-10">
                     @foreach (var style in Model.Styles)
                         {
+
+
                     <div class="col-md-2">
-                        <input type="checkbox" name="styleInput" />
+                        @if (Model.Titre != null)
+                        {
+                            @if (Model.Titre.TitresStyles.FirstOrDefault(t => t.IdStyle == style.IdStyle) != null)
+                            {
+                                <input value="@style.IdStyle" type="checkbox" name="idStyles" checked />
+                            }
+                            else
+                            {
+                                <input value="@style.IdStyle" type="checkbox" name="idStyles" />
+                            }
+                        }
+                        else
+                        {
+                            <input value="@style.IdStyle" type="checkbox" name="idStyles" />
+                        }
                         <label for="styleInput">@style.Libelle</label>
                     </div>
-                            
                         }
                 </div>
             </div>
@@ -99,7 +174,7 @@
                 <div class="col-sm-6 col-lg-2">
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <a asp-action="" class="btn btn-primary">Sauvegarder</a>
+                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
                 </div>
             </div>
             <br />

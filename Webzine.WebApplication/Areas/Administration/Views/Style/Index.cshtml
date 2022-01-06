@@ -22,8 +22,8 @@
                     <tr>
                         <td>@style.Libelle</td>
                         <td class="text-center">
-                            <a asp-action="Create"> <i class="fas fa-edit"></i> </a>
-                            <a asp-action="Delete"><i class="fas fa-trash"></i></a>
+                            <a asp-action="Edit" asp-route-idStyle="@style.IdStyle"> <i class="fas fa-edit"></i> </a>
+                            <a asp-action="Delete" asp-route-idStyle="@style.IdStyle"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 }

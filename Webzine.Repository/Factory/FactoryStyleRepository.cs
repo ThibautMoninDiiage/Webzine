@@ -13,12 +13,10 @@ namespace Webzine.Repository.Factory
 
         public void Add(Style style)
         {
-            throw new NotImplementedException();
         }
 
         public void Delete(Style style)
         {
-            throw new NotImplementedException();
         }
 
         public Style Find(int id)
@@ -36,7 +34,6 @@ namespace Webzine.Repository.Factory
 
         public void Update(Style style)
         {
-            throw new NotImplementedException();
         }
     }
 }

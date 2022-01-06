@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Webzine.Entity;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
@@ -23,13 +24,24 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
                 Artistes = _artisteRepository.FindAll()
             };
 
-            return this.View(model);
+            return this.View("Index", model);
         }
 
 
         public IActionResult Create()
         {
             return this.View("Create");
+        }
+
+
+        [HttpPost]
+        [ActionName("Create")]
+        public IActionResult CreatePost(string nom, string biographie)
+        {
+            var artiste = new Artiste() { Nom = nom, Biographie = biographie};
+            _artisteRepository.AddArtiste(artiste);
+
+            return Index(); // redirect to index page
         }
 
         public IActionResult Edit(int idArtiste)
@@ -50,6 +62,17 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
             }
         }
 
+        [HttpPost]
+        [ActionName("Edit")]
+        public IActionResult EditPost(int idArtiste, string nom, string biographie)
+        {
+            var artiste = new Artiste() { IdArtiste = idArtiste, Nom = nom, Biographie = biographie };
+            _artisteRepository.UpdateArtiste(artiste);
+
+            return Index();
+        }
+
+
         public IActionResult Delete(int idArtiste)
         {
             var artiste = _artisteRepository.Find(idArtiste);
@@ -62,7 +85,13 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
             return this.View("Delete", model);
         }
 
-
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeletePost(int idArtiste)
+        {
+            _artisteRepository.DeleteArtiste(new Artiste { IdArtiste = idArtiste });
+            return Index();
+        }
     }
 }
 
