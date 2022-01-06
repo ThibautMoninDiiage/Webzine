@@ -4,6 +4,7 @@ namespace Webzine.Entity
 {
     public class Commentaire
     {
+        [Key]
         public int IdCommentaire { get; set; }
 
         [Required]

@@ -4,6 +4,7 @@ namespace Webzine.Entity
 {
     public class Style
     {
+        [Key]
         public int IdStyle { get; set; }
 
         [Required]

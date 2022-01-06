@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Webzine.Entity;
+
+namespace Webzine.EntitiesContext
+{
+    // Cette classe définit le contexte de la base de données
+    // Les entités correspondent aux tables dans la base de données
+    public class WebzineDbContext : DbContext
+    {
+        public WebzineDbContext()
+        {
+
+        }
+
+        // Le constructeur défini le chemin d'accès de création de la base de données "locale"
+        public WebzineDbContext(DbContextOptions<WebzineDbContext> options) : base(options)
+        {
+
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlite("Data Source=Webzine.db");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Artiste>();
+        }
+
+    }
+}
