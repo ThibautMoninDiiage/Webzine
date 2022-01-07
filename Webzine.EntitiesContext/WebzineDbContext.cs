@@ -39,7 +39,6 @@ namespace Webzine.EntitiesContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Artiste>();
         }
 
     }
