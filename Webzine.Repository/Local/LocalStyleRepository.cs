@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
@@ -28,7 +29,9 @@ namespace Webzine.Repository.Local
 
         public Style Find(int id)
         {
-            return _webzineDbContext.Styles.Find(id);
+            var style = _webzineDbContext.Styles.Find(id);
+            style.TitresStyles = _webzineDbContext.Titres.Include(t => t.Artiste).Where(t => t.TitresStyles.Contains(style)).ToList();
+            return style;
 
         }
 

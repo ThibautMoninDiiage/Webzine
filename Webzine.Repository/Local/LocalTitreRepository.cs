@@ -20,7 +20,7 @@ namespace Webzine.Repository.Local
             titre.UrlEcoute = "";
             titre.UrlJaquette = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440";
             titre.Artiste = _webzineDbContext.Artistes.Find(titre.IdArtiste);
-            titre.TitresStyles = _webzineDbContext.Styles.ToList();
+            titre.TitresStyles = _webzineDbContext.Styles.Where(s => titre.TitresStyles.Contains(s)).ToList();
 
 
             _webzineDbContext.Add(titre);
@@ -44,6 +44,7 @@ namespace Webzine.Repository.Local
                 .Include(t => t.Artiste)
                 .Include(t => t.TitresStyles)
                 .Include(t => t.Commentaires)
+                .Where(t => t.IdTitre == idTitre)
                 .FirstOrDefault();
 
             return titre;
@@ -51,7 +52,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Titre> FindAll()
         {
-            return _webzineDbContext.Titres.Include(t => t.Artiste).ToList();
+            return _webzineDbContext.Titres.Include(t => t.Artiste).Include(t => t.TitresStyles).ToList();
         }
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
@@ -80,7 +81,8 @@ namespace Webzine.Repository.Local
 
         public void Update(Titre titre)
         {
-            throw new NotImplementedException();
+            _webzineDbContext.Update(titre);
+            _webzineDbContext.SaveChanges();
         }
     }
 }
