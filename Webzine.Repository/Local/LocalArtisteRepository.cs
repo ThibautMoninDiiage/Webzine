@@ -39,7 +39,8 @@ namespace Webzine.Repository.Local
 
         public void UpdateArtiste(Artiste artiste)
         {
-            throw new NotImplementedException();
+            _webzineDbContext.Update(artiste);
+            _webzineDbContext.SaveChanges();
         }
     }
 }
