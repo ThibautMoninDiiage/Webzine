@@ -66,12 +66,11 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         [ActionName("Edit")]
         public IActionResult EditPost(int idArtiste, string nom, string biographie)
         {
-            var artiste = new Artiste() { IdArtiste = idArtiste, Nom = nom, Biographie = biographie };
+            var artiste = new Artiste() { IdArtiste = idArtiste, Nom = nom, Biographie = biographie, UrlSite = "" };
             _artisteRepository.UpdateArtiste(artiste);
 
             return Index();
         }
-
 
         public IActionResult Delete(int idArtiste)
         {
@@ -94,4 +93,3 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         }
     }
 }
-
