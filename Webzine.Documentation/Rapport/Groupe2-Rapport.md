@@ -75,6 +75,14 @@ furent compliqués à mettre en place. Par exemple lors de l’affichage des pag
 le nom de l’album n’est pas au-dessus de la jaquette. 
 Nous avons du regarder précisement les exemples sur le cahier des charges. 
 
+Lors du déploiement test, la création du fichier DockerFile a été compliqué à cause des liens faussé vers les projets.
+Nous avons tout d’abord créer le fichier à la main, puis nous avons utilisé le "container orchestrator" inscrit dans Visual Studio.
+Malgré cela, il a fallut remodifier le fichier afin qu’il soit conforme.
+
+Durant le deuxième, nous devions ajouter la base de donnée au projet. 
+Cela nous a causé des problèmes car elle a été compliqué à mettre en place.
+Le dbContexte aisni qur la génération des tables n'ont pas fonctionné.
+
 ## Conclusion
 
 ## Annexes
