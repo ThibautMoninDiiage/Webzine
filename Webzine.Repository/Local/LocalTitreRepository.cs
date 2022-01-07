@@ -51,7 +51,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Titre> FindAll()
         {
-            return _webzineDbContext.Titres.Include(t => t.Artiste).ToList();
+            return _webzineDbContext.Titres.Include(t => t.Artiste).Include(t => t.TitresStyles).ToList();
         }
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
