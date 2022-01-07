@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Webzine.Entity;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.ViewModels;
 
@@ -8,10 +9,13 @@ namespace Webzine.WebApplication.Controllers.Title
     {
         private readonly ILogger<TitreController> _logger;
         private ITitreRepository _titreRepository;
+        private readonly ICommentaireRepository _commentaireRepository;
 
-        public TitreController(ITitreRepository titreRepository, ILogger<TitreController> logger)
+
+        public TitreController(ITitreRepository titreRepository, ICommentaireRepository commentaireRepository, ILogger<TitreController> logger)
         {
-            this._titreRepository = titreRepository;
+            _commentaireRepository = commentaireRepository;
+            _titreRepository = titreRepository;
             _logger = logger;
         }
 
@@ -34,6 +38,24 @@ namespace Webzine.WebApplication.Controllers.Title
         {
             var titre = _titreRepository.Find(idTitre);
             _titreRepository.IncrementNbLikes(titre);
+
+            return this.Index(idTitre);
+        }
+
+        [HttpPost]
+        public IActionResult Commenter(int idTitre, string nom, string contenu)
+        {
+            var commentaire = new Commentaire() 
+            {   
+                Auteur = nom, 
+                Contenu = contenu, 
+                DateCreation = DateTime.Now, 
+                IdTitre = idTitre
+            };
+
+
+            _commentaireRepository.Add(commentaire);
+
 
             return this.Index(idTitre);
         }

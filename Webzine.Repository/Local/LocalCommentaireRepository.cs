@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
@@ -16,7 +17,7 @@ namespace Webzine.Repository.Local
 
         public void Add(Commentaire commentaire)
         {
-            _webzineDbContext.Add(commentaire);
+            _webzineDbContext.Commentaires.Add(commentaire);
             _webzineDbContext.SaveChanges();
         }
 
@@ -33,7 +34,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Commentaire> FindAll()
         {
-            return _webzineDbContext.Commentaires.ToList();
+            return _webzineDbContext.Commentaires.Include(c => c.Titre).ToList();
         }
     }
 }

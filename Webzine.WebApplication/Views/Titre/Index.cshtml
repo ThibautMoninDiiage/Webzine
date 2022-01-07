@@ -50,14 +50,14 @@
 
 <h3>Donne ton avis sur ce titre</h3>
 <br>
-<form>
+<form method="post" asp-action="commenter">
     <div class="row">
         <div class="col-sm-6 col-lg-3">
             <label>Nom</label>
         </div>
 
         <div class="col-xs-12 col-sm-6 col-lg-9">
-            <input type="text" class="form-control" placeholder="Votre nom">
+            <input name="nom" type="text" class="form-control" placeholder="Votre nom">
         </div>
     </div>
     <br />
@@ -66,9 +66,10 @@
             <label>Commentaire</label>
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-9">
-            <input type="text" class="form-control" placeholder="Votre commentaire">
+            <input name="contenu" type="text" class="form-control" placeholder="Votre commentaire">
             <br />
-            <a href="#" class="btn btn-primary">Envoyer</a>
+            <input type="hidden" name="idTitre" value="@Model.Titre.IdTitre"/>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
     </div>
 </form>
@@ -81,6 +82,7 @@
 
 <div class="col background-white py-3">
     <div class="clearfix">
+
         <img style="height:100px; width: auto" src="https://picsum.photos/100/100" class="img-fluid col-md-4 mb-3 me-3 ms-md-3 rounded float-sm-start" alt="Image Profil">
         <h5>
             @foreach (var @commentaire in @Model.Titre.Commentaires)
