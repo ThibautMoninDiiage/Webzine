@@ -17,8 +17,6 @@ namespace Webzine.Repository.Local
 
         public void AddTitre(Titre titre)
         {
-            titre.UrlEcoute = "";
-            titre.UrlJaquette = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440";
             titre.Artiste = _webzineDbContext.Artistes.Find(titre.IdArtiste);
             titre.TitresStyles = _webzineDbContext.Styles.Where(s => titre.TitresStyles.Contains(s)).ToList();
 

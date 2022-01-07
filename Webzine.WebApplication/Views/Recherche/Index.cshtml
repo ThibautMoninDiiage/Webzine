@@ -29,7 +29,7 @@
             <div class="clearfix">
                 <img style="height:100px; width: auto" alt="Image Titre" src="@titre.UrlJaquette" class="img-fluid me-3 rounded float-sm-start">
                 <br />
-                <p class="m-0"><a asp-controller="Artist" asp-route-IdArtiste="@titre.Artiste.IdArtiste">@titre.Artiste.Nom</a> - <a href="#">@titre.Libelle</a></p>
+                <p class="m-0"><a asp-controller="artiste" asp-route-IdArtiste="@titre.Artiste.IdArtiste">@titre.Artiste.Nom</a> - <a asp-controller="titre" asp-route-idTitre="@titre.IdTitre">@titre.Libelle</a></p>
                 @{
                     TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
                     var formatedTime = time.ToString(@"mm\:ss");

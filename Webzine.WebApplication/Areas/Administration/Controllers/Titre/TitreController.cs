@@ -42,7 +42,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
 
         [HttpPost]
         [ActionName("Create")]
-        public IActionResult CreatePost(int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles)
+        public IActionResult CreatePost(int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles, string urlJaquette, string urlEcoute)
         {
             var titre = new Entity.Titre()
             {
@@ -53,6 +53,8 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 DateSortie = datesortie,
                 DateCreation = DateTime.Now,
                 Duree = duree,
+                UrlJaquette = urlJaquette,
+                UrlEcoute = urlEcoute,
                 TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
             };
 

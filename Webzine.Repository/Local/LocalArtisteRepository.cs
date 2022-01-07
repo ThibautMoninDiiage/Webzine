@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
@@ -29,7 +30,7 @@ namespace Webzine.Repository.Local
 
         public Artiste Find(int id)
         {
-            return _webzineDbContext.Artistes.Find(id);
+            return _webzineDbContext.Artistes.Include(t => t.Titres).Where(a => a.IdArtiste == id).FirstOrDefault();
         }
 
         public IEnumerable<Artiste> FindAll()

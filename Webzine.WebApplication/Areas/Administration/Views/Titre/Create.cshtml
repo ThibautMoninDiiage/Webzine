@@ -131,6 +131,40 @@
                 </div>
             </div>
 
+             <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Jaquette de l'album</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    @if (Model.Titre == null)
+                    {
+                        <input name="urlJaquette" type="text" class="form-control">
+                    }
+                    else
+                    {
+                        <input name="urlJaquette" type="text" class="form-control" value="@Model.Titre.UrlJaquette">
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-sm-6 col-lg-2">
+                    <label>URL d'écoute</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    @if (Model.Titre == null)
+                    {
+                        <input name="urlEcoute" type="text" class="form-control">
+                    }
+                    else
+                    {
+                        <input name="urlEcoute" type="text" class="form-control" value="@Model.Titre.UrlEcoute">
+                    }
+                </div>
+            </div>
+
 
             <div class="row mb-4">
                 <div class="col-sm-6 col-lg-2">
