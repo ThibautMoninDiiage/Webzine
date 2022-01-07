@@ -2,6 +2,7 @@
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
 using Webzine.EntitiesContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace Webzine.Repository.Local
 {
@@ -17,7 +18,9 @@ namespace Webzine.Repository.Local
         public void AddTitre(Titre titre)
         {
             titre.UrlEcoute = "";
-            titre.UrlJaquette = "";
+            titre.UrlJaquette = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440";
+            titre.Artiste = _webzineDbContext.Artistes.Find(titre.IdArtiste);
+            
             _webzineDbContext.Add(titre);
             _webzineDbContext.SaveChanges();
         }
@@ -34,12 +37,14 @@ namespace Webzine.Repository.Local
 
         public Titre Find(int idTitre)
         {
-            throw new NotImplementedException();
+            var titre = _webzineDbContext.Titres.Find(idTitre);
+            titre.Artiste = _webzineDbContext.Artistes.Find(titre.IdArtiste);
+            return titre;
         }
 
         public IEnumerable<Titre> FindAll()
         {
-            return _webzineDbContext.Titres.ToList();
+            return _webzineDbContext.Titres.Include(t => t.Artiste).ToList();
         }
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
