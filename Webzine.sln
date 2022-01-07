@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Repository.Contract
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.EntitiesContext", "Webzine.EntitiesContext\Webzine.EntitiesContext.csproj", "{AB13F8B3-2BE4-4872-86C0-F47DDD11DBDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webzine.Models", "Webzine.Models\Webzine.Models.csproj", "{4BAE7F88-C160-467D-99D8-77D068170467}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{AB13F8B3-2BE4-4872-86C0-F47DDD11DBDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB13F8B3-2BE4-4872-86C0-F47DDD11DBDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB13F8B3-2BE4-4872-86C0-F47DDD11DBDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAE7F88-C160-467D-99D8-77D068170467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAE7F88-C160-467D-99D8-77D068170467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAE7F88-C160-467D-99D8-77D068170467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAE7F88-C160-467D-99D8-77D068170467}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
