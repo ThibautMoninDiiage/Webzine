@@ -95,9 +95,23 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
         }
 
 
-        public IActionResult Delete()
+        public IActionResult Delete(int idTitre)
         {
-            return this.View("Delete");
+            var titre = _titreRepository.Find(idTitre);
+            var model = new TitleViewModel
+            {
+                Titre = titre
+            };
+            return this.View("Delete", model);
+        }
+
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeletePost(int idTitre)
+        {
+            _titreRepository.DeleteTitre(new Entity.Titre { IdTitre = idTitre });
+            return Index();
         }
     }
 }

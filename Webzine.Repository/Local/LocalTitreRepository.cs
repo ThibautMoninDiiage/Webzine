@@ -20,7 +20,9 @@ namespace Webzine.Repository.Local
             titre.UrlEcoute = "";
             titre.UrlJaquette = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440";
             titre.Artiste = _webzineDbContext.Artistes.Find(titre.IdArtiste);
-            
+            titre.TitresStyles = _webzineDbContext.Styles.ToList();
+
+
             _webzineDbContext.Add(titre);
             _webzineDbContext.SaveChanges();
         }
@@ -32,13 +34,18 @@ namespace Webzine.Repository.Local
 
         public void DeleteTitre(Titre titre)
         {
-            throw new NotImplementedException();
+            _webzineDbContext.Remove(titre);
+            _webzineDbContext.SaveChanges();
         }
 
         public Titre Find(int idTitre)
         {
-            var titre = _webzineDbContext.Titres.Find(idTitre);
-            titre.Artiste = _webzineDbContext.Artistes.Find(titre.IdArtiste);
+            var titre = _webzineDbContext.Titres
+                .Include(t => t.Artiste)
+                .Include(t => t.TitresStyles)
+                .Include(t => t.Commentaires)
+                .FirstOrDefault();
+
             return titre;
         }
 
@@ -54,12 +61,16 @@ namespace Webzine.Repository.Local
 
         public void IncrementNbLectures(Titre titre)
         {
-            throw new NotImplementedException();
+            titre.NbLectures++;
+            _webzineDbContext.Update(titre);
+            _webzineDbContext.SaveChanges();
         }
 
         public void IncrementNbLikes(Titre titre)
         {
-            throw new NotImplementedException();
+            titre.NbLikes++;
+            _webzineDbContext.Update(titre);
+            _webzineDbContext.SaveChanges();
         }
 
         public IEnumerable<Titre> SearchByStyle(string libelle)

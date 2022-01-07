@@ -1,14 +1,20 @@
-﻿<div class="container">
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.TitleViewModel
+@{
+    ViewData["title"] = "Suppression titre";
+}
+<div class="container">
     <div class="row">
         <div>
-            <h1>Supprimer un titre</h1>
-            <hr />
-            <h3>Etes vous sûr de vouloir supprimer le titre XX de YY ?</h3>
-            <br />
-            <a asp-action="" class="btn btn-danger btn-lg">Supprimer</a>
+            <form method="post" asp-action="delete">
+                <h1>Supprimer un titre</h1>
+                <hr />
+                <h3>Etes vous sûr de vouloir supprimer le titre @Model.Titre.Libelle de @Model.Titre.Artiste.Nom ?</h3>
+                <input name="IdTitre" value="@Model.Titre.IdTitre" type="hidden" />
+                <br />
+                <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
+            </form>
         </div>
         <br /><br /><br />
         <a asp-action="">Retour à l'administration des titres</a>
     </div>
 </div>
-
