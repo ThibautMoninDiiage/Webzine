@@ -60,10 +60,14 @@
                             <div class="col-auto ">
                                 <p>
                                     <i class="fas fa-tags"></i>&nbsp;
-                                    @foreach (var @style in titre.TitresStyles)
+                                    @if (titre.TitresStyles != null)
+                                    {
+                                        @foreach (var @style in titre.TitresStyles)
                                         {
-                                        <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
+                                            <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
+                                        }
                                     }
+
                                 </p>
                             </div>
                         </div>

@@ -12,6 +12,15 @@ namespace Webzine.EntitiesContext
     // Les entités correspondent aux tables dans la base de données
     public class WebzineDbContext : DbContext
     {
+        public DbSet<Titre> Titres { get; set; }
+        public DbSet<Artiste> Artistes { get; set; }
+        public DbSet<Commentaire> Commentaires { get; set; }
+        public DbSet<Style> Styles { get; set; }
+
+
+
+
+
         public WebzineDbContext()
         {
 
@@ -30,7 +39,6 @@ namespace Webzine.EntitiesContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Artiste>();
         }
 
     }

@@ -3,6 +3,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=aspnetcore
 
 .DS_Store
+Webzine.db
+Webzine.db-shm
+Webzine.db-wal
+
+
 
 ### ASPNETCore ###
 ## Ignore Visual Studio temporary files, build results, and

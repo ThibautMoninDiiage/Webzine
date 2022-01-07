@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Webzine.EntitiesContext;
+using Webzine.Repository.Local;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,17 +17,17 @@ builder.Services.AddDbContext<WebzineDbContext>(
 
 
 var context = new WebzineDbContext();
-context.Database.EnsureDeleted();
+// context.Database.EnsureDeleted();
 context.Database.EnsureCreated();
 
 #endregion
 
 #region container IOC
 
-builder.Services.AddScoped<IArtisteRepository, FactoryArtisteRepository>();
-builder.Services.AddScoped<ITitreRepository, FactoryTitreRepository>();
-builder.Services.AddScoped<IStyleRepository, FactoryStyleRepository>();
-builder.Services.AddScoped<ICommentaireRepository, FactoryCommentaireRepository>();
+builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
+builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
+builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
+builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
 
 #endregion
 
