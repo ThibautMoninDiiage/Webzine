@@ -39,7 +39,8 @@ namespace Webzine.Repository.Local
 
         public void Update(Style style)
         {
-            throw new NotImplementedException();
+            _webzineDbContext.Update(style);
+            _webzineDbContext.SaveChanges();
         }
     }
 }
