@@ -1,4 +1,5 @@
 ﻿using System;
+using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
 
@@ -6,28 +7,33 @@ namespace Webzine.Repository.Local
 {
     public class LocalCommentaireRepository : ICommentaireRepository
     {
+        private readonly WebzineDbContext _webzineDbContext;
+
         public LocalCommentaireRepository()
         {
+            _webzineDbContext = new WebzineDbContext();
         }
 
         public void Add(Commentaire commentaire)
         {
-            throw new NotImplementedException();
+            _webzineDbContext.Add(commentaire);
+            _webzineDbContext.SaveChanges();
         }
 
         public void Delete(Commentaire commentaire)
         {
-            throw new NotImplementedException();
+            _webzineDbContext.Commentaires.Remove(commentaire);
+            _webzineDbContext.SaveChanges();
         }
 
         public Commentaire Find(int id)
         {
-            throw new NotImplementedException();
+            return _webzineDbContext.Commentaires.Find(id);
         }
 
         public IEnumerable<Commentaire> FindAll()
         {
-            throw new NotImplementedException();
+            return _webzineDbContext.Commentaires.ToList();
         }
     }
 }
