@@ -37,12 +37,20 @@
                     <td class="text-center">@titre.DateSortie.ToString("dd/M/yyyy")</td>
                     <td>@titre.NbLectures</td>
                     <td>@titre.NbLikes</td>
-                    <td>@titre.Commentaires.Count</td>
+                    @if (titre.Commentaires != null)
+                    {
+                        <td>@titre.Commentaires.Count</td>
+                    }
+                    else
+                    {
+                        <td>0</td>
+
+                    }
 
 
                     <td class="text-center">
                         <a asp-action="Edit" asp-route-idTitre="@titre.IdTitre"> <i class="fas fa-edit"></i> </a>
-                        <a asp-action="Delete"><i class="fas fa-trash"></i></a>
+                        <a asp-action="Delete" asp-route-idTitre="@titre.IdTitre"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
                 }
