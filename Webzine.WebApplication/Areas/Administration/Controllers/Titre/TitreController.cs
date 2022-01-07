@@ -47,7 +47,6 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
             var titre = new Entity.Titre()
             {
                 IdArtiste = idArtiste,
-                Artiste = _artisteRepository.Find(idArtiste),
                 Libelle = nomTitre,
                 Album = nomAlbum,
                 Chronique = chronique,
