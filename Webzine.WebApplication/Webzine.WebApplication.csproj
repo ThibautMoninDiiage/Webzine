@@ -7,20 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Models\" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\Artist\" />
-    <Folder Include="Areas\Admin\ViewModels\" />
-    <Folder Include="Areas\Admin\Controllers\Artist\" />
-    <Folder Include="Areas\Admin\Views\Comment\" />
-    <Folder Include="Areas\Admin\Controllers\Comment\" />
-    <Folder Include="Areas\Admin\Views\Style\" />
-    <Folder Include="Areas\Admin\Controllers\Style\" />
-    <Folder Include="Areas\Admin\Controllers\Title\" />
-    <Folder Include="Areas\Admin\Views\Title\" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.14.0" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Administration\Views\Artiste\" />
+    <Folder Include="Areas\Administration\ViewModels\" />
+    <Folder Include="Areas\Administration\Controllers\Artiste\" />
+    <Folder Include="Areas\Administration\Views\Commentaire\" />
+    <Folder Include="Areas\Administration\Controllers\Commentaire\" />
+    <Folder Include="Areas\Administration\Views\Style\" />
+    <Folder Include="Areas\Administration\Controllers\Style\" />
+    <Folder Include="Areas\Administration\Controllers\Titre\" />
+    <Folder Include="Areas\Administration\Views\Titre\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Shared\" />
@@ -37,6 +39,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Webzine.EntitiesContext\Webzine.EntitiesContext.csproj" />
     <ProjectReference Include="..\Webzine.Entity\Webzine.Entity.csproj" />
+    <ProjectReference Include="..\Webzine.Models\Webzine.Models.csproj" />
+    <ProjectReference Include="..\Webzine.Repository.Contracts\Webzine.Repository.Contracts.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Webzine.Repository\Webzine.Repository.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

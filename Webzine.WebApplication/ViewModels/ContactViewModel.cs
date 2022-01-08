@@ -1,5 +1,4 @@
-﻿using System;
-namespace Webzine.WebApplication.ViewModels
+﻿namespace Webzine.WebApplication.ViewModels
 {
     public class ContactViewModel : BaseViewModel
     {

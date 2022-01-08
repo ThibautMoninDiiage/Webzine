@@ -1,0 +1,58 @@
+﻿@model Webzine.WebApplication.ViewModels.ArtistViewModel
+
+@{
+    ViewData["title"] = "Artiste";
+}
+
+<style>
+    table * {
+        border: none !important;
+    }
+</style>
+
+<section>
+    <div>
+        <h1>@this.Model.Artist.Nom</h1>
+        <hr />
+        <p style="text-align:justify">@this.Model.Artist.Biographie</p>
+
+        <p>Date de naissance : @this.Model.Artist.DateNaissance.ToString("dd/M/yyyy")</p>
+
+        <p>Site web : <a href="@this.Model.Artist.UrlSite">@this.Model.Artist.UrlSite</a></p>
+
+
+        <h1 class="mt-5">Albums</h1>
+        <hr />
+
+        @foreach (var Distincttitre in this.Model.Artist.Titres.DistinctBy(t => t.Album))
+        {
+            <section class="row mt-4">
+                <p class="col-md-3"></p>
+                <h3 class="col-md-9">@Distincttitre.Album</h3>
+                <div class="row mb-5">
+                    <img class="col-md-3" src="@Distincttitre.UrlJaquette" />
+                    <div class="col-md-9">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Durée</th>
+                                    <th>Titre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var titre in Distincttitre.Artiste.Titres.Where(t => t.Album == Distincttitre.Album))
+                                {
+                                    <tr>
+                                        <td>
+                                        @TimeSpan.FromSeconds(titre.Duree).ToString(@"mm\:ss")</td>
+                                        <td><a asp-route-IdTitre="@titre.IdTitre" asp-controller="titre">@titre.Libelle</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+</section>

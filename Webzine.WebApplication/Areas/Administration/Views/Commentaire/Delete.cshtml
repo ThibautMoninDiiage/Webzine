@@ -1,0 +1,25 @@
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.CommentViewModel
+
+@{
+    ViewData["title"] = "Suppression commentaire";
+}
+
+<div class="container">
+    <div class="row">
+        <div>
+            <form asp-action="Delete" method="post">
+                <h1>Supprimer un commentaire</h1>
+                <hr />
+                <h3>Etes vous sûr de vouloir supprimer le commentaire suivant ?</h3>
+                <br />
+                <h6>@Model.Commentaire.Contenu</h6>
+
+                <input type="hidden" name="idCommentaire" value="@Model.Commentaire.IdCommentaire" />
+                <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
+            </form>
+        </div>
+        <br /><br /><br />
+        <a asp-action="">Retour à l'administration des commentaires</a>
+    </div>
+</div>
+

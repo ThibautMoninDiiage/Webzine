@@ -1,0 +1,51 @@
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.StyleViewModel
+
+@{
+    var action = "";
+    var pageName = "";
+    if (Model == null)
+    {
+        ViewData["title"] = "Création style";
+        action = "Create";
+        pageName = "Créer";
+    }
+    else
+    {
+        ViewData["title"] = "Edition style";
+        action = "Edit";
+        pageName = "Editer";
+    }
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h1>@pageName un style</h1>
+            <hr />
+        </div>
+        <form method="post" asp-action="@action">
+            <div class="row">
+
+                <label class="col-md-2 align-text-center">Libellé</label>
+                @if (Model != null)
+                {
+                    <input type="hidden" name="idStyle" value="@Model.Style.IdStyle" />
+                    <input name="libelle" class="col-md-3" type="text" value="@Model.Style.Libelle">
+
+                }
+                else
+                {
+                    <input name="libelle" class="col-md-3" type="text">
+
+                }
+
+                <button type="submit" class="btn btn-primary col-md-2">Sauvegarder</button>
+            </div>
+            <br />
+            <br />
+            <a asp-action="">Retour à l'administration des styles</a>
+        </form>
+    </div>
+</div>

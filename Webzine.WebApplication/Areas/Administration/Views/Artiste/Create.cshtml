@@ -1,0 +1,88 @@
+﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.ArtistViewModel
+
+
+@{
+    var action = "";
+    if (Model == null)
+    {
+        action = "create";
+        ViewData["title"] = "Création artiste";
+    }
+    else
+    {
+        action = "edit";
+        ViewData["title"] = "Edition artiste";
+    }
+
+}
+
+
+<div class="container">
+    <div class="row">
+        <div>
+            @if (Model == null)
+            {
+                <h1>Créer un artiste</h1>
+            }
+            else
+            {
+                <h1>Editer un artiste</h1>
+
+            }
+            <hr />
+        </div>
+
+        <form method="post" asp-action="@action">
+
+            @if (Model != null)
+            {
+                <input name="idArtiste" value="@Model.Artiste.IdArtiste" type="hidden" />
+            }
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Nom de l'artiste</label>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+
+                    @if (Model == null)
+                    {
+                        <input name="nom" type="text" class="form-control">
+                    }
+                    else
+                    {
+                        <input name="nom" type="text" class="form-control" value="@Model.Artiste.Nom">
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-6 col-lg-2">
+                    <label>Biographie</label>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    @if (Model == null)
+                    {
+                        <textarea name="biographie" type="text" class="form-control"></textarea>
+
+                    }
+                    else
+                    {
+                        <textarea name="biographie" type="text" class="form-control">@Model.Artiste.Biographie</textarea>
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-6 col-lg-2">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-10">
+                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                </div>
+            </div>
+            <br />
+            <a asp-action="">Retour à l'administration des artistes</a>
+        </form>
+    </div>    
+</div>

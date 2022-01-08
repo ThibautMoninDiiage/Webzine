@@ -1,22 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Webzine.Entity;
-using Webzine.Entity.Factory;
+using Webzine.Repository.Contracts;
 using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.StyleSearch
 {
     public class StyleSearchController : Controller
     {
-        public IEnumerable<Titre> Titles => TitleFactory.CreateTitles();
-        public Style Style { get; set; }
+        private readonly ILogger<StyleSearchController> _logger;
+        private readonly IStyleRepository _styleRepository;
+
+        public StyleSearchController(IStyleRepository styleRepository, ILogger<StyleSearchController> logger)
+        {
+            _styleRepository = styleRepository;
+            _logger = logger;
+        }
 
         public IActionResult Index(int styleId)
         {
-            this.Style = StyleFactory.CreateStyles().Where(s => s.IdStyle == styleId).FirstOrDefault();
+            _logger.LogInformation("L'utilisateur fait une recherche de styles.");
+
             var model = new StyleSearchViewModel()
             {
-                Style = this.Style,
-                Titles = this.Titles.Where(t => t.TitresStyles.Any(s => s.IdStyle == styleId)).ToList()
+                Style = _styleRepository.Find(styleId)
             };
 
             return this.View(model);

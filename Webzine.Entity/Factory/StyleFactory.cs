@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-namespace Webzine.Entity.Factory
+﻿namespace Webzine.Entity.Factory
 {
     public class StyleFactory
     {
-
         public static IEnumerable<Style> CreateStyles()
         {
             return new List<Style>()
@@ -22,15 +19,12 @@ namespace Webzine.Entity.Factory
             };
         }
 
-
-
         public static IEnumerable<Style> GetStyles(int numberOfStyles)
         {
             Random random = new Random();
 
             return CreateStyles().ToList().OrderBy(s => random.Next()).Take(3);
         }
-        
+
     }
 }
-
