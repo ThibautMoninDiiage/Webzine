@@ -45,11 +45,11 @@ namespace Webzine.WebApplication.Controllers.Title
         [HttpPost]
         public IActionResult Commenter(int idTitre, string nom, string contenu)
         {
-            var commentaire = new Commentaire() 
-            {   
-                Auteur = nom, 
-                Contenu = contenu, 
-                DateCreation = DateTime.Now, 
+            var commentaire = new Commentaire()
+            {
+                Auteur = nom,
+                Contenu = contenu,
+                DateCreation = DateTime.Now,
                 IdTitre = idTitre
             };
 

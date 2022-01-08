@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Webzine.Entity;
 
 namespace Webzine.EntitiesContext
@@ -16,10 +11,6 @@ namespace Webzine.EntitiesContext
         public DbSet<Artiste> Artistes { get; set; }
         public DbSet<Commentaire> Commentaires { get; set; }
         public DbSet<Style> Styles { get; set; }
-
-
-
-
 
         public WebzineDbContext()
         {

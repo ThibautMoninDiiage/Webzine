@@ -1,12 +1,9 @@
-using NLog.Web;
-using Webzine.Repository.Contracts;
-using Webzine.Repository.Factory;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using Webzine.EntitiesContext;
-using Webzine.Repository.Local;
 using Webzine.Models;
+using Webzine.Repository.Contracts;
+using Webzine.Repository.Local;
 
 var builder = WebApplication.CreateBuilder(args);
 

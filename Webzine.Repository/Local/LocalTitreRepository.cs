@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
-using Webzine.EntitiesContext;
-using Microsoft.EntityFrameworkCore;
 
 namespace Webzine.Repository.Local
 {
