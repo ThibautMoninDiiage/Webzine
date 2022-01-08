@@ -34,8 +34,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Commentaire> FindAll()
         {
-            return _webzineDbContext.Commentaires.Include(c => c.Titre).ToList();
+            return _webzineDbContext.Commentaires.Include(commentaire => commentaire.Titre).ToList();
         }
     }
 }
-

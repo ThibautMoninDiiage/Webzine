@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Webzine.EntitiesContext;
 using Webzine.Repository.Local;
+using Webzine.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +16,8 @@ builder.Services.AddDbContext<WebzineDbContext>(
     options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
 );
 
-
 var context = new WebzineDbContext();
-// context.Database.EnsureDeleted();
+context.Database.EnsureDeleted();
 context.Database.EnsureCreated();
 
 #endregion
@@ -41,6 +41,12 @@ builder.Host.UseNLog();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 
 app.UseRouting();
 app.UseEndpoints(endpoints =>

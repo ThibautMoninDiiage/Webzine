@@ -17,7 +17,6 @@
             return artists;
         }
 
-
         public static Artiste GetArtist(int IdArtiste)
         {
             try

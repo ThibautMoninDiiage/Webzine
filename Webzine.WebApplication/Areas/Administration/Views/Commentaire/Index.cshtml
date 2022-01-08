@@ -21,17 +21,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var commentaire in Model.Commentaires)
+                @if (Model.Commentaires != null)
                 {
-                    <tr>
-                        <td><a asp-area="" asp-action="" asp-controller="titre" asp-route-IdTitre="@commentaire.Titre.IdTitre">@commentaire.Titre.Libelle</a></td>
-                        <td>@commentaire.Auteur</td>
-                        <td>@commentaire.Contenu</td>
-                        <td class="text-center">@commentaire.DateCreation</td>
-                        <td class="text-center">
-                            <a asp-action="delete" asp-route-idCommentaire="@commentaire.IdCommentaire"><i class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
+                    @foreach (var commentaire in Model.Commentaires)
+                    {
+                        <tr>
+                            <td><a asp-area="" asp-action="" asp-controller="titre" asp-route-IdTitre="@commentaire.Titre.IdTitre">@commentaire.Titre.Libelle</a></td>
+                            <td>@commentaire.Auteur</td>
+                            <td>@commentaire.Contenu</td>
+                            <td class="text-center">@commentaire.DateCreation</td>
+                            <td class="text-center">
+                                <a asp-action="delete" asp-route-idCommentaire="@commentaire.IdCommentaire"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>

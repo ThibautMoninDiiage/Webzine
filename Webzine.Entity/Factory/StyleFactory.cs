@@ -2,7 +2,6 @@
 {
     public class StyleFactory
     {
-
         public static IEnumerable<Style> CreateStyles()
         {
             return new List<Style>()
@@ -20,8 +19,6 @@
             };
         }
 
-
-
         public static IEnumerable<Style> GetStyles(int numberOfStyles)
         {
             Random random = new Random();
@@ -31,4 +28,3 @@
 
     }
 }
-
