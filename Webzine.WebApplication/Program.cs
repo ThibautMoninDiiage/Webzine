@@ -16,7 +16,6 @@ builder.Services.AddDbContext<WebzineDbContext>(
     options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
 );
 
-
 var context = new WebzineDbContext();
 context.Database.EnsureDeleted();
 context.Database.EnsureCreated();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
@@ -33,8 +34,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Commentaire> FindAll()
         {
-            return _webzineDbContext.Commentaires.ToList();
+            return _webzineDbContext.Commentaires.Include(commentaire => commentaire.Titre).ToList();
         }
     }
 }
-
