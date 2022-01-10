@@ -18,15 +18,15 @@ builder.Services.AddDbContext<WebzineDbContext>(
 
 #region Container IOC
 
-builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
-builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
-builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
-builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
+builder.Services.AddScoped<IArtisteRepository, DbArtisteRepository>();
+builder.Services.AddScoped<ITitreRepository, DbTitreRepository>();
+builder.Services.AddScoped<IStyleRepository, DbStyleRepository>();
+builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
 
-//builder.Services.AddScoped<IArtisteRepository, FactoryArtisteRepository>();
-//builder.Services.AddScoped<ITitreRepository, FactoryTitreRepository>();
-//builder.Services.AddScoped<IStyleRepository, FactoryStyleRepository>();
-//builder.Services.AddScoped<ICommentaireRepository, FactoryCommentaireRepository>();
+//builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
+//builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
+//builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
+//builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
 
 #endregion
 
@@ -43,13 +43,22 @@ var app = builder.Build();
 
 #region Database Seeding
 
-var context = new WebzineDbContext();
-context.Database.EnsureDeleted();
-context.Database.EnsureCreated();
-
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<WebzineDbContext>();
+        // Supprime et créé la base de données.
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+    }
+    catch (Exception)
+    {
+        throw;
+    }
+
+    // Seed la base de données
     SeedData.Initialize(services);
 }
 
