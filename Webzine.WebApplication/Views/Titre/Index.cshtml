@@ -81,20 +81,18 @@
 <br>
 
 <div class="col background-white py-3">
-    <div class="clearfix">
 
-        <img style="height:100px; width: auto" src="https://picsum.photos/100/100" class="img-fluid col-md-4 mb-3 me-3 ms-md-3 rounded float-sm-start" alt="Image Profil">
+    @foreach (var commentaire in Model.Titre.Commentaires)
+    {
+        <div class="clearfix">
+
+        <img style="height:100px; width: auto" src="~/images/logo-user.png" class="img-fluid col-md-4 mb-3 me-3 ms-md-3 rounded float-sm-start" alt="Image Profil">
         <h5>
-            @foreach (var @commentaire in @Model.Titre.Commentaires)
-            {
                 <span>@commentaire.Auteur,</span>
                 <span> le @commentaire.DateCreation</span>
-            }
         </h5>
-        @foreach (var @commentaire in @Model.Titre.Commentaires)
-        {
             <span>@commentaire.Contenu</span>
-        }
     </div>
+    }
 </div>
 
