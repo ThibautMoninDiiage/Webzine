@@ -3,8 +3,8 @@ using NLog.Web;
 using Webzine.EntitiesContext;
 using Webzine.Models;
 using Webzine.Repository.Contracts;
-using Webzine.Repository.Factory;
 using Webzine.Repository.Local;
+using Webzine.Repository.Db;
 
 var builder = WebApplication.CreateBuilder(args);
 
