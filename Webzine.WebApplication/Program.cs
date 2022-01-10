@@ -59,7 +59,7 @@ using (var scope = app.Services.CreateScope())
     }
 
     // Seed la base de données
-    SeedData.Initialize(services);
+    DeezerSeedData.Initialize(services);
 }
 
 #endregion

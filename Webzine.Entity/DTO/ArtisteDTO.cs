@@ -1,9 +1,14 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Webzine.Entity
+namespace Webzine.Entity.DTO
 {
-    public class Artiste
+    public class ArtisteDTO : Artiste
     {
         [Key]
         [JsonProperty("id")]
