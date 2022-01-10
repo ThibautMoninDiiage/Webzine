@@ -67,6 +67,20 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
+    #region Titre
+    endpoints.MapControllerRoute(
+        name: "commenter",
+        pattern: "titre/commenter",
+        defaults: new { controller = "titre", action = "commenter" });
+
+
+
+    endpoints.MapControllerRoute(
+        name: "titre",
+        pattern: "titre/{idTitre}",
+        defaults: new { controller = "titre", action = "index" });
+    #endregion
+
     endpoints.MapControllerRoute(
         name: "Administration",
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
