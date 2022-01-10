@@ -87,6 +87,13 @@ app.UseEndpoints(endpoints =>
     #endregion
 
 
+    #region Titre
+    endpoints.MapControllerRoute(
+        name: "administrationTitres",
+        pattern: "administration/titres",
+        defaults: new { area = "administration", controller = "titre", action = "index" });
+    #endregion
+
     #endregion
 
     #region Artiste
