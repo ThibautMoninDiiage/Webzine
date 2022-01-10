@@ -67,6 +67,13 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
+    #region Artiste
+    endpoints.MapControllerRoute(
+        name: "artiste",
+        pattern: "artiste/{nomArtiste}",
+        defaults: new { controller = "artiste", action = "index"});
+    #endregion
+
     #region Titre
     endpoints.MapControllerRoute(
         name: "commenter",
