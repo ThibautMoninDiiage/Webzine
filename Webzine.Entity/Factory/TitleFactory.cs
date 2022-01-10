@@ -122,6 +122,160 @@
             artists[2].Titres.Add(macarena);
             titles.Add(macarena);
 
+            Titre radio = new Titre
+            {
+                IdTitre = 6,
+                IdArtiste = artists[3].IdArtiste,
+                Artiste = artists[3],
+                Album = "Ocho",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2021, 12, 13),
+                DateSortie = new DateTime(2017, 7, 6),
+                Duree = 206,
+                Libelle = "Radio",
+                NbLikes = 250,
+                NbLectures = 600,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/8c/72/d4/13922956/1540-1/tsp20211122143208/OCHO.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[3].Titres.Add(radio);
+            titles.Add(radio);
+
+            Titre basique = new Titre
+            {
+                IdTitre = 7,
+                IdArtiste = artists[4].IdArtiste,
+                Artiste = artists[4],
+                Album = "La fête est finie",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2021, 12, 13),
+                DateSortie = new DateTime(2017, 7, 6),
+                Duree = 206,
+                Libelle = "Basique",
+                NbLikes = 250,
+                NbLectures = 600,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://e.snmc.io/i/1200/s/34770dbf57d09c5481de096dbe30a39c/7236249",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[4].Titres.Add(basique);
+            titles.Add(basique);
+
+            Titre ovni = new Titre
+            {
+                IdTitre = 8,
+                IdArtiste = artists[5].IdArtiste,
+                Artiste = artists[5],
+                Album = "L'Ovni",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2021, 12, 13),
+                DateSortie = new DateTime(2017, 7, 6),
+                Duree = 206,
+                Libelle = "Ovni",
+                NbLikes = 250,
+                NbLectures = 600,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/32/3f/78/7880498/1540-1/tsp20161108104246/L-Ovni.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[5].Titres.Add(ovni);
+            titles.Add(ovni);
+
+            Titre fuego = new Titre
+            {
+                IdTitre = 9,
+                IdArtiste = artists[6].IdArtiste,
+                Artiste = artists[6],
+                Album = "Arès",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2021, 12, 13),
+                DateSortie = new DateTime(2017, 7, 6),
+                Duree = 206,
+                Libelle = "Fuego",
+                NbLikes = 250,
+                NbLectures = 600,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/b7/67/d2/13789111/1507-1/tsp20210929161334/Ares.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[6].Titres.Add(fuego);
+            titles.Add(fuego);
+
+            Titre bonnejournee = new Titre
+            {
+                IdTitre = 10,
+                IdArtiste = artists[7].IdArtiste,
+                Artiste = artists[7],
+                Album = "Ultra",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2020, 12, 13),
+                DateSortie = new DateTime(2019, 9, 6),
+                Duree = 206,
+                Libelle = "Bonne journée",
+                NbLikes = 250,
+                NbLectures = 600,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://www.raprnb.com/wp-content/uploads/2021/03/0b8290c44d2de7466237e6797139a5f3-1000x1000x1.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[7].Titres.Add(bonnejournee);
+            titles.Add(bonnejournee);
+
+            Titre goulag = new Titre
+            {
+                IdTitre = 11,
+                IdArtiste = artists[8].IdArtiste,
+                Artiste = artists[8],
+                Album = "Chateau Noir",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2021, 10, 14),
+                DateSortie = new DateTime(2018, 7, 6),
+                Duree = 206,
+                Libelle = "Goulag",
+                NbLikes = 2504,
+                NbLectures = 6500,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://static.fnac-static.com/multimedia/Images/FR/NR/dd/61/cb/13328861/1540-1/tsp20210311160158/Nouvel-album.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[8].Titres.Add(goulag);
+            titles.Add(goulag);
+
+            Titre numero9 = new Titre
+            {
+                IdTitre = 12,
+                IdArtiste = artists[9].IdArtiste,
+                Artiste = artists[9],
+                Album = "K.E.K.R.A",
+                Commentaires = new List<Commentaire>(),
+                DateCreation = new DateTime(2022, 01, 09),
+                DateSortie = new DateTime(2020, 7, 6),
+                Duree = 206,
+                Libelle = "Numéro 9",
+                NbLikes = 2500,
+                NbLectures = 9000,
+                TitresStyles = styles.Where(s => s.IdStyle == 7 || s.IdStyle == 10).ToList(),
+                UrlEcoute = "https://www.youtube.com/watch?v=GGhKPm18E48",
+                UrlJaquette = "https://static.qobuz.com/images/covers/rb/1c/o7i2h0r3f1crb_600.jpg",
+                Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            };
+
+            artists[9].Titres.Add(numero9);
+            titles.Add(numero9);
+
             return titles;
         }
 
