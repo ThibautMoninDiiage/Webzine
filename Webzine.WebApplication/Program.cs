@@ -121,6 +121,18 @@ app.UseEndpoints(endpoints =>
         defaults: new { area = "administration", controller = "style", action = "edit" });
     #endregion
 
+    #region Commentaire
+    endpoints.MapControllerRoute(
+        name: "administrationCommentaires",
+        pattern: "administration/commentaires",
+        defaults: new { area = "administration", controller = "commentaire", action = "index" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationCommentaireDelete",
+        pattern: "administration/commentaire/delete/{idCommentaire}",
+        defaults: new { area = "administration", controller = "commentaire", action = "delete" });
+    #endregion
+
     #endregion
 
     #region Artiste
