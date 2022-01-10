@@ -1,39 +1,43 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Webzine.EntitiesContext;
-using Webzine.Entity;
+﻿using Webzine.Entity;
+using Webzine.Entity.Factory;
 using Webzine.Repository.Contracts;
 
 namespace Webzine.Repository.Local
 {
     public class LocalCommentaireRepository : ICommentaireRepository
     {
-        private readonly WebzineDbContext _webzineDbContext;
-
         public LocalCommentaireRepository()
         {
-            _webzineDbContext = new WebzineDbContext();
         }
 
         public void Add(Commentaire commentaire)
         {
-            _webzineDbContext.Commentaires.Add(commentaire);
-            _webzineDbContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void Delete(Commentaire commentaire)
         {
-            _webzineDbContext.Commentaires.Remove(commentaire);
-            _webzineDbContext.SaveChanges();
         }
 
         public Commentaire Find(int id)
         {
-            return _webzineDbContext.Commentaires.Find(id);
+            try
+            {
+                var commentaire = TitleFactory.CreateTitles().SelectMany(t => t.Commentaires).Where(c => c.IdCommentaire == id).First();
+                return commentaire;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public IEnumerable<Commentaire> FindAll()
         {
-            return _webzineDbContext.Commentaires.Include(commentaire => commentaire.Titre).ToList();
+            var commentaires = TitleFactory.CreateTitles().SelectMany(t => t.Commentaires);
+
+            return commentaires;
         }
     }
 }
+
