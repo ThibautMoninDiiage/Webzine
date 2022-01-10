@@ -74,6 +74,16 @@ app.UseEndpoints(endpoints =>
         name: "administrationArtistes",
         pattern: "administration/artistes",
         defaults: new { area = "administration", controller = "artiste", action = "index" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationArtisteDelete",
+        pattern: "administration/artiste/delete/{idArtiste}",
+        defaults: new { area = "administration", controller = "artiste", action = "delete" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationArtisteEdit",
+        pattern: "administration/artiste/edit/{idArtiste}",
+        defaults: new { area = "administration", controller = "artiste", action = "edit" });
     #endregion
 
 
