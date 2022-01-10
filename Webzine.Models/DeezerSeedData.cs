@@ -53,8 +53,8 @@ namespace Webzine.Models
             httpClient.BaseAddress = new Uri(baseURI);
             HttpResponseMessage response = httpClient.GetAsync(endpoint).Result;
             response.EnsureSuccessStatusCode();
-            var x = response.Content.ReadAsStringAsync().Result;
-            T result = JsonConvert.DeserializeObject<T>(x);
+            var entity = response.Content.ReadAsStringAsync().Result;
+            T result = JsonConvert.DeserializeObject<T>(entity);
             return result;
         }
 
