@@ -16,6 +16,7 @@ namespace Webzine.Repository.Db
 
         public void Add(Commentaire commentaire)
         {
+            commentaire.Titre = _webzineDbContext.Titres.Find(commentaire.IdTitre);
             _webzineDbContext.Commentaires.Add(commentaire);
             _webzineDbContext.SaveChanges();
         }
