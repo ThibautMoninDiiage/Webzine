@@ -86,7 +86,6 @@ app.UseEndpoints(endpoints =>
         defaults: new { area = "administration", controller = "artiste", action = "edit" });
     #endregion
 
-
     #region Titre
     endpoints.MapControllerRoute(
         name: "administrationTitres",
@@ -103,6 +102,23 @@ app.UseEndpoints(endpoints =>
         name: "administrationTitreEdit",
         pattern: "administration/titre/edit/{idTitre}",
         defaults: new { area = "administration", controller = "titre", action = "edit" });
+    #endregion
+
+    #region Style
+    endpoints.MapControllerRoute(
+        name: "administrationStyles",
+        pattern: "administration/styles",
+        defaults: new { area = "administration", controller = "style", action = "index" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationStyleDelete",
+        pattern: "administration/style/delete/{idStyle}",
+        defaults: new { area = "administration", controller = "style", action = "delete" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationStyleEdit",
+        pattern: "administration/style/edit/{idStyle}",
+        defaults: new { area = "administration", controller = "style", action = "edit" });
     #endregion
 
     #endregion
