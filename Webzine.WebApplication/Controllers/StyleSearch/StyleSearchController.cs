@@ -15,13 +15,15 @@ namespace Webzine.WebApplication.Controllers.StyleSearch
             _logger = logger;
         }
 
-        public IActionResult Index(int styleId)
+        public IActionResult Index(string libelle)
         {
             _logger.LogInformation("L'utilisateur fait une recherche de styles.");
 
+            var style = _styleRepository.FindAll().Where(style => style.Libelle == libelle).FirstOrDefault();
+
             var model = new StyleSearchViewModel()
             {
-                Style = _styleRepository.Find(styleId)
+                Style = _styleRepository.Find(style.IdStyle)
             };
 
             return this.View(model);

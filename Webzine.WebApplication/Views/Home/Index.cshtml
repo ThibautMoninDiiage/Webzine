@@ -64,7 +64,7 @@
                                     {
                                         @foreach (var @style in titre.TitresStyles)
                                         {
-                                            <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
+                                            <a asp-controller="StyleSearch" asp-route-libelle="@style.Libelle" class="text-decoration-none text-primary">@style.Libelle</a>
                                         }
                                     }
 

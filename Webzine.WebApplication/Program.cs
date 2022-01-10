@@ -88,6 +88,13 @@ app.UseEndpoints(endpoints =>
         defaults: new { controller = "titre", action = "index" });
     #endregion
 
+    #region Style
+    endpoints.MapControllerRoute(
+        name: "style",
+        pattern: "titres/styles/{libelle}",
+        defaults: new { controller = "stylesearch", action = "index" });
+    #endregion
+
     endpoints.MapControllerRoute(
         name: "Administration",
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
