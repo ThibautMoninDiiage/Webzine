@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
+using Webzine.Entity.Interfaces;
 
 namespace Webzine.Models
 {
@@ -22,23 +23,23 @@ namespace Webzine.Models
                     context.Artistes.AddRange(await DeezerSeedData.SeedArtiste());
                 }
 
-                //if (context.Styles.Any())
-                //{
-                //    return;
-                //}
-                //else
-                //{
-                //    context.Styles.AddRange(await DeezerSeedData.SeedStyle());
-                //}
+                if (context.Styles.Any())
+                {
+                    return;
+                }
+                else
+                {
+                    context.Styles.AddRange(await DeezerSeedData.SeedStyle());
+                }
 
-                //if (context.Titres.Any())
-                //{
-                //    return;
-                //}
-                //else
-                //{
-                //    context.Titres.AddRange(await DeezerSeedData.SeedTitre());
-                //}
+                if (context.Titres.Any())
+                {
+                    return;
+                }
+                else
+                {
+                    context.Titres.AddRange(await DeezerSeedData.SeedTitre());
+                }
 
                 // Save des changements effectués.
                 context.SaveChanges();
@@ -58,22 +59,22 @@ namespace Webzine.Models
             return result;
         }
 
-        public async static Task<ArtisteDTO> SeedArtiste()
+        public async static Task<Artiste> SeedArtiste()
         {
-            var artiste = await HttpCall<ArtisteDTO>("https://api.deezer.com/", "artist/zola");
+            var artiste = await HttpCall<Artiste>("https://api.deezer.com/", "artist/zola");
             artiste.Biographie = "Ok";
             return artiste;
         }
 
-        public async static Task<TitreDTO> SeedTitre()
+        public async static Task<Titre> SeedTitre()
         {
-            var titre = await HttpCall<TitreDTO>("https://api.deezer.com/", "track/3000001");
+            var titre = await HttpCall<Titre>("https://api.deezer.com/", "track/3000001");
             return titre;
         }
 
-        public async static Task<StyleDTO> SeedStyle()
+        public async static Task<Style> SeedStyle()
         {
-            var style = await HttpCall<StyleDTO>("https://api.deezer.com/", "genre/5");
+            var style = await HttpCall<Style>("https://api.deezer.com/", "genre/5");
             return style;
         }
 

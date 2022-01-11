@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity
 {
-    public class Artiste
+    public class Artiste : IArtiste
     {
         [Key]
         [JsonProperty("id")]
@@ -28,5 +29,20 @@ namespace Webzine.Entity
         [Required]
         [JsonProperty("link")]
         public string UrlSite { get; set; }
+
+        public Artiste()
+        {
+
+        }
+
+        public Artiste(IArtiste artiste)
+        {
+            this.IdArtiste = artiste.IdArtiste;
+            this.Nom = artiste.Nom;
+            this.Biographie = artiste.Biographie;
+            this.Titres = artiste.Titres;
+            this.DateNaissance = artiste.DateNaissance;
+            this.UrlSite = artiste.UrlSite;
+        }
     }
 }
