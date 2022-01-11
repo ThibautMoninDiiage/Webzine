@@ -49,7 +49,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<WebzineDbContext>();
-        // Supprime et créé la base de données.
+        // Supprime et crÃ©Ã© la base de donn?es.
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
     }
@@ -58,7 +58,7 @@ using (var scope = app.Services.CreateScope())
         throw;
     }
 
-    // Seed la base de données
+    // Seed la base de donnÃ©es
     SeedData.Initialize(services);
 }
 
@@ -67,6 +67,8 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
+
+
     #region Administration
 
     #region Artiste
@@ -162,6 +164,11 @@ app.UseEndpoints(endpoints =>
         pattern: "titres/styles/{libelle}",
         defaults: new { controller = "stylesearch", action = "index" });
     #endregion
+
+    endpoints.MapControllerRoute(
+        name: "home",
+        pattern: "page/{numeroPage}",
+        defaults: new { controller = "home", action = "index" });
 
     endpoints.MapControllerRoute(
         name: "Administration",
