@@ -26,7 +26,7 @@ namespace Webzine.Repository.Db
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return _webzineDbContext.Titres.Count();
         }
 
         public void DeleteTitre(Titre titre)
@@ -54,7 +54,7 @@ namespace Webzine.Repository.Db
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
         {
-            throw new NotImplementedException();
+            return _webzineDbContext.Titres.OrderBy(t => t.DateCreation).Skip(offset).Take(limit);
         }
 
         public void IncrementNbLectures(Titre titre)

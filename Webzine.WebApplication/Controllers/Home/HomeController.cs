@@ -8,10 +8,8 @@ namespace Webzine.WebApplication.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public IEnumerable<Titre> AllTitles => _titreRepository.FindAll();
-        public IEnumerable<Titre> MostPopularTitles => AllTitles.OrderByDescending(t => t.NbLikes).Take(3);
-        public IEnumerable<Titre> OrderedTitles { get; set; }
         private ITitreRepository _titreRepository;
+        private int numberOfTitlePerPages = 3;
 
 
         public HomeController(ITitreRepository titreRepository, ILogger<HomeController> logger)
@@ -20,24 +18,36 @@ namespace Webzine.WebApplication.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(bool isLastReleased = true)
+        public IActionResult Index(int numeroPage = 1)
         {
             _logger.LogInformation("Accès à la page d'accueil.");
 
-            if (isLastReleased)
+
+            int numberOfPage = _titreRepository.Count() / numberOfTitlePerPages;
+
+
+            if (!(_titreRepository.Count() % numberOfTitlePerPages == 0))
             {
-                OrderedTitles = AllTitles.OrderByDescending(t => t.DateCreation).Take(3);
+                numberOfPage++;
             }
-            else
+
+            if(numeroPage < 1 || numeroPage > numberOfPage)
             {
-                OrderedTitles = AllTitles.OrderBy(t => t.DateCreation).Take(3);
+                numeroPage = 1;
             }
+
+
+            var orderedTitles = _titreRepository.FindTitres((numeroPage - 1) * numberOfTitlePerPages, numberOfTitlePerPages);
+
 
             var model = new HomeViewModel
             {
-                MostPopularTitles = this.MostPopularTitles,
-                OrderedTitles = this.OrderedTitles,
-                IsLastReleased = isLastReleased
+                MostPopularTitles = _titreRepository.FindAll().OrderByDescending(t => t.NbLikes).Take(3),
+                OrderedTitles = orderedTitles,
+                NumberOfTitles = _titreRepository.Count(),
+                NumberOfTitlePerPages = numberOfTitlePerPages,
+                CurrentPage = numeroPage,
+                NumberOfPages = numberOfPage
             };
 
             return this.View(model);
