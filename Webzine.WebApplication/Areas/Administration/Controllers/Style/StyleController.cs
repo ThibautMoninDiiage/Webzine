@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Webzine.Entity;
+using Microsoft.AspNetCore.Mvc;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
@@ -34,8 +35,13 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Create")]
         public IActionResult CreatePost(string libelle)
         {
-            _styleRepository.Add(new Entity.Style() { Libelle = libelle });
-            return Index();
+            if (this.ModelState.IsValid)
+            {
+                _styleRepository.Add(new Entity.Style() { Libelle = libelle });
+                return Index();
+            }
+            return Create();
+
         }
 
         public IActionResult Edit(int idStyle)
@@ -52,8 +58,12 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Edit")]
         public IActionResult EditPost(int idStyle, string libelle)
         {
-            _styleRepository.Update(new Entity.Style() { IdStyle = idStyle, Libelle = libelle });
-            return Index();
+            if (this.ModelState.IsValid)
+            {
+                _styleRepository.Update(new Entity.Style() { IdStyle = idStyle, Libelle = libelle });
+                return Index();
+            }
+            return Edit(idStyle);
         }
 
         public IActionResult Delete(int idStyle)

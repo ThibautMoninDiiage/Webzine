@@ -24,6 +24,7 @@ namespace Webzine.Entity
         [Display(Name = "Date de création")]
         public DateTime DateCreation { get; set; }
 
+        [Required]
         [Display(Name = "Durée en secondes")]
         public int Duree { get; set; }
 

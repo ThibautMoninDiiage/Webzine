@@ -39,9 +39,14 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         public IActionResult CreatePost(string nom, string biographie)
         {
             var artiste = new Artiste() { Nom = nom, Biographie = biographie };
-            _artisteRepository.AddArtiste(artiste);
 
-            return Index(); // redirect to index page
+
+            if (this.ModelState.IsValid)
+            {
+                _artisteRepository.AddArtiste(artiste);
+                return Index(); // redirect to index page
+            }
+            return Create();
         }
 
         public IActionResult Edit(int idArtiste)
@@ -67,9 +72,12 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         public IActionResult EditPost(int idArtiste, string nom, string biographie)
         {
             var artiste = new Artiste() { IdArtiste = idArtiste, Nom = nom, Biographie = biographie, UrlSite = "" };
-            _artisteRepository.UpdateArtiste(artiste);
-
-            return Index();
+            if (this.ModelState.IsValid)
+            {
+                _artisteRepository.UpdateArtiste(artiste);
+                return Index();
+            }
+            return Edit(idArtiste);
         }
 
         public IActionResult Delete(int idArtiste)
