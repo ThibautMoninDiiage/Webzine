@@ -40,6 +40,12 @@ namespace Webzine.Models
                     var titres = await SeedPlaylist();
                     foreach (var titre in titres)
                     {
+                        // Je récupère la tracklist de la playlist (tous les sons)
+                        // var trl = titre.Tracklist;
+                        // var k = trl.Split("m/");
+                        // Je dois faire un call sur cette API pour récupérer toutes les informations d'un titre
+                        // (Id, title, duration, etc etc, artist, album)
+                        // var wesh = await HttpCall<Titre>("playlist/757807/tracks");
                         context.Titres.Add(titre);
                     }
                 }
@@ -87,6 +93,12 @@ namespace Webzine.Models
             var playlist = await HttpCall<DeezerRequest>("user/2529/playlists");
             return playlist.Data;
         }
+
+        //public async static Task<List<TrackDTO>> SeedTracklist()
+        //{
+        //    var tracklist = await HttpCall<TrackDTO>("playlist/757807/tracks");
+        //    return tracklist;
+        //}
 
     }
 }

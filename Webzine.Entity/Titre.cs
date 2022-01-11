@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity
@@ -54,5 +55,31 @@ namespace Webzine.Entity
         public string Album { get; set; }
         public List<Style> TitresStyles { get; set; }
         public List<Commentaire> Commentaires { get; set; }
+        [JsonProperty("tracklist")]
+        public string Tracklist { get; set; }
+
+        public Titre()
+        {
+
+        }
+
+        public Titre(ITitre titre)
+        {
+            this.IdTitre = titre.IdTitre;
+            this.IdArtiste = titre.IdArtiste;
+            this.Artiste = titre.Artiste;
+            this.Libelle = titre.Libelle;
+            this.Chronique = titre.Chronique;
+            this.DateCreation = titre.DateCreation;
+            this.Duree = titre.Duree;
+            this.DateSortie = titre.DateSortie;
+            this.UrlJaquette = titre.UrlJaquette;
+            this.UrlEcoute = titre.UrlEcoute;
+            this.NbLectures = titre.NbLectures;
+            this.NbLikes = titre.NbLikes;
+            this.Album = titre.Album;
+            this.TitresStyles = titre.TitresStyles;
+            this.Commentaires = titre.Commentaires;
+        }
     }
 }
