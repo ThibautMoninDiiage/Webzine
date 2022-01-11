@@ -53,10 +53,11 @@ namespace Webzine.WebApplication.Controllers.Title
                 IdTitre = idTitre
             };
 
-
-            _commentaireRepository.Add(commentaire);
-
-
+            if (this.ModelState.IsValid)
+            {
+                _commentaireRepository.Add(commentaire);
+                return this.Index(idTitre);
+            }
             return this.Index(idTitre);
         }
 
