@@ -8,10 +8,12 @@ namespace Webzine.WebApplication.Controllers.StyleSearch
     {
         private readonly ILogger<StyleSearchController> _logger;
         private readonly IStyleRepository _styleRepository;
+        private readonly ITitreRepository _titreRepository;
 
-        public StyleSearchController(IStyleRepository styleRepository, ILogger<StyleSearchController> logger)
+        public StyleSearchController(IStyleRepository styleRepository,ITitreRepository titreRepository , ILogger<StyleSearchController> logger)
         {
             _styleRepository = styleRepository;
+            _titreRepository = titreRepository;
             _logger = logger;
         }
 
