@@ -67,6 +67,102 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
+    #region Administration
+
+    #region Artiste
+    endpoints.MapControllerRoute(
+        name: "administrationArtistes",
+        pattern: "administration/artistes",
+        defaults: new { area = "administration", controller = "artiste", action = "index" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationArtisteDelete",
+        pattern: "administration/artiste/delete/{idArtiste}",
+        defaults: new { area = "administration", controller = "artiste", action = "delete" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationArtisteEdit",
+        pattern: "administration/artiste/edit/{idArtiste}",
+        defaults: new { area = "administration", controller = "artiste", action = "edit" });
+    #endregion
+
+    #region Titre
+    endpoints.MapControllerRoute(
+        name: "administrationTitres",
+        pattern: "administration/titres",
+        defaults: new { area = "administration", controller = "titre", action = "index" });
+
+
+    endpoints.MapControllerRoute(
+        name: "administrationTitreDelete",
+        pattern: "administration/titre/delete/{idTitre}",
+        defaults: new { area = "administration", controller = "titre", action = "delete" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationTitreEdit",
+        pattern: "administration/titre/edit/{idTitre}",
+        defaults: new { area = "administration", controller = "titre", action = "edit" });
+    #endregion
+
+    #region Style
+    endpoints.MapControllerRoute(
+        name: "administrationStyles",
+        pattern: "administration/styles",
+        defaults: new { area = "administration", controller = "style", action = "index" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationStyleDelete",
+        pattern: "administration/style/delete/{idStyle}",
+        defaults: new { area = "administration", controller = "style", action = "delete" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationStyleEdit",
+        pattern: "administration/style/edit/{idStyle}",
+        defaults: new { area = "administration", controller = "style", action = "edit" });
+    #endregion
+
+    #region Commentaire
+    endpoints.MapControllerRoute(
+        name: "administrationCommentaires",
+        pattern: "administration/commentaires",
+        defaults: new { area = "administration", controller = "commentaire", action = "index" });
+
+    endpoints.MapControllerRoute(
+        name: "administrationCommentaireDelete",
+        pattern: "administration/commentaire/delete/{idCommentaire}",
+        defaults: new { area = "administration", controller = "commentaire", action = "delete" });
+    #endregion
+
+    #endregion
+
+    #region Artiste
+    endpoints.MapControllerRoute(
+        name: "artiste",
+        pattern: "artiste/{nomArtiste}",
+        defaults: new { controller = "artiste", action = "index"});
+    #endregion
+
+    #region Titre
+    endpoints.MapControllerRoute(
+        name: "commenter",
+        pattern: "titre/commenter",
+        defaults: new { controller = "titre", action = "commenter" });
+
+
+
+    endpoints.MapControllerRoute(
+        name: "titre",
+        pattern: "titre/{idTitre}",
+        defaults: new { controller = "titre", action = "index" });
+    #endregion
+
+    #region Style
+    endpoints.MapControllerRoute(
+        name: "style",
+        pattern: "titres/styles/{libelle}",
+        defaults: new { controller = "stylesearch", action = "index" });
+    #endregion
+
     endpoints.MapControllerRoute(
         name: "Administration",
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

@@ -29,12 +29,12 @@ namespace Webzine.Repository.Db
 
         public Artiste Find(int id)
         {
-            return _webzineDbContext.Artistes.Include(t => t.Titres).Where(a => a.IdArtiste == id).FirstOrDefault();
+            return _webzineDbContext.Artistes.Include(a => a.Titres).Where(a => a.IdArtiste == id).FirstOrDefault();
         }
 
         public IEnumerable<Artiste> FindAll()
         {
-            return _webzineDbContext.Artistes.ToList();
+            return _webzineDbContext.Artistes.Include(a => a.Titres).ToList();
         }
 
         public void UpdateArtiste(Artiste artiste)

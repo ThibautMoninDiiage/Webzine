@@ -19,11 +19,11 @@ namespace Webzine.WebApplication.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int IdArtiste)
+        public IActionResult Index(string nomArtiste)
         {
             _logger.LogInformation("Accès à la page artiste.");
 
-            this._artiste = _artisteRepository.Find(IdArtiste);
+            this._artiste = _artisteRepository.FindAll().Where(artiste => artiste.Nom == nomArtiste).FirstOrDefault();
 
             var model = new ArtistViewModel
             {
