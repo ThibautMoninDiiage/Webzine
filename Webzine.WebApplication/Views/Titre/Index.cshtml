@@ -15,7 +15,7 @@
             <i class="fas fa-tags"></i> Styles :
             @foreach (var @style in @Model.Titre.TitresStyles)
             {
-                <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle">@style.Libelle</a>
+                <a asp-controller="StyleSearch" asp-route-libelle="@style.Libelle">@style.Libelle</a>
             }
         </div>
         <div class="col-xs-12 col-sm-1"></div>
