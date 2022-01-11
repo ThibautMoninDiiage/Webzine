@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity
 {
-    public class Titre
+    public class Titre : ITitre
     {
         [Key]
         public int IdTitre { get; set; }

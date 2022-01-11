@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
@@ -20,7 +21,7 @@ namespace Webzine.Models
                 }
                 else
                 {
-                    context.Artistes.AddRange(await DeezerSeedData.SeedArtiste());
+                    context.Artistes.AddRange(await SeedArtiste());
                 }
 
                 if (context.Styles.Any())
@@ -29,7 +30,7 @@ namespace Webzine.Models
                 }
                 else
                 {
-                    context.Styles.AddRange(await DeezerSeedData.SeedStyle());
+                    context.Styles.AddRange(await SeedStyle());
                 }
 
                 if (context.Titres.Any())
@@ -38,7 +39,8 @@ namespace Webzine.Models
                 }
                 else
                 {
-                    context.Titres.AddRange(await DeezerSeedData.SeedTitre());
+                    context.Titres.AddRange(await SeedPlaylist());
+                    // context.Titres.AddRange(await SeedTitre());
                 }
 
                 // Save des changements effectués.
@@ -46,8 +48,9 @@ namespace Webzine.Models
             }
         }
 
-        public async static Task<T> HttpCall<T>(string baseURI, string endpoint)
+        public async static Task<T> HttpCall<T>(string endpoint)
         {
+            var baseURI = "https://api.deezer.com/";
             // Instance de client HTTP.
             var httpClient = new HttpClient();
             // Définition de l'URL de base.
@@ -58,24 +61,30 @@ namespace Webzine.Models
             T result = JsonConvert.DeserializeObject<T>(entity);
             return result;
         }
-
+        
         public async static Task<Artiste> SeedArtiste()
         {
-            var artiste = await HttpCall<Artiste>("https://api.deezer.com/", "artist/zola");
-            artiste.Biographie = "Ok";
+            var artiste = await HttpCall<Artiste>("artist/zola");
+            artiste.Biographie = "La biographie de cet artiste n'a pas pu être récupérée.";
             return artiste;
         }
 
         public async static Task<Titre> SeedTitre()
         {
-            var titre = await HttpCall<Titre>("https://api.deezer.com/", "track/3000001");
+            var titre = await HttpCall<Titre>("track/3135556");
             return titre;
         }
 
         public async static Task<Style> SeedStyle()
         {
-            var style = await HttpCall<Style>("https://api.deezer.com/", "genre/5");
+            var style = await HttpCall<Style>("genre/5");
             return style;
+        }
+
+        public async static Task<List<Titre>> SeedPlaylist()
+        {
+            var playlist = await HttpCall<DeezerRequest>("user/2529/playlists");
+            return playlist.Data;
         }
 
     }

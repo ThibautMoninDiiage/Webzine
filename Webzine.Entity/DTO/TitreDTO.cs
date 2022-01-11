@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity.DTO
 {
-    public class TitreDTO : Titre
+    public class TitreDTO : ITitre
     {
         [Key]
         public int IdTitre { get; set; }
