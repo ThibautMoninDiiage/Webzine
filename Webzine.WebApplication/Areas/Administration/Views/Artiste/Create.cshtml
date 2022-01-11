@@ -31,7 +31,8 @@
             }
             <hr />
         </div>
-
+        <div asp-validation-summary="All">
+        </div>
         <form method="post" asp-action="@action">
 
             @if (Model != null)
@@ -52,7 +53,7 @@
                     }
                     else
                     {
-                        <input name="nom" type="text" class="form-control" value="@Model.Artiste.Nom">
+                        <input name="nom" type="text" class="form-control" asp-for="@Model.Artiste.Nom">
                     }
                 </div>
             </div>
@@ -82,7 +83,7 @@
                 </div>
             </div>
             <br />
-            <a asp-controller="artistes" asp-action="">Retour à l'administration des artistes</a>
+            <a asp-action="">Retour à l'administration des artistes</a>
         </form>
-    </div>    
+    </div>
 </div>

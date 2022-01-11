@@ -58,9 +58,14 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
             };
 
-            _titreRepository.AddTitre(titre);
 
-            return Index();
+
+            if (this.ModelState.IsValid)
+            {
+                _titreRepository.AddTitre(titre);
+                return Index();
+            }
+            return Create();
         }
 
         public IActionResult Edit(int idTitre)
@@ -76,7 +81,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
 
         [HttpPost]
         [ActionName("Edit")]
-        public IActionResult EditPost(int idTitre, int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles)
+        public IActionResult EditPost(int idTitre, int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles, string urlJaquette, string urlEcoute)
         {
             var titre = new Entity.Titre()
             {
@@ -87,13 +92,18 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 Album = nomAlbum,
                 Chronique = chronique,
                 DateSortie = datesortie,
+                UrlJaquette = urlJaquette,
+                UrlEcoute = urlEcoute,
                 Duree = duree,
                 TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList(),
             };
 
-            _titreRepository.Update(titre);
-
-            return Index();
+            if (this.ModelState.IsValid)
+            {
+                _titreRepository.Update(titre);
+                return Index();
+            }
+            return Edit(idTitre);
         }
 
 
