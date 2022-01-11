@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
-using Webzine.Entity.Interfaces;
 
 namespace Webzine.Models
 {
@@ -39,8 +37,11 @@ namespace Webzine.Models
                 }
                 else
                 {
-                    context.Titres.AddRange(await SeedPlaylist());
-                    // context.Titres.AddRange(await SeedTitre());
+                    var titres = await SeedPlaylist();
+                    foreach (var titre in titres)
+                    {
+                        context.Titres.Add(titre);
+                    }
                 }
 
                 // Save des changements effectués.
