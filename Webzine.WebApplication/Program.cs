@@ -49,7 +49,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<WebzineDbContext>();
-        // Supprime et créé la base de donn?es.
+        // Supprime et créé la base de données.
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
     }
