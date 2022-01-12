@@ -29,8 +29,6 @@ namespace Webzine.Models
                     IEnumerable<Style> styles = allStyles.Select(s => new Style { IdStyle = s.Id, Libelle = s.Name });
                     context.Styles.AddRange(styles);
 
-
-
                     var allTitres = await SeedTitre();
 
 
@@ -55,7 +53,7 @@ namespace Webzine.Models
                         DateTime.Now,
                         t.Duree,
                         DateTime.Now,
-                        t.AlbumDTO.Cover,
+                        t.AlbumDTO.CoverXl ?? t.AlbumDTO.Cover ?? "",
                         t.UrlEcoute,
                         t.NbLectures,
                         0,
