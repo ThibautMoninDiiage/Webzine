@@ -1,10 +1,15 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Webzine.Entity.Interfaces;
 
-namespace Webzine.Entity
+namespace Webzine.Entity.DTO
 {
-    public class Artiste : IArtiste
+    public class ArtisteDTO : IArtiste
     {
         [Key]
         [JsonProperty("id")]
@@ -30,12 +35,12 @@ namespace Webzine.Entity
         [JsonProperty("link")]
         public string UrlSite { get; set; }
 
-        public Artiste()
+        public ArtisteDTO()
         {
 
         }
 
-        public Artiste(IArtiste artiste)
+        public ArtisteDTO(IArtiste artiste)
         {
             this.IdArtiste = artiste.IdArtiste;
             this.Nom = artiste.Nom;

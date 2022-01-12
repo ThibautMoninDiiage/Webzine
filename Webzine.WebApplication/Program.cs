@@ -52,9 +52,6 @@ builder.Host.UseNLog();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
-
-
-
 #region Database Seeding
 
 using (var scope = app.Services.CreateScope())
@@ -71,9 +68,8 @@ using (var scope = app.Services.CreateScope())
     {
         throw;
     }
-
-    // Seed la base de donnÃ©es
-    SeedData.Initialize(services);
+    // Seed la base de données
+    DeezerSeedData.Initialize(services);
 }
 
 #endregion

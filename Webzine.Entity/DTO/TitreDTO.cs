@@ -1,10 +1,15 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Webzine.Entity.Interfaces;
 
-namespace Webzine.Entity
+namespace Webzine.Entity.DTO
 {
-    public class Titre : ITitre
+    public class TitreDTO : ITitre
     {
         [Key]
         public int IdTitre { get; set; }
@@ -27,7 +32,6 @@ namespace Webzine.Entity
         [Display(Name = "Date de création")]
         public DateTime DateCreation { get; set; }
 
-        [Required]
         [Display(Name = "Durée en secondes")]
         public int Duree { get; set; }
 
@@ -57,15 +61,13 @@ namespace Webzine.Entity
         public string Album { get; set; }
         public List<Style> TitresStyles { get; set; }
         public List<Commentaire> Commentaires { get; set; }
-        [JsonProperty("tracklist")]
-        public string Tracklist { get; set; }
 
-        public Titre()
+        public TitreDTO()
         {
 
         }
 
-        public Titre(ITitre titre)
+        public TitreDTO(ITitre titre)
         {
             this.IdTitre = titre.IdTitre;
             this.IdArtiste = titre.IdArtiste;
