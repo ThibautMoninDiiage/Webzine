@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Webzine.WebApplication\Webzine.WebApplication.csproj" />
+    <ProjectReference Include="..\Webzine.Entity\Webzine.Entity.csproj" />
+    <ProjectReference Include="..\Webzine.Repository.Contracts\Webzine.Repository.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
