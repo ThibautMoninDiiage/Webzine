@@ -15,6 +15,7 @@ namespace Webzine.Entity
         [Display(Name = "Titre")]
         [MinLength(1)]
         [MaxLength(200)]
+        [JsonProperty("title")]
         public string Libelle { get; set; }
 
         [Required]
