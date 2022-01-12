@@ -1,38 +1,38 @@
 ﻿using System;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Webzine.Entity.DTO
 {
     public class AlbumDTO
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("title")]
+        [JsonProperty("title")]
         public string Title { get; set; }
 
-        [JsonPropertyName("cover")]
+        [JsonProperty("cover")]
         public string Cover { get; set; }
 
-        [JsonPropertyName("cover_small")]
+        [JsonProperty("cover_small")]
         public string CoverSmall { get; set; }
 
-        [JsonPropertyName("cover_medium")]
+        [JsonProperty("cover_medium")]
         public string CoverMedium { get; set; }
 
-        [JsonPropertyName("cover_big")]
+        [JsonProperty("cover_big")]
         public string CoverBig { get; set; }
 
-        [JsonPropertyName("cover_xl")]
+        [JsonProperty("cover_xl")]
         public string CoverXl { get; set; }
 
-        [JsonPropertyName("md5_image")]
+        [JsonProperty("md5_image")]
         public string Md5Image { get; set; }
 
-        [JsonPropertyName("tracklist")]
+        [JsonProperty("tracklist")]
         public string Tracklist { get; set; }
 
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
     }
 }
