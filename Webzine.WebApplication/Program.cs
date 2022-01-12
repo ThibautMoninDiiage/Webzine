@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using NLog.Web;
+using Webzine.Business;
+using Webzine.Business.Contracts;
 using Webzine.EntitiesContext;
 using Webzine.Models;
 using Webzine.Repository.Contracts;
@@ -7,6 +10,12 @@ using Webzine.Repository.Local;
 using Webzine.Repository.Db;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Services
+
+builder.Services.AddControllers();
+
+#endregion
 
 #region EFCore / SQLite
 
@@ -28,6 +37,9 @@ builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
 //builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
 //builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
 
+
+builder.Services.AddScoped<IRechercheService, RechercheService>();
+
 #endregion
 
 #region NLog
@@ -40,6 +52,8 @@ builder.Host.UseNLog();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
+
+
 
 #region Database Seeding
 
