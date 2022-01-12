@@ -160,7 +160,10 @@ app.UseEndpoints(endpoints =>
         pattern: "titre/commenter",
         defaults: new { controller = "titre", action = "commenter" });
 
-
+    endpoints.MapControllerRoute(
+    name: "liker",
+    pattern: "titre/liker",
+    defaults: new { controller = "titre", action = "liker" });
 
     endpoints.MapControllerRoute(
         name: "titre",
