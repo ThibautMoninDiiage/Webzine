@@ -1,27 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Webzine.Repository.Contracts;
+﻿using Webzine.Repository.Contracts;
 using Webzine.WebApplication.ViewModels;
 
-namespace Webzine.WebApplication.Controllers.Contact
+namespace Webzine.Business.Contracts
 {
-    public class RechercheController : Controller
+    public class ServiceSearchable
     {
-        private readonly ILogger<RechercheController> _logger;
+        private readonly IArtisteRepository _artisteRepository;
+        private readonly ITitreRepository _titreRepository;
 
-
-        public RechercheController(ILogger<RechercheController> logger, IArtisteRepository artisteRepository, ITitreRepository titreRepository)
+        public ServiceSearchable(IArtisteRepository artisteRepository, ITitreRepository titreRepository)
         {
-            _logger = logger;
             _artisteRepository = artisteRepository;
             _titreRepository = titreRepository;
         }
 
-        public IActionResult Index(string keyword = "")
+        public SearchViewModel Searchable(string keyword)
         {
-            _logger.LogInformation("L'utilisateur recherche un mot clé.");
-            //var model = IServiceSearchable.Searchable(keyword);
-            //return this.View(model);
-
             if (!String.IsNullOrWhiteSpace(keyword) || !String.IsNullOrEmpty(keyword))
             {
                 keyword = keyword.ToLower();
@@ -38,7 +32,7 @@ namespace Webzine.WebApplication.Controllers.Contact
                 Titres = _titreRepository.FindAll().Where(t => t.Libelle.ToLower().Contains(keyword))
             };
 
-            return this.View(model);
+            return model;
         }
     }
 }

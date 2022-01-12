@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using NLog.Web;
 using Webzine.EntitiesContext;
 using Webzine.Models;
@@ -7,6 +8,12 @@ using Webzine.Repository.Factory;
 using Webzine.Repository.Local;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Services
+
+builder.Services.AddControllers();
+
+#endregion
 
 #region EFCore / SQLite
 
@@ -40,6 +47,8 @@ builder.Host.UseNLog();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
+
+
 
 #region Database Seeding
 
