@@ -69,7 +69,7 @@ namespace Webzine.Models
         }
 
         /// <summary>
-        /// Cette méthode envoie une requète http et retourne le résultat déserialisé
+        /// Cette méthode envoie une requète http et retourne le résultat déserialise
         /// </summary>
         /// <typeparam name="T">Une classe</typeparam>
         /// <param name="url">Une url qui retourne du JSON</param>
