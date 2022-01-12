@@ -25,8 +25,11 @@ namespace Webzine.Models
                 {
 
                     var resultTitres = await SeedTitre();
-                    IEnumerable<ArtistDTO> artistes;
-                    artistes = resultTitres.Select(t => t.Artist).DistinctBy(a => a.Name);
+                    //var resultStyles = await SeedStyles();
+                    var artistes = resultTitres.Select(t => t.Artist).DistinctBy(a => a.Name);
+
+
+
 
 
                     foreach (var artiste in artistes)
@@ -90,8 +93,9 @@ namespace Webzine.Models
             var deezerRequest = await HttpCall<DeezerRequestRootDTO>("https://api.deezer.com/playlist/1109890291/tracks");
 
 
-            return deezerRequest.Data;
+            return deezerRequest.Titres;
         }
+
 
     }
 }

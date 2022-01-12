@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Webzine.Entity.DTO
 {
     public class DeezerRequestRootDTO
     {
-        [JsonPropertyName("data")]
-        public List<TitreDTO> Data { get; set; }
+        [JsonProperty("data")]
+        public List<TitreDTO> Titres { get; set; }
+
+        //[JsonProperty("data")]
+        //public List<StyleDTO> Styles { get; set; }
     }
 }
 
