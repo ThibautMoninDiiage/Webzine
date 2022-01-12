@@ -73,7 +73,8 @@ namespace Webzine.Repository.Db
 
         public IEnumerable<Titre> SearchByStyle(string libelle)
         {
-            throw new NotImplementedException();
+            List<Titre> titres = _webzineDbContext.Titres.Include(t => t.TitresStyles).Where(t => t.TitresStyles.Any(s => s.Libelle == libelle)).ToList();
+            return titres;
         }
 
         public void Update(Titre titre)
