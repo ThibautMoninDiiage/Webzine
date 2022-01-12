@@ -19,10 +19,12 @@
             }
         </div>
         <div class="col-xs-12 col-sm-1"></div>
-        <form method="post" asp-action="liker">
-            <input name="idTitre" value="@Model.Titre.IdTitre" type="hidden" />
-            <div class="col-xs-12 col-sm-1"><button type="submit" class="btn btn-outline-primary"><i class="fas fa-thumbs-up"></i> Like</button></div>
-        </form>
+        <div class="col-xs-12 col-sm-1">
+            <form asp-controller="Titre" asp-action="Liker" method="post">
+                <input name="idTitre" value="@Model.Titre.IdTitre" type="hidden" />
+                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-thumbs-up"></i> Like</button>
+            </form>
+        </div>
         <div class="col-xs-12 col-sm-1"><a type="button" asp-area="administration" asp-action="Edit" asp-route-idTitre="@Model.Titre.IdTitre"><i class="fas fa-edit"></i> Editer</a></div>
     </div>
 
