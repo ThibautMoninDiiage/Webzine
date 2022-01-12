@@ -56,8 +56,6 @@ namespace Webzine.Entity
         public string Album { get; set; }
         public List<Style> TitresStyles { get; set; }
         public List<Commentaire> Commentaires { get; set; }
-        [JsonProperty("tracklist")]
-        public string Tracklist { get; set; }
 
         public Titre()
         {
