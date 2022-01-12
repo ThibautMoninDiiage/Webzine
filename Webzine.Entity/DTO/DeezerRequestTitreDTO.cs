@@ -3,13 +3,10 @@ using Newtonsoft.Json;
 
 namespace Webzine.Entity.DTO
 {
-    public class DeezerRequestRootDTO
+    public class DeezerRequestTitreDTO
     {
         [JsonProperty("data")]
         public List<TitreDTO> Titres { get; set; }
-
-        //[JsonProperty("data")]
-        //public List<StyleDTO> Styles { get; set; }
     }
 }
 

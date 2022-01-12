@@ -35,6 +35,15 @@ namespace Webzine.Entity
 
         }
 
+        public Artiste(int idArtiste, string nom, string biographie, DateTime dateNaissance, string urlSite)
+        {
+            IdArtiste = idArtiste;
+            Nom = nom;
+            Biographie = biographie;
+            DateNaissance = dateNaissance;
+            UrlSite = urlSite;
+        }
+
         public Artiste(IArtiste artiste)
         {
             this.IdArtiste = artiste.IdArtiste;

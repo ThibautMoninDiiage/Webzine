@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
+using Webzine.Entity.Interfaces;
 using Webzine.Repository.Contracts;
 
 namespace Webzine.Models
@@ -24,46 +25,49 @@ namespace Webzine.Models
                 else
                 {
 
-                    var resultTitres = await SeedTitre();
-                    //var resultStyles = await SeedStyles();
-                    var artistes = resultTitres.Select(t => t.Artist).DistinctBy(a => a.Name);
+                    var allStyles = await SeedStyles();
+                    IEnumerable<Style> styles = allStyles.Select(s => new Style { IdStyle = s.Id, Libelle = s.Name });
+                    context.Styles.AddRange(styles);
 
 
 
+                    var allTitres = await SeedTitre();
 
 
-                    foreach (var artiste in artistes)
-                    {
-                        context.Artistes.Add(new Artiste
-                        {
-                            IdArtiste = artiste.Id,
-                            Biographie = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            Nom = artiste.Name,
-                            UrlSite = artiste.Link
-                        });
-                    }
+                    IEnumerable<Artiste> artistes = allTitres.Select(t => new Artiste(
+                        t.Artiste.Id,
+                        t.Artiste.Name,
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                        DateTime.Now,
+                        t.Artiste.Link
+                        ));
 
-                    context.SaveChanges();
+                    context.AddRange(artistes.DistinctBy(a => a.Nom));
 
-                    foreach (var titre in resultTitres)
-                    {
-                        context.Titres.AddRange(new Titre
-                        {
-                            IdTitre = titre.Id,
-                            Album = titre.Album.Title,
-                            Artiste = context.Artistes.Find(titre.Artist.Id),
-                            Duree = titre.Duration,
-                            UrlJaquette = titre.Album.Cover,
-                            DateSortie = DateTime.Now,
-                            Libelle = titre.Title,
-                            NbLikes = 0,
-                            NbLectures = titre.Rank,
-                            Chronique = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            IdArtiste = titre.Artist.Id,
-                            DateCreation = DateTime.Now,
-                            UrlEcoute = titre.Preview
-                        });
-                    }
+                    var random = new Random();
+
+                    IEnumerable<Titre> titres = allTitres.Select(t => new Titre(
+                        t.IdTitre,
+                        t.Artiste.Id,
+                        context.Artistes.Find(t.Artiste.Id),
+                        t.Libelle,
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                        DateTime.Now,
+                        t.Duree,
+                        DateTime.Now,
+                        t.AlbumDTO.Cover,
+                        t.UrlEcoute,
+                        t.NbLectures,
+                        0,
+                        t.AlbumDTO.Title,
+                        context.Styles.ToList()
+                        ));
+
+                    context.AddRange(titres);
+
+
+
+                    
                 }
 
                 // Save des changements effectués.
@@ -88,12 +92,30 @@ namespace Webzine.Models
             return JsonConvert.DeserializeObject<T>(entity);
         }
 
-        public async static Task<IEnumerable<TitreDTO>> SeedTitre()
+
+        /// <summary>
+        /// Methode qui recupere les titres d'une playlist
+        /// </summary>
+        /// <returns>retourne tous les titres d'une plylist</returns>
+        public async static Task<IEnumerable<TitreDTO>> SeedTitre(int numeroPlaylist = 1109890291)
         {
-            var deezerRequest = await HttpCall<DeezerRequestRootDTO>("https://api.deezer.com/playlist/1109890291/tracks");
+            var deezerRequest = await HttpCall<DeezerRequestTitreDTO>("https://api.deezer.com/playlist/"+ numeroPlaylist +"/tracks");
 
 
             return deezerRequest.Titres;
+        }
+
+
+        /// <summary>
+        /// Methode pour recuperer les styles de l'api de deezer
+        /// </summary>
+        /// <returns>La liste de tous les styles de deezer</returns>
+        public async static Task<IEnumerable<StyleDTO>> SeedStyles()
+        {
+            var deezerRequest = await HttpCall<DeezerRequestStyleDTO>("https://api.deezer.com/genre");
+
+
+            return deezerRequest.Styles;
         }
 
 

@@ -65,7 +65,7 @@ namespace Webzine.Entity
 
         public Titre(ITitre titre)
         {
-            this.IdTitre = titre.IdTitre;
+            this.IdArtiste = titre.IdArtiste;
             this.IdArtiste = titre.IdArtiste;
             this.Artiste = titre.Artiste;
             this.Libelle = titre.Libelle;
@@ -80,6 +80,24 @@ namespace Webzine.Entity
             this.Album = titre.Album;
             this.TitresStyles = titre.TitresStyles;
             this.Commentaires = titre.Commentaires;
+        }
+
+        public Titre(int idTitre, int idArtiste, Artiste artiste, string libelle, string chronique, DateTime dateCreation, int duree, DateTime dateSortie, string urlJaquette, string urlEcoute, int nbLectures, int nbLikes, string album, List<Style> titresStyles)
+        {
+            IdTitre = idTitre;
+            IdArtiste = idArtiste;
+            Artiste = artiste;
+            Libelle = libelle;
+            Chronique = chronique;
+            DateCreation = dateCreation;
+            Duree = duree;
+            DateSortie = dateSortie;
+            UrlJaquette = urlJaquette;
+            UrlEcoute = urlEcoute;
+            NbLectures = nbLectures;
+            NbLikes = nbLikes;
+            Album = album;
+            TitresStyles = titresStyles;
         }
     }
 }

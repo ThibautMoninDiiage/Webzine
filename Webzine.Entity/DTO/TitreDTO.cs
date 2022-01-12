@@ -4,7 +4,7 @@ using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity.DTO
 {
-    public class TitreDTO : ITitre
+    public class TitreDTO
     {
         [JsonProperty("id")]
         public int IdTitre { get; set; }
@@ -12,7 +12,7 @@ namespace Webzine.Entity.DTO
         public int IdArtiste { get; set; }
 
         [JsonProperty("artist")]
-        public Artiste Artiste { get; set; }
+        public ArtistDTO Artiste { get; set; }
 
         [JsonProperty("title")]
         public string Libelle { get; set; }
@@ -44,28 +44,10 @@ namespace Webzine.Entity.DTO
         public List<Style> TitresStyles { get; set; }
         public List<Commentaire> Commentaires { get; set; }
 
-
-
-        public TitreDTO(ITitre titre)
+        public TitreDTO()
         {
-            this.IdArtiste = titre.IdArtiste;
-            this.IdArtiste = titre.IdArtiste;
-            this.Artiste = titre.Artiste;
-            this.Libelle = titre.Libelle;
-            this.Chronique = titre.Chronique;
-            this.DateCreation = titre.DateCreation;
-            this.Duree = titre.Duree;
-            this.DateSortie = titre.DateSortie;
-            this.UrlJaquette = titre.UrlJaquette;
-            this.UrlEcoute = titre.UrlEcoute;
-            this.NbLectures = titre.NbLectures;
-            this.NbLikes = titre.NbLikes;
-            this.Album = titre.Album;
-            this.TitresStyles = titre.TitresStyles;
-            this.Commentaires = titre.Commentaires;
+
         }
     }
-
-    
 }
 
