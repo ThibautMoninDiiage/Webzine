@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NLog.Web;
+using Webzine.Business;
+using Webzine.Business.Contracts;
 using Webzine.EntitiesContext;
 using Webzine.Models;
 using Webzine.Repository.Contracts;
@@ -29,6 +31,9 @@ builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
 builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
 builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
 builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
+
+
+builder.Services.AddScoped<IRechercheService, RechercheService>();
 
 //builder.Services.AddScoped<IArtisteRepository, FactoryArtisteRepository>();
 //builder.Services.AddScoped<ITitreRepository, FactoryTitreRepository>();
