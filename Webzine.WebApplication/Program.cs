@@ -29,21 +29,24 @@ builder.Services.AddDbContext<WebzineDbContext>(
 
 var dataContext = builder.Configuration.GetSection("DataContext");
 
-if (dataContext.Value == "DB")
+// Seed la base de données
+switch (dataContext.Value)
 {
-    builder.Services.AddScoped<IArtisteRepository, DbArtisteRepository>();
-    builder.Services.AddScoped<ITitreRepository, DbTitreRepository>();
-    builder.Services.AddScoped<IStyleRepository, DbStyleRepository>();
-    builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
-    builder.Services.AddScoped<IRechercheService, RechercheService>();
-}
-else
-{
-    builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
-    builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
-    builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
-    builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
-    builder.Services.AddScoped<IRechercheService, RechercheService>();
+    case "DB":
+        builder.Services.AddScoped<IArtisteRepository, DbArtisteRepository>();
+        builder.Services.AddScoped<ITitreRepository, DbTitreRepository>();
+        builder.Services.AddScoped<IStyleRepository, DbStyleRepository>();
+        builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
+        builder.Services.AddScoped<IRechercheService, RechercheService>();
+    break;
+
+    case "LOCAL":
+        builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
+        builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
+        builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
+        builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
+        builder.Services.AddScoped<IRechercheService, RechercheService>();
+    break;
 }
 
 #endregion
@@ -75,8 +78,24 @@ using (var scope = app.Services.CreateScope())
     {
         throw;
     }
-    // Seed la base de données
-    DeezerSeedData.Initialize(services);
+
+    var useDeezerApi = builder.Configuration.GetSection("UseDeezerApi");
+
+    if (dataContext.Value == "DB")
+    {
+        // Seed la base de données
+        switch (useDeezerApi.Value)
+        {
+            case "false" :
+                DeezerSeedData.Initialize(services, false);
+            break;
+
+            default:
+                DeezerSeedData.Initialize(services, true);
+            break;
+        }
+    }
+
 }
 
 #endregion
