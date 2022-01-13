@@ -27,18 +27,24 @@ builder.Services.AddDbContext<WebzineDbContext>(
 
 #region Container IOC
 
-builder.Services.AddScoped<IArtisteRepository, DbArtisteRepository>();
-builder.Services.AddScoped<ITitreRepository, DbTitreRepository>();
-builder.Services.AddScoped<IStyleRepository, DbStyleRepository>();
-builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
+var dataContext = builder.Configuration.GetSection("DataContext");
 
-//builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
-//builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
-//builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
-//builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
-
-
-builder.Services.AddScoped<IRechercheService, RechercheService>();
+if (dataContext.Value == "DB")
+{
+    builder.Services.AddScoped<IArtisteRepository, DbArtisteRepository>();
+    builder.Services.AddScoped<ITitreRepository, DbTitreRepository>();
+    builder.Services.AddScoped<IStyleRepository, DbStyleRepository>();
+    builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
+    builder.Services.AddScoped<IRechercheService, RechercheService>();
+}
+else
+{
+    builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
+    builder.Services.AddScoped<ITitreRepository, LocalTitreRepository>();
+    builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
+    builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
+    builder.Services.AddScoped<IRechercheService, RechercheService>();
+}
 
 #endregion
 
@@ -52,6 +58,7 @@ builder.Host.UseNLog();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 var app = builder.Build();
+
 #region Database Seeding
 
 using (var scope = app.Services.CreateScope())
