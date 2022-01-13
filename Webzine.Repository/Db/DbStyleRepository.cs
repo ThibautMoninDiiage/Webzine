@@ -36,7 +36,7 @@ namespace Webzine.Repository.Db
 
         public IEnumerable<Style> FindAll()
         {
-            return _webzineDbContext.Styles.ToList();
+            return _webzineDbContext.Styles.OrderBy(style => style.Libelle).ToList();
         }
 
         public void Update(Style style)

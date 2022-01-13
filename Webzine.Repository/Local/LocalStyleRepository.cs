@@ -28,7 +28,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Style> FindAll()
         {
-            return StyleFactory.CreateStyles();
+            return StyleFactory.CreateStyles().OrderBy(style => style.Libelle);
         }
 
         public void Update(Style style)
