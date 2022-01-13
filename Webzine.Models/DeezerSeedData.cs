@@ -31,7 +31,7 @@ namespace Webzine.Models
                 {
 
                     var allStyles = await SeedStyles();
-                    IEnumerable<Style> styles = allStyles.Select(s => new Style { IdStyle = s.Id, Libelle = s.Name });
+                    IEnumerable<Style> styles = allStyles.Select(s => new Style { IdStyle = s.Id, Libelle = s.Name.Replace("/", " ") });
                     context.Styles.AddRange(styles);
 
                     var allTitres = await SeedTitre();
@@ -63,11 +63,12 @@ namespace Webzine.Models
                         t.NbLectures,
                         t.NbLectures / 7,
                         t.AlbumDTO.Title,
-                        new List<Style> { context.Styles.Find(113) }
+                        context.Styles.Local.Skip(1).OrderBy(s => random.Next()).Take(random.Next(1, 4)).ToList()
                         ));
 
                     context.AddRange(titres);
                 }
+                
 
                 // Save des changements effectués.
                 context.SaveChanges();
