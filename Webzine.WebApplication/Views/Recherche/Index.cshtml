@@ -6,7 +6,7 @@
 
 <div>
     <br />
-    <h1>Résultat de la recherche pour @Model.Keyword</h1>
+    <h1>Résultat de la recherche pour "@Model.Keyword"</h1>
     <hr />
 
 
@@ -15,6 +15,11 @@
 
     <h3>Artistes</h3>
 
+    @if(Model.Artistes.Count() == 0)
+    {
+        <p>Aucun artiste.</p>
+    }
+
     @foreach (var artiste in Model.Artistes)
     {
         <p class="m-0"><i class="fas fa-user"></i> <a asp-controller="artiste" asp-route-nomArtiste="@artiste.Nom">@artiste.Nom</a></p>
@@ -22,6 +27,11 @@
     <br />
 
     <h3>Titres</h3>
+
+    @if(Model.Titres.Count() == 0)
+    {
+        <p>Aucun titre.</p>
+    }
 
     @foreach (var titre in Model.Titres)
     {
