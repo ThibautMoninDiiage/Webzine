@@ -29,7 +29,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Artiste> FindAll()
         {
-            return ArtistFactory.CreateArtists();
+            return ArtistFactory.CreateArtists().OrderBy(a => a.Nom);
         }
 
         public void UpdateArtiste(Artiste artiste)
