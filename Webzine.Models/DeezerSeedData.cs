@@ -61,7 +61,7 @@ namespace Webzine.Models
                         t.AlbumDTO.CoverXl ?? t.AlbumDTO.Cover ?? "",
                         t.UrlEcoute,
                         t.NbLectures,
-                        0,
+                        t.NbLectures / 7,
                         t.AlbumDTO.Title,
                         new List<Style> { context.Styles.Find(113) }
                         ));
