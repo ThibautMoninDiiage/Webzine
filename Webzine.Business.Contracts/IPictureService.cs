@@ -12,6 +12,6 @@ namespace Webzine.Business.Contracts
         /// Enregistre une image en local dans un dossier du projet
         /// </summary>
         /// <param name="urlPicture">Url complet de l'image</param>
-        void SavePicture(string urlPicture, string filename);
+        string SavePicture(string urlPicture, string filename);
     }
 }

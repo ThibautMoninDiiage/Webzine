@@ -12,7 +12,6 @@ namespace Webzine.Repository.Local
 
         public void Add(Commentaire commentaire)
         {
-            throw new NotImplementedException();
         }
 
         public void Delete(Commentaire commentaire)

@@ -16,7 +16,7 @@ namespace Webzine.Repository.Local
 
         public int Count()
         {
-            return 0;
+            return TitleFactory.CreateTitles().Count();
         }
 
         public void DeleteTitre(Titre titre)
@@ -35,27 +35,25 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
         {
-            throw new NotImplementedException();
+            return TitleFactory.CreateTitles().OrderBy(t => t.DateCreation).Skip(offset).Take(limit);
         }
 
         public void IncrementNbLectures(Titre titre)
         {
-            throw new NotImplementedException();
+           
         }
 
         public void IncrementNbLikes(Titre titre)
         {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<Titre> SearchByStyle(string libelle)
         {
-            throw new NotImplementedException();
+            return TitleFactory.CreateTitles().Where(t => t.TitresStyles.Any(s => s.Libelle == libelle)).ToList();
         }
 
         public void Update(Titre titre)
         {
-            throw new NotImplementedException();
         }
     }
 }

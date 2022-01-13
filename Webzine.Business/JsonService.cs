@@ -11,14 +11,15 @@ namespace Webzine.Business
 {
     public class JsonService : IJsonService
     {
-        public void WriteJsonFile<T>(string path, T param)
+        public void WriteJsonFile<T>(string filename, T param)
         {
-            File.WriteAllText(path, JsonConvert.SerializeObject(param));
+            Directory.CreateDirectory("wwwroot/data");
+            File.WriteAllText($"wwwroot/data/{filename}", JsonConvert.SerializeObject(param));
         }
 
-        public T ReadJsonFile<T>(string fileName)
+        public T ReadJsonFile<T>(string filename)
         {
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
+            return JsonConvert.DeserializeObject<T>(File.ReadAllText($"wwwroot/data/{filename}"));
         }
     }
 }
