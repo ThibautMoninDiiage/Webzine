@@ -30,10 +30,15 @@ namespace Webzine.Models
                 }
                 else
                 {
-                    var allTitres = await SeedTitre();
                     JsonService jsonService = new JsonService();
-                    jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", resultTitres.ToList());
+
+                    var allTitres = await SeedTitre();
                     var allStyles = await SeedStyles();
+
+                    jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", allTitres.ToList());
+                    jsonService.WriteJsonFile<List<StyleDTO>>(@"StylesFromDeezer.json", allStyles.ToList());
+
+
                     IEnumerable<Style> styles = allStyles.Select(s => new Style { IdStyle = s.Id, Libelle = s.Name.Replace("/", " ") });
                     context.Styles.AddRange(styles);
 
