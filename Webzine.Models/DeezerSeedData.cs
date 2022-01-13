@@ -13,11 +13,16 @@ namespace Webzine.Models
     {
 
 
+        /// <summary>
+        /// Initialise les données de l'application avec les data de l'api de deezer.
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public async static void Initialize(IServiceProvider serviceProvider)
         {
             
             using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>()))
             {
+                // if there is no titles on the application
                 if (context.Titres.Any())
                 {
                     return;
@@ -58,14 +63,10 @@ namespace Webzine.Models
                         t.NbLectures,
                         0,
                         t.AlbumDTO.Title,
-                        context.Styles.ToList()
+                        new List<Style> { context.Styles.Find(113) }
                         ));
 
                     context.AddRange(titres);
-
-
-
-                    
                 }
 
                 // Save des changements effectués.
