@@ -29,12 +29,8 @@
                 <tr>
                     <td>@titre.Artiste.Nom</td>
                     <td>@titre.Libelle</td>
-                    @{
-                        TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
-                        var formatedTime = time.ToString(@"mm\:ss");
-                    }
-                    <td>@formatedTime</td>
-                    <td class="text-center">@titre.DateSortie.ToString("dd/M/yyyy")</td>
+                    <td>@TimeSpan.FromSeconds(titre.Duree).ToString(@"mm\:ss")</td>
+                    <td class="text-center">@titre.DateSortie.ToString("dd/MM/yyyy")</td>
                     <td>@titre.NbLectures</td>
                     <td>@titre.NbLikes</td>
                     @if (titre.Commentaires != null)
