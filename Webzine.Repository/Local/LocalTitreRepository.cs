@@ -30,7 +30,7 @@ namespace Webzine.Repository.Local
 
         public IEnumerable<Titre> FindAll()
         {
-            return TitleFactory.CreateTitles();
+            return TitleFactory.CreateTitles().OrderBy(titre => titre.Artiste.Nom);
         }
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
