@@ -15,7 +15,7 @@
 
         @foreach (var titre in this.Model.OrderedTitles)
         {
-            <div class="row bg-light">
+            <div class="row bg-light m-3">
 
                 @*Image*@
                 <div class="col-sm-2 p-4">
@@ -25,7 +25,7 @@
                 @*Contenu*@
                 <div class="col-md-9">
                     @*Titre*@
-                    <div class="card-title"><h4>@titre.Libelle</h4></div>
+                    <div class="card-title"><h4 class="text-primary">@titre.Artiste.Nom - @titre.Libelle</h4></div>
                     @*Description*@
                     <div style="text-align: justify">
                         @if (@titre.Chronique.Length >= 200)
@@ -47,7 +47,7 @@
                             <div class="col-auto ">
                                 <p>
                                     <i class="fas fa-calendar-week"></i>&nbsp;
-                                    @titre.DateCreation.ToString("dd-M-yyyy") | @titre.DateSortie.ToString("dd:M:yyyy")
+                                    @titre.DateCreation.ToString("dd/MM/yyyy HH:mm:ss")
                                 </p>
                             </div>
                             <div class="col-auto ">

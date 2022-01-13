@@ -65,12 +65,12 @@
                 <div class="col-xs-12 col-sm-6 col-lg-10">
                     @if (Model == null)
                     {
-                        <textarea name="biographie" type="text" class="form-control"></textarea>
+                        <textarea style="min-height:200px" name="biographie" type="text" class="form-control"></textarea>
 
                     }
                     else
                     {
-                        <textarea name="biographie" type="text" class="form-control">@Model.Artiste.Biographie</textarea>
+                        <textarea style="min-height:200px" name="biographie" type="text" class="form-control">@Model.Artiste.Biographie</textarea>
                     }
                 </div>
             </div>
