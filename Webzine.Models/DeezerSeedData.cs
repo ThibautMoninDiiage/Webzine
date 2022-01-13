@@ -31,9 +31,13 @@ namespace Webzine.Models
                 else
                 {
                     JsonService jsonService = new JsonService();
+                    PictureService pictureService = new PictureService();
 
                     var allTitres = await SeedTitre();
                     var allStyles = await SeedStyles();
+
+
+                    allTitres.ToList().ForEach(t => pictureService.SavePicture(t.AlbumDTO.CoverXl, t.IdTitre.ToString()));
 
                     jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", allTitres.ToList());
                     jsonService.WriteJsonFile<List<StyleDTO>>(@"StylesFromDeezer.json", allStyles.ToList());

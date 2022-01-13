@@ -2,6 +2,7 @@
 using Webzine.Business.Contracts;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace Webzine.Business
 {
@@ -17,7 +18,8 @@ namespace Webzine.Business
                 {
                     using (var yourImage = Image.FromStream(mem))
                     {
-                        yourImage.Save("Image2.png", ImageFormat.Jpeg);
+                        Directory.CreateDirectory("TitresCover");
+                        yourImage.Save("TitresCover/" + filename + ".jpg", ImageFormat.Jpeg);
                     }
                 }
             }
