@@ -20,4 +20,3 @@ namespace Webzine.Business.Contracts
         IEnumerable<Artiste> RechercherArtiste(string keyword = "");
     }
 }
-
