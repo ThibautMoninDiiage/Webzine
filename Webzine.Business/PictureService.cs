@@ -8,7 +8,7 @@ namespace Webzine.Business
 {
     public class PictureService : IPictureService
     {
-        public void SavePicture(string urlPicture, string filename)
+        public string SavePicture(string urlPicture, string filename)
         {
             using (WebClient webClient = new WebClient())
             {
@@ -18,11 +18,12 @@ namespace Webzine.Business
                 {
                     using (var yourImage = Image.FromStream(mem))
                     {
-                        Directory.CreateDirectory("TitresCover");
-                        yourImage.Save("TitresCover/" + filename + ".jpg", ImageFormat.Jpeg);
+                        Directory.CreateDirectory("wwwroot/TitresCover");
+                        yourImage.Save("wwwroot/TitresCover/" + filename + ".jpg", ImageFormat.Jpeg);
                     }
                 }
             }
+            return $"/TitresCover/{filename}.jpg";
         }
     }
 }
