@@ -18,7 +18,7 @@ namespace Webzine.Models
         /// Initialise les données de l'application avec les data de l'api de deezer.
         /// </summary>
         /// <param name="serviceProvider"></param>
-        public async static void Initialize(IServiceProvider serviceProvider)
+        public async static void Initialize(IServiceProvider serviceProvider, bool useDeezerApi = false)
         {
             
             using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>()))
@@ -33,16 +33,29 @@ namespace Webzine.Models
                     JsonService jsonService = new JsonService();
                     PictureService pictureService = new PictureService();
 
-                    var allTitres = await SeedTitre();
-                    var allStyles = await SeedStyles();
+                    IEnumerable<TitreDTO> allTitres;
+                    IEnumerable<StyleDTO> allStyles;
+
+                    if (useDeezerApi)
+                    {
+                        allTitres = await GetPlaylistDeezer();
+                        allStyles = await GetStylesDeezer();
+
+                        allTitres.ToList().ForEach(t => t.AlbumDTO.CoverXl = pictureService.SavePicture(t.AlbumDTO.CoverXl, t.IdTitre.ToString()));
 
 
-                    allTitres.ToList().ForEach(t => pictureService.SavePicture(t.AlbumDTO.CoverXl, t.IdTitre.ToString()));
+                        jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", allTitres.ToList());
+                        jsonService.WriteJsonFile<List<StyleDTO>>(@"StylesFromDeezer.json", allStyles.ToList());
 
-                    jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", allTitres.ToList());
-                    jsonService.WriteJsonFile<List<StyleDTO>>(@"StylesFromDeezer.json", allStyles.ToList());
+                    }
+                    else
+                    {
+                        allTitres = jsonService.ReadJsonFile<List<TitreDTO>>("TitresFromDeezer.json");
+                        allStyles = jsonService.ReadJsonFile<List<StyleDTO>>("StylesFromDeezer.json");
+                    }
 
 
+                    // Remplace "/" par " " pour éviter les problèmes dans les url
                     IEnumerable<Style> styles = allStyles.Select(s => new Style { IdStyle = s.Id, Libelle = s.Name.Replace("/", " ") });
                     context.Styles.AddRange(styles);
 
@@ -103,10 +116,10 @@ namespace Webzine.Models
 
 
         /// <summary>
-        /// Methode qui recupere les titres d'une playlist
+        /// Methode qui recupere les titres d'une playlist depuis l'api de deezer
         /// </summary>
         /// <returns>retourne tous les titres d'une plylist</returns>
-        public async static Task<IEnumerable<TitreDTO>> SeedTitre(int numeroPlaylist = 1109890291)
+        public async static Task<IEnumerable<TitreDTO>> GetPlaylistDeezer(int numeroPlaylist = 1109890291)
         {
             var deezerRequest = await HttpCall<DeezerRequestTitreDTO>("https://api.deezer.com/playlist/"+ numeroPlaylist +"/tracks");
 
@@ -119,7 +132,7 @@ namespace Webzine.Models
         /// Methode pour recuperer les styles de l'api de deezer
         /// </summary>
         /// <returns>La liste de tous les styles de deezer</returns>
-        public async static Task<IEnumerable<StyleDTO>> SeedStyles()
+        public async static Task<IEnumerable<StyleDTO>> GetStylesDeezer()
         {
             var deezerRequest = await HttpCall<DeezerRequestStyleDTO>("https://api.deezer.com/genre");
             return deezerRequest.Styles;
