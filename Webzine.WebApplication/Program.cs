@@ -19,8 +19,14 @@ builder.Services.AddControllers();
 
 #region EFCore / SQLite
 
+//builder.Services.AddDbContext<WebzineDbContext>(
+//    options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
+//);
+
+// docker run --name postgre-webzine -e POSTGRES_PASSWORD=postgreSQLWebzine1234560 -d postgres
+
 builder.Services.AddDbContext<WebzineDbContext>(
-    options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("WebzinePostgre"))
 );
 
 #endregion

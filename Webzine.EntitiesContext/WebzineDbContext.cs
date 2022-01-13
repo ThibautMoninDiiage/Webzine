@@ -25,7 +25,8 @@ namespace Webzine.EntitiesContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite("Data Source=Webzine.db");
+            // options.UseSqlite("Data Source=Webzine.db");
+            options.UseNpgsql("Server=localhost;Port=5432;Database=postgre-webzine;User Id=webzineUser;Password=postgreSQLWebzine1234560;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
