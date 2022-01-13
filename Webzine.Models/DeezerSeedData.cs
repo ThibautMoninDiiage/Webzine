@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Webzine.Business;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
@@ -10,8 +11,6 @@ namespace Webzine.Models
 {
     public class DeezerSeedData
     {
-
-
         public async static void Initialize(IServiceProvider serviceProvider)
         {
             
@@ -23,11 +22,13 @@ namespace Webzine.Models
                 }
                 else
                 {
-
                     var resultTitres = await SeedTitre();
+
+                    JsonService jsonService = new JsonService();
+                    jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", resultTitres.ToList());
+
                     IEnumerable<ArtistDTO> artistes;
                     artistes = resultTitres.Select(t => t.Artist).DistinctBy(a => a.Name);
-
 
                     foreach (var artiste in artistes)
                     {
@@ -88,7 +89,6 @@ namespace Webzine.Models
         public async static Task<IEnumerable<TitreDTO>> SeedTitre()
         {
             var deezerRequest = await HttpCall<DeezerRequestRootDTO>("https://api.deezer.com/playlist/1109890291/tracks");
-
 
             return deezerRequest.Data;
         }

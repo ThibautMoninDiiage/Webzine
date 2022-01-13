@@ -70,8 +70,6 @@ using (var scope = app.Services.CreateScope())
     }
     // Seed la base de données
     DeezerSeedData.Initialize(services);
-    JsonService js = new JsonService();
-    js.WriteJsonFile();
 }
 
 #endregion

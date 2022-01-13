@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.EntitiesContext", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Models", "Webzine.Models\Webzine.Models.csproj", "{4BAE7F88-C160-467D-99D8-77D068170467}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webzine.Business", "Webzine.Business\Webzine.Business.csproj", "{B736A050-42EB-4CB7-836A-CD8ED33F245C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Business", "Webzine.Business\Webzine.Business.csproj", "{B736A050-42EB-4CB7-836A-CD8ED33F245C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webzine.Business.Contracts", "Webzine.Business.Contracts\Webzine.Business.Contracts.csproj", "{1EE03A82-4709-480C-B328-600E0EB4BEE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webzine.Business.Contracts", "Webzine.Business.Contracts\Webzine.Business.Contracts.csproj", "{1EE03A82-4709-480C-B328-600E0EB4BEE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

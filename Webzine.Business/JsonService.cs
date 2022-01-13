@@ -5,26 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Webzine.Business.Contracts;
 using Newtonsoft.Json;
+using Webzine.Entity;
 
 namespace Webzine.Business
 {
     public class JsonService : IJsonService
     {
-        public void WriteJsonFile()
+        public void WriteJsonFile<T>(string path, T param)
         {
-            var data = new Test()
-            {
-                Id = 1,
-                Name = "Ok"
-            };
-
-            File.WriteAllText("", JsonConvert.SerializeObject(data));
+            File.WriteAllText(path, JsonConvert.SerializeObject(param));
         }
-    }
-
-    public class Test
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace Webzine.Business.Contracts
 {
     public interface IJsonService
     {
-        void WriteJsonFile();
+        void WriteJsonFile<T>(string path, T param);
     }
 }
