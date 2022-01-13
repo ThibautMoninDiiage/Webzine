@@ -10,5 +10,6 @@ namespace Webzine.Business.Contracts
     public interface IJsonService
     {
         void WriteJsonFile<T>(string path, T param);
+        T ReadJsonFile<T>(string fileName);
     }
 }

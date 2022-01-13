@@ -15,5 +15,10 @@ namespace Webzine.Business
         {
             File.WriteAllText(path, JsonConvert.SerializeObject(param));
         }
+
+        public T ReadJsonFile<T>(string fileName)
+        {
+            return JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
+        }
     }
 }
