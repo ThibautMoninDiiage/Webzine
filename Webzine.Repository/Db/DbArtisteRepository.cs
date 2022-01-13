@@ -34,7 +34,10 @@ namespace Webzine.Repository.Db
 
         public IEnumerable<Artiste> FindAll()
         {
-            return _webzineDbContext.Artistes.Include(a => a.Titres).ToList();
+            return _webzineDbContext.Artistes
+                .Include(a => a.Titres)
+                .OrderBy(a => a.Nom)
+                .ToList();
         }
 
         public void UpdateArtiste(Artiste artiste)
