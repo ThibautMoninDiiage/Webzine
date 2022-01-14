@@ -111,7 +111,7 @@ namespace Webzine.Models
             // Définition de l'URL de base.
             HttpResponseMessage response = httpClient.GetAsync(url).Result;
             response.EnsureSuccessStatusCode();
-            var entity = response.Content.ReadAsStringAsync().Result;
+            var entity = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(entity);
         }
 
