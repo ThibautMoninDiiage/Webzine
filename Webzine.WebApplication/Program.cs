@@ -8,8 +8,18 @@ using Webzine.Models;
 using Webzine.Repository.Contracts;
 using Webzine.Repository.Local;
 using Webzine.Repository.Db;
+using Webzine.WebApplication.Filtres;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Services
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(typeof(LoggerActionFilter));
+});
+
+#endregion
 
 #region Services
 

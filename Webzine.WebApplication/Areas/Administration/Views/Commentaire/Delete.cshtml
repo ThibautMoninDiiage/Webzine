@@ -12,7 +12,7 @@
         <h5>Etes vous sûr de vouloir supprimer le commentaire suivant ?</h5>
         <br />
         <h4>@Model.Commentaire.Contenu</h4>
-        <div>- @Model.Commentaire.Auteur le @Model.Commentaire.DateCreation sur @Model.Commentaire.Titre</div>
+        <div>- @Model.Commentaire.Auteur le @Model.Commentaire.DateCreation sur @Model.Commentaire.Titre.Libelle</div>
         <input type="hidden" name="idCommentaire" value="@Model.Commentaire.IdCommentaire" />
         <br />
         <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
