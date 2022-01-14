@@ -58,7 +58,7 @@ namespace Webzine.Repository.Db
 
         public IEnumerable<Titre> FindTitres(int offset, int limit)
         {
-            return _webzineDbContext.Titres.OrderBy(t => t.DateCreation).Skip(offset).Take(limit);
+            return _webzineDbContext.Titres.OrderByDescending(t => t.DateCreation).Skip(offset).Take(limit);
         }
 
         public void IncrementNbLectures(Titre titre)
