@@ -8,8 +8,18 @@ using Webzine.Models;
 using Webzine.Repository.Contracts;
 using Webzine.Repository.Local;
 using Webzine.Repository.Db;
+using Webzine.WebApplication.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Filters
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(typeof(LoggerActionFilter));
+});
+
+#endregion
 
 #region Services
 
@@ -104,7 +114,10 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
-
+    endpoints.MapControllerRoute(
+        name: "erreur",
+        pattern: "erreur",
+        defaults: new { controller = "erreur", action = "erreur" });
 
     #region Administration
 
