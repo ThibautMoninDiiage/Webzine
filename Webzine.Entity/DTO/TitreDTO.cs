@@ -19,7 +19,8 @@ namespace Webzine.Entity.DTO
 
         public string Chronique { get; set; }
 
-        public DateTime DateCreation { get; set; }
+        [JsonProperty("time_add")]
+        public double DateCreation { get; set; }
 
         [JsonProperty("duration")]
         public int Duree { get; set; }
