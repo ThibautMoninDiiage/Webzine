@@ -122,8 +122,6 @@ namespace Webzine.Models
         /// <returns>retourne tous les titres d'une plylist</returns>
         public async static Task<IEnumerable<TitreDTO>> GetPlaylistDeezer(long numeroPlaylist)
         {
-
-
             var deezerRequest = await HttpCall<DeezerRequestTitreDTO>("https://api.deezer.com/playlist/"+ numeroPlaylist +"/tracks");
             var titres = deezerRequest.Titres;
 
@@ -133,7 +131,6 @@ namespace Webzine.Models
                 titres.AddRange(deezerRequest.Titres);
             } 
             while (deezerRequest.Next != null);
-
 
             return titres;
         }
