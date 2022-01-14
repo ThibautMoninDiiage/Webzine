@@ -17,17 +17,25 @@ builder.Services.AddControllers();
 
 #endregion
 
-#region EFCore / SQLite
+#region Database
 
-//builder.Services.AddDbContext<WebzineDbContext>(
-//    options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
-//);
+var database = builder.Configuration.GetSection("DatabaseType");
 
-// docker run --name postgres-webzine -e POSTGRES_PASSWORD=webzinedbpassword -e POSTGRES_DB=webzinedb -e POSTGRES_USER=webzineuser -d postgres
+switch (database.Value)
+{
+    case "SQLITE":
+        builder.Services.AddDbContext<WebzineDbContext>(
+            options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
+        );
+        break;
 
-builder.Services.AddDbContext<WebzineDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("WebzinePostgres"))
-);
+    case "POSTGRES":
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        builder.Services.AddDbContext<WebzineDbContext>(
+            options => options.UseNpgsql(builder.Configuration.GetConnectionString("WebzinePostgres"))
+        );
+    break;
+}
 
 #endregion
 
@@ -85,6 +93,8 @@ using (var scope = app.Services.CreateScope())
         throw;
     }
 
+    var configuration = app.Configuration;
+
     var useDeezerApi = builder.Configuration.GetSection("UseDeezerApi");
 
     if (dataContext.Value == "DB")
@@ -93,11 +103,11 @@ using (var scope = app.Services.CreateScope())
         switch (useDeezerApi.Value)
         {
             case "false" :
-                DeezerSeedData.Initialize(services, false);
+                DeezerSeedData.Initialize(services, configuration, false);
             break;
 
             default:
-                DeezerSeedData.Initialize(services, true);
+                DeezerSeedData.Initialize(services, configuration, true);
             break;
         }
     }

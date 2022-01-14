@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Webzine.Business;
@@ -12,15 +13,13 @@ namespace Webzine.Models
 {
     public class DeezerSeedData
     {
-
-
         /// <summary>
         /// Initialise les données de l'application avec les data de l'api de deezer.
         /// </summary>
         /// <param name="serviceProvider"></param>
-        public async static void Initialize(IServiceProvider serviceProvider, bool useDeezerApi = true)
+        public async static void Initialize(IServiceProvider serviceProvider, IConfiguration configuration, bool useDeezerApi = true)
         {
-            using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>()))
+            using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>(), configuration))
             {
                 // if there is no titles on the application
                 if (context.Titres.Any())
