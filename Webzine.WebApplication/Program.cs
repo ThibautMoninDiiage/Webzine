@@ -12,13 +12,6 @@ using Webzine.WebApplication.Filtres;
 
 var builder = WebApplication.CreateBuilder(args);
 
-#region Services
-
-builder.Services.AddControllersWithViews(options =>
-{
-    options.Filters.Add(typeof(LoggerActionFilter));
-});
-
 #endregion
 
 #region Services
@@ -39,7 +32,7 @@ builder.Services.AddDbContext<WebzineDbContext>(
 
 var dataContext = builder.Configuration.GetSection("DataContext");
 
-// Seed la base de donn�es
+// Seed la base de données
 switch (dataContext.Value)
 {
     case "DB":
@@ -80,7 +73,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<WebzineDbContext>();
-        // Supprime et créé la base de données.
+        // Supprime et crÃ©Ã© la base de donnÃ©es.
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
     }
@@ -93,7 +86,7 @@ using (var scope = app.Services.CreateScope())
 
     if (dataContext.Value == "DB")
     {
-        // Seed la base de donn�es
+        // Seed la base de données
         switch (useDeezerApi.Value)
         {
             case "false" :
