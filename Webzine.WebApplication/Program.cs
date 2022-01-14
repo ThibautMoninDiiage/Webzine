@@ -80,6 +80,7 @@ using (var scope = app.Services.CreateScope())
     }
 
     var useDeezerApi = builder.Configuration.GetSection("UseDeezerApi");
+    long idPlaylist = Int64.Parse(builder.Configuration.GetSection("idPlaylist").Value);
 
     if (dataContext.Value == "DB")
     {
@@ -91,7 +92,7 @@ using (var scope = app.Services.CreateScope())
             break;
 
             default:
-                DeezerSeedData.Initialize(services, true);
+                DeezerSeedData.Initialize(services, true, idPlaylist);
             break;
         }
     }

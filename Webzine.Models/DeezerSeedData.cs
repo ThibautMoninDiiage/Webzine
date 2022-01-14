@@ -15,10 +15,12 @@ namespace Webzine.Models
 
 
         /// <summary>
-        /// Initialise les données de l'application avec les data de l'api de deezer.
+        ///  Methode qui initialise des donnees a partir de l'api de deezer ou des fichiers locaux json
         /// </summary>
         /// <param name="serviceProvider"></param>
-        public async static void Initialize(IServiceProvider serviceProvider, bool useDeezerApi = true)
+        /// <param name="useDeezerApi">booleen qui definit l'utilisation de l'api ou des fichier locaux</param>
+        /// <param name="idPlaylist"></param>
+        public async static void Initialize(IServiceProvider serviceProvider, bool useDeezerApi = true, long idPlaylist = 1109890291)
         {
             using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>()))
             {
@@ -37,7 +39,7 @@ namespace Webzine.Models
 
                     if (useDeezerApi)
                     {
-                        allTitres = await GetPlaylistDeezer();
+                        allTitres = await GetPlaylistDeezer(idPlaylist);
                         allStyles = await GetStylesDeezer();
 
                         allTitres.ToList().ForEach(t => t.AlbumDTO.CoverXl = pictureService.SavePicture(t.AlbumDTO.CoverXl, t.IdTitre.ToString()));
@@ -109,7 +111,7 @@ namespace Webzine.Models
             // Définition de l'URL de base.
             HttpResponseMessage response = httpClient.GetAsync(url).Result;
             response.EnsureSuccessStatusCode();
-            var entity = response.Content.ReadAsStringAsync().Result;
+            var entity = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(entity);
         }
 
@@ -118,12 +120,19 @@ namespace Webzine.Models
         /// Methode qui recupere les titres d'une playlist depuis l'api de deezer
         /// </summary>
         /// <returns>retourne tous les titres d'une plylist</returns>
-        public async static Task<IEnumerable<TitreDTO>> GetPlaylistDeezer(int numeroPlaylist = 1109890291)
+        public async static Task<IEnumerable<TitreDTO>> GetPlaylistDeezer(long numeroPlaylist)
         {
             var deezerRequest = await HttpCall<DeezerRequestTitreDTO>("https://api.deezer.com/playlist/"+ numeroPlaylist +"/tracks");
+            var titres = deezerRequest.Titres;
 
+            do
+            {
+                deezerRequest = await HttpCall<DeezerRequestTitreDTO>(deezerRequest.Next);
+                titres.AddRange(deezerRequest.Titres);
+            } 
+            while (deezerRequest.Next != null);
 
-            return deezerRequest.Titres;
+            return titres;
         }
 
 

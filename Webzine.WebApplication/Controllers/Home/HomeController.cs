@@ -8,14 +8,17 @@ namespace Webzine.WebApplication.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ITitreRepository _titreRepository;
-        private int numberOfTitlePerPages = 3;
+        private readonly ITitreRepository _titreRepository;
+        private readonly IConfiguration _configuration;
+        private readonly int _numberOfTitlePerPages;
 
 
-        public HomeController(ITitreRepository titreRepository, ILogger<HomeController> logger)
+        public HomeController(ITitreRepository titreRepository, ILogger<HomeController> logger, IConfiguration configuration)
         {
             _titreRepository = titreRepository;
             _logger = logger;
+            _configuration = configuration;
+            _numberOfTitlePerPages = Int32.Parse(_configuration["numberOfTitlePerPages"]);
         }
 
         public IActionResult Index(int numeroPage = 1)
@@ -23,10 +26,10 @@ namespace Webzine.WebApplication.Controllers
             _logger.LogInformation("Accès à la page d'accueil.");
 
 
-            int numberOfPage = _titreRepository.Count() / numberOfTitlePerPages;
+            int numberOfPage = _titreRepository.Count() / _numberOfTitlePerPages;
 
 
-            if (!(_titreRepository.Count() % numberOfTitlePerPages == 0))
+            if (!(_titreRepository.Count() % _numberOfTitlePerPages == 0))
             {
                 numberOfPage++;
             }
@@ -37,7 +40,7 @@ namespace Webzine.WebApplication.Controllers
             }
 
 
-            var orderedTitles = _titreRepository.FindTitres((numeroPage - 1) * numberOfTitlePerPages, numberOfTitlePerPages);
+            var orderedTitles = _titreRepository.FindTitres((numeroPage - 1) * _numberOfTitlePerPages, _numberOfTitlePerPages);
 
 
             var model = new HomeViewModel
@@ -45,7 +48,7 @@ namespace Webzine.WebApplication.Controllers
                 MostPopularTitles = _titreRepository.FindAll().OrderByDescending(t => t.NbLikes).Take(3),
                 OrderedTitles = orderedTitles,
                 NumberOfTitles = _titreRepository.Count(),
-                NumberOfTitlePerPages = numberOfTitlePerPages,
+                NumberOfTitlePerPages = _numberOfTitlePerPages,
                 CurrentPage = numeroPage,
                 NumberOfPages = numberOfPage
             };
