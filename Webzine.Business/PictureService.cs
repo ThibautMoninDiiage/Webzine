@@ -13,18 +13,10 @@ namespace Webzine.Business
 
         public string SavePicture(string urlPicture, string filename)
         {
-            using (WebClient webClient = new WebClient())
+            using (WebClient client = new WebClient())
             {
-                byte[] data = webClient.DownloadData(urlPicture);
-
-                using (MemoryStream mem = new MemoryStream(data))
-                {
-                    using (var yourImage = Image.FromStream(mem))
-                    {
-                        Directory.CreateDirectory($"wwwroot/{foldername}");
-                        yourImage.Save($"wwwroot/{foldername}/{filename}.jpg", ImageFormat.Jpeg);
-                    }
-                }
+                Directory.CreateDirectory($"wwwroot/{foldername}");
+                client.DownloadFile(new Uri(urlPicture), $"wwwroot/{foldername}/{filename}.jpg");
             }
             return $"/{foldername}/{filename}.jpg";
         }
