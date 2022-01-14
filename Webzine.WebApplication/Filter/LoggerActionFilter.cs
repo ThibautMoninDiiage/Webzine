@@ -9,7 +9,6 @@ namespace Webzine.WebApplication.Filter
         public void OnActionExecuted(ActionExecutedContext context)
         {
             // Logguer les informations en sortie de l'action
-            Console.WriteLine("Sortie action");
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
