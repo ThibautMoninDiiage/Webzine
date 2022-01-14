@@ -35,9 +35,18 @@ Une fois l’analyse faite, nous pouvions commencer la répartition des tâches.
 
 Chaque semaine, nous avions un jalon à valider (3 au total).
 * Le jalon 1 consistait à mettre en place toutes les pages du webzine ainsi que le squelette du projet.
+
+L'application se divise en plusieurs couches : 
+* La WebApplication qui repésente le projet avec toutes les vues et les controllers,
+* La documentation avec 
+
 Pour vérifier à ce que le site soit bien construit, nous avons utilisés des fausses données.
 
 * Le jalon 2 comporte la documentation, l'ajout de la base de données et un rendu dynamiques des pages.
+
+
+* Le jalon 3 représente la livraison avec l'application complète et fonctionnelle.
+Nous avons ajouté la prtie business pour avoir les services et l'api Deezer.
 
 Chaque jour, nous faisions un daily meeting afin de voir où en sont
 chaque personne dans leurs tâches, s’ils ont rencontré des problèmes
@@ -58,11 +67,12 @@ personnes :
 
 | Thomas         | Thibaut        | Aurélien       | Quentin R.     | Quentin B.     |  
 |:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|
+|Azure devops    |                |                |                |                |
 |                |                |                |                |                |
 |                |                |                |                |                |
 |                |                |                |                |                |
 |                |                |                |                |                |
-|                |                |                |                |                |
+
 
 
 ## Analyse des problèmes
@@ -83,6 +93,31 @@ Durant le deuxième, nous devions ajouter la base de donnée au projet.
 Cela nous a causé des problèmes car elle a été compliqué à mettre en place.
 Le dbContexte aisni qur la génération des tables n'ont pas fonctionné.
 
+Le déploiement avec la base de donnée postGres nous a posé problème: 
+il a été commencé trop tard, ce qui a fait que nous avons été en distanciel au moment ou nous nous y sommes 
+intéressé. Or les vpn fournit par les enseignants ne nous permattait pas d'avoir accès correctement aux machines pour pratiquer le déploiement. 
+Cependant nous avons pu tester notre base grace a docker.
+
 ## Conclusion
+Ce projet fut une réussite. Tous les jalons ont été atteints : 
+le visuel des pages a été respecté, elles sont fonctionnelles. 
+L’administration permet bien la gestion des données du site.
+
+Il reste cependant quelques aspects qu’il serait intéressant
+d’approfondir comme une connexion au site, pour gestionner les
+utilisateurs.
+
+Le faite que ce projet soit dans un domaine professionnel nous a
+permis de nous immerger dans le travail plus facilement. L’aide apporté
+par nos intervenants nous a aussi permis un travail confortable et
+productif.
+
+Ce projet fut une source de connaissances. Il a permis à chaque membre
+de l’équipe d’apprendre de nouvelles notions tels que l’asp.net core, le mvc…
+Il nous a permis aussi d’approfondir nos méthodes de gestion d’équipe,
+du review de code, nos connaissances du langage C\# et des requêtes linq.
+
+Il a été réussi grâce à une bonne cohésion d’équipe, du travail d'équipe entre les dev et l'ops. 
+Il y a eu un effort continu de chacun pour fournir le meilleur résultat.
 
 ## Annexes
