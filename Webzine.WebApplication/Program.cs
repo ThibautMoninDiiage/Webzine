@@ -23,10 +23,10 @@ builder.Services.AddControllers();
 //    options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
 //);
 
-// docker run --name postgre-webzine -e POSTGRES_PASSWORD=postgreSQLWebzine1234560 -d postgres
+// docker run --name postgres-webzine -e POSTGRES_PASSWORD=webzinedbpassword -e POSTGRES_DB=webzinedb -e POSTGRES_USER=webzineuser -d postgres
 
 builder.Services.AddDbContext<WebzineDbContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("WebzinePostgre"))
+    options => options.UseNpgsql(builder.Configuration.GetConnectionString("WebzinePostgres"))
 );
 
 #endregion
