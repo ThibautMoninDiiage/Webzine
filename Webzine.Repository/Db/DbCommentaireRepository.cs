@@ -29,7 +29,7 @@ namespace Webzine.Repository.Db
 
         public Commentaire Find(int id)
         {
-            return _webzineDbContext.Commentaires.Find(id);
+            return _webzineDbContext.Commentaires.Include(c => c.Titre).ThenInclude(t => t.Artiste).FirstOrDefault(c => c.IdCommentaire == id);
         }
 
         public IEnumerable<Commentaire> FindAll()
