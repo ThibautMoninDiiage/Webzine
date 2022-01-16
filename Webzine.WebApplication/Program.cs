@@ -98,11 +98,11 @@ using (var scope = app.Services.CreateScope())
         switch (useDeezerApi.Value)
         {
             case "false" :
-                DeezerSeedData.Initialize(services, false);
+                SeedDataDeezer.Initialize(services, false);
             break;
 
             default:
-                DeezerSeedData.Initialize(services, true, idPlaylist);
+                SeedDataDeezer.Initialize(services, true, idPlaylist);
             break;
         }
     }
