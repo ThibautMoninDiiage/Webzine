@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Webzine.Entity;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.ViewModels;
 
@@ -34,7 +33,7 @@ namespace Webzine.WebApplication.Controllers
                 numberOfPage++;
             }
 
-            if(numeroPage < 1 || numeroPage > numberOfPage)
+            if (numeroPage < 1 || numeroPage > numberOfPage)
             {
                 numeroPage = 1;
             }

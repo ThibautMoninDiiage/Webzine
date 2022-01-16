@@ -1,13 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using NLog.Web;
 using Webzine.Business;
 using Webzine.Business.Contracts;
 using Webzine.EntitiesContext;
 using Webzine.Models;
 using Webzine.Repository.Contracts;
-using Webzine.Repository.Local;
 using Webzine.Repository.Db;
+using Webzine.Repository.Local;
 using Webzine.WebApplication.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,7 +47,7 @@ switch (dataContext.Value)
         builder.Services.AddScoped<IStyleRepository, DbStyleRepository>();
         builder.Services.AddScoped<ICommentaireRepository, DbCommentaireRepository>();
         builder.Services.AddScoped<IRechercheService, RechercheService>();
-    break;
+        break;
 
     case "LOCAL":
         builder.Services.AddScoped<IArtisteRepository, LocalArtisteRepository>();
@@ -56,7 +55,7 @@ switch (dataContext.Value)
         builder.Services.AddScoped<IStyleRepository, LocalStyleRepository>();
         builder.Services.AddScoped<ICommentaireRepository, LocalCommentaireRepository>();
         builder.Services.AddScoped<IRechercheService, RechercheService>();
-    break;
+        break;
 }
 
 #endregion
@@ -97,13 +96,13 @@ using (var scope = app.Services.CreateScope())
         // Seed la base de données
         switch (useDeezerApi.Value)
         {
-            case "false" :
+            case "false":
                 SeedDataDeezer.Initialize(services, false);
-            break;
+                break;
 
             default:
                 SeedDataDeezer.Initialize(services, true, idPlaylist);
-            break;
+                break;
         }
     }
 
@@ -191,7 +190,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "artiste",
         pattern: "artiste/{nomArtiste}",
-        defaults: new { controller = "artiste", action = "index"});
+        defaults: new { controller = "artiste", action = "index" });
     #endregion
 
     #region Titre

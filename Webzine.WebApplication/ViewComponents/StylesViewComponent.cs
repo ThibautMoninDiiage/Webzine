@@ -5,7 +5,7 @@ namespace Webzine.WebApplication.ViewComponents
 {
     public class StylesViewComponent : ViewComponent
     {
-        private IStyleRepository _styleRepository;
+        private readonly IStyleRepository _styleRepository;
 
         public StylesViewComponent(IStyleRepository styleRepository)
         {
