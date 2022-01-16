@@ -83,20 +83,26 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
         [ActionName("Edit")]
         public IActionResult EditPost(int idTitre, int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles, string urlJaquette, string urlEcoute)
         {
-            var titre = new Entity.Titre()
+            var titre = _titreRepository.Find(idTitre);
+
+            // Si l'artiste est changé on l'update
+            if (!(titre.IdArtiste == idArtiste))
             {
-                IdTitre = idTitre,
-                IdArtiste = idArtiste,
-                Artiste = _artisteRepository.Find(idArtiste),
-                Libelle = nomTitre,
-                Album = nomAlbum,
-                Chronique = chronique,
-                DateSortie = datesortie,
-                UrlJaquette = urlJaquette,
-                UrlEcoute = urlEcoute,
-                Duree = duree,
-                TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList(),
-            };
+                titre.Artiste = _artisteRepository.Find(idArtiste);
+                titre.IdArtiste = idArtiste;
+            }
+
+
+            var newtitres = titre.TitresStyles.Intersect(_styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle))).ToList();
+            
+
+            titre.Libelle = nomTitre;
+            titre.Album = nomAlbum;
+            titre.Chronique = chronique;
+            titre.DateSortie = datesortie;
+            titre.Duree = duree;
+            titre.UrlJaquette = urlJaquette;
+            titre.UrlEcoute = urlEcoute;
 
             if (this.ModelState.IsValid)
             {
