@@ -5,7 +5,7 @@ using Webzine.Entity.Factory;
 
 namespace Webzine.Models
 {
-    public static class SeedData
+    public static class SeedDataLocal
     {
         // Fonction qui seed la base de données grâce aux factories créées.
         public static void Initialize(IServiceProvider serviceProvider)

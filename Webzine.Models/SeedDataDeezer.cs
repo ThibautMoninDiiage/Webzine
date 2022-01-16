@@ -10,10 +10,8 @@ using Webzine.Repository.Contracts;
 
 namespace Webzine.Models
 {
-    public class DeezerSeedData
+    public class SeedDataDeezer
     {
-
-
         /// <summary>
         ///  Methode qui initialise des donnees a partir de l'api de deezer ou des fichiers locaux json
         /// </summary>
@@ -114,7 +112,6 @@ namespace Webzine.Models
             return JsonConvert.DeserializeObject<T>(entity);
         }
 
-
         /// <summary>
         /// Methode qui recupere les titres d'une playlist depuis l'api de deezer
         /// </summary>
@@ -133,7 +130,6 @@ namespace Webzine.Models
 
             return titres;
         }
-
 
         /// <summary>
         /// Methode pour recuperer les styles de l'api de deezer
