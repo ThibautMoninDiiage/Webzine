@@ -8,7 +8,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
     [Area("Administration")]
     public class CommentaireController : Controller
     {
-        private ICommentaireRepository _commentaireRepository;
+        private readonly ICommentaireRepository _commentaireRepository;
 
         public CommentaireController(ICommentaireRepository commentaireRepository)
         {

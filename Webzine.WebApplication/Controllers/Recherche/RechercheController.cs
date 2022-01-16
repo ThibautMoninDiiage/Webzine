@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Business.Contracts;
-using Webzine.Repository.Contracts;
 using Webzine.WebApplication.ViewModels;
 
 namespace Webzine.WebApplication.Controllers.Contact
@@ -20,7 +19,7 @@ namespace Webzine.WebApplication.Controllers.Contact
         public IActionResult Index(string keyword = "")
         {
 
-            if(keyword == null)
+            if (keyword == null)
             {
                 keyword = "";
             }

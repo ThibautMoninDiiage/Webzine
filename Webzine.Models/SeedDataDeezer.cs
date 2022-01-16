@@ -5,8 +5,6 @@ using Webzine.Business;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
-using Webzine.Entity.Interfaces;
-using Webzine.Repository.Contracts;
 
 namespace Webzine.Models
 {
@@ -89,7 +87,7 @@ namespace Webzine.Models
 
                     context.AddRange(titres);
                 }
-                
+
                 // Save des changements effectués.
                 context.SaveChanges();
             }
@@ -118,14 +116,14 @@ namespace Webzine.Models
         /// <returns>retourne tous les titres d'une plylist</returns>
         public async static Task<IEnumerable<TitreDTO>> GetPlaylistDeezer(long numeroPlaylist)
         {
-            var deezerRequest = await HttpCall<DeezerRequestTitreDTO>("https://api.deezer.com/playlist/"+ numeroPlaylist +"/tracks");
+            var deezerRequest = await HttpCall<DeezerRequestTitreDTO>("https://api.deezer.com/playlist/" + numeroPlaylist + "/tracks");
             var titres = deezerRequest.Titres;
 
             do
             {
                 deezerRequest = await HttpCall<DeezerRequestTitreDTO>(deezerRequest.Next);
                 titres.AddRange(deezerRequest.Titres);
-            } 
+            }
             while (deezerRequest.Next != null);
 
             return titres;
