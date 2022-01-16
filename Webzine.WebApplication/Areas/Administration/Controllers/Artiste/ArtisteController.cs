@@ -9,7 +9,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
     [Area("Administration")]
     public class ArtisteController : Controller
     {
-        private readonly IArtisteRepository _artisteRepository;
+        private IArtisteRepository _artisteRepository;
 
         public ArtisteController(IArtisteRepository artisteRepository)
         {

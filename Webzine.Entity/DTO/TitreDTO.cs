@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity.DTO
 {

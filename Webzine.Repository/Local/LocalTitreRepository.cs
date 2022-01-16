@@ -40,7 +40,7 @@ namespace Webzine.Repository.Local
 
         public void IncrementNbLectures(Titre titre)
         {
-
+           
         }
 
         public void IncrementNbLikes(Titre titre)

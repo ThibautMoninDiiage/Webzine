@@ -1,4 +1,5 @@
-﻿using Webzine.Entity;
+﻿using System;
+using Webzine.Entity;
 
 namespace Webzine.Business.Contracts
 {

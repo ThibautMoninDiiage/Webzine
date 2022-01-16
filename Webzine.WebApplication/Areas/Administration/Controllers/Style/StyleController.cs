@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Webzine.Entity;
+using Microsoft.AspNetCore.Mvc;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
@@ -7,7 +8,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
     [Area("Administration")]
     public class StyleController : Controller
     {
-        private readonly IStyleRepository _styleRepository;
+        private IStyleRepository _styleRepository;
 
 
         public StyleController(IStyleRepository styleRepository)

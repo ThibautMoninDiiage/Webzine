@@ -1,5 +1,8 @@
 ﻿using System.Net;
 using Webzine.Business.Contracts;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace Webzine.Business
 {

@@ -7,9 +7,9 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
     [Area("Administration")]
     public class TitreController : Controller
     {
-        private readonly ITitreRepository _titreRepository;
-        private readonly IStyleRepository _styleRepository;
-        private readonly IArtisteRepository _artisteRepository;
+        private ITitreRepository _titreRepository;
+        private IStyleRepository _styleRepository;
+        private IArtisteRepository _artisteRepository;
 
 
         public TitreController(ITitreRepository titreRepository, IStyleRepository styleRepository, IArtisteRepository artisteRepository)
