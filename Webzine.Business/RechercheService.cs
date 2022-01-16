@@ -23,7 +23,7 @@ namespace Webzine.Business
 
         public IEnumerable<Titre> RechercherTitre(string keyword = "")
         {
-            return _titreRepository.FindAll().Where(t => t.Libelle.ToLower().Contains(keyword.ToLower()));
+            return _titreRepository.FindAll().Where(t => t.Libelle.ToLower().Contains(keyword.ToLower()) || t.Artiste.Nom.ToLower().Contains(keyword.ToLower()));
 
         }
     }
