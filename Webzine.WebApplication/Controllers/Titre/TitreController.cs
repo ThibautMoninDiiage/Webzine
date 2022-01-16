@@ -8,7 +8,7 @@ namespace Webzine.WebApplication.Controllers.Title
     public class TitreController : Controller
     {
         private readonly ILogger<TitreController> _logger;
-        private ITitreRepository _titreRepository;
+        private readonly ITitreRepository _titreRepository;
         private readonly ICommentaireRepository _commentaireRepository;
 
 
