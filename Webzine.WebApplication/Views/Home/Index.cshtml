@@ -25,7 +25,7 @@
                 @*Contenu*@
                 <div class="col-md-9">
                     @*Titre*@
-                    <div class="card-title"><h4 class="text-primary">@titre.Artiste.Nom - @titre.Libelle</h4></div>
+                    <div class="card-title"><h4 class="text-primary"><a asp-controller="artiste" asp-route-nomArtiste="@titre.Artiste.Nom">@titre.Artiste.Nom</a> - <a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h4></div>
                     @*Description*@
                     <div style="text-align: justify">
                         @if (@titre.Chronique.Length >= 200)
