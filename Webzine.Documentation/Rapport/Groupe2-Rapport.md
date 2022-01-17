@@ -67,8 +67,14 @@ Nous avons aussi rencontrées de nouvelles difficultées mais grâce à l'entrai
 **Thomas BERNARD :** Ce projet m'a énormément apporté, j'avais déjà utilisé de l'ASP.NET et EF CORE lors de mon BTS, ces technologies m'étaient donc pas étrangères. De plus je déceloppe en Xamarin dans mon entreprise, donc je connaissais déjà les injections de dépendances, les repositories etc... 
 Nous n'avons donc pas bloqué sur ces points là. En tant que chef de projet j'étais déçu de ne pas pouvoir passer mon temps à développer et devoir faire de la gestion de projet à la place ( répartition des tâches, call client etc...) mais ce fût tout de même une bonne expérience. Je tiens à remercier énormément Thibaut MONIN et Quentin RHIGHI d'avoir travaillé d'arrache pied afin de rendre les différents jalons.
 
+**Thibaut MONIN :** Tout d'abord, je tiens à remercier mon chef de projet Thomas BERNARD, qui a orchestré ce projet de la meilleure des manières en nous proposant régulièrement de l'aide grâce à son panel de compétences. Je tiens également à féliciter Quentin RHIGHI qui a été le seul OPS de ce groupe et qui s'en est sorti plus que respectablement étant donné la masse de travail qu'il a eut à réaliser durant ce projet.
+Concernant les technologies utilisées, j'avais déjà utilisé ASP.NET Core et EF Core dans mon année de BTS.
+Pour ce qui est de Docker je l'ai utilisé personnellement pour divers projets et en entreprise.
+J'ai également utilisé Postman pour tester mes requêtes API, qui provenaient de l'API de Deezer.
 
-
-
-
-
+J'ai rencontré des difficultés sur le seeding de la base de données, du côté de la création de la base.
+Également des difficultés du côté du CI/CD, j'ai été beaucoup aidé par Hyacinthe BRIAND et Richard DUCHANOY que je remercie énormément, sans eux l'intégration continue et le déploiement n'auraient pas pu être mis en place !
+Je suis fier d'avoir participé à ce projet, car il nous a beaucoup appris à gérer un projet de A à Z, de l'organisation du projet au sein de l'équipe, de la gestion du temps, des la gestion des tâches, la répartition de ces tâches entre les membres du groupe.
+L'approche des différents problèmes et la manière de les résoudre.
+Le fait de proposer un projet qu'il est possible de maintenir et de faire évoluer est très satisfaisant.
+Je remercie tout le monde pour cette expérience enrichissante !
