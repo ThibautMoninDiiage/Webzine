@@ -83,6 +83,12 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
         [ActionName("Edit")]
         public IActionResult EditPost(int idTitre, int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles, string urlJaquette, string urlEcoute)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return Edit(idTitre);
+            }
+
+            // On récupère l'instance en bdd
             var titre = _titreRepository.Find(idTitre);
 
             // Si l'artiste est changé on l'update
@@ -92,9 +98,20 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 titre.IdArtiste = idArtiste;
             }
 
+            // On retire tous les styles retirés
+            titre.TitresStyles.RemoveAll(s => !idStyles.Contains(s.IdStyle));
 
-            var newtitres = titre.TitresStyles.Intersect(_styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle))).ToList();
-            
+            var idStylesAlreadyInTitre = titre.TitresStyles.Select(titre => titre.IdStyle).ToList();
+
+            // On ajoute les nouveaux styles au titre (on vérifie de ne pas ajouter ceux déjà présents)
+            var newStyles = _styleRepository
+                .FindAll()
+                .Where(style => idStyles.Contains(style.IdStyle) && !idStylesAlreadyInTitre.Contains(style.IdStyle))
+                .ToList();
+
+            //titre.TitresStyles.AddRange(newStyles);
+
+
 
             titre.Libelle = nomTitre;
             titre.Album = nomAlbum;
@@ -104,12 +121,10 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
             titre.UrlJaquette = urlJaquette;
             titre.UrlEcoute = urlEcoute;
 
-            if (this.ModelState.IsValid)
-            {
-                _titreRepository.Update(titre);
-                return Index();
-            }
-            return Edit(idTitre);
+
+            _titreRepository.Update(titre);
+            
+            return Index();
         }
 
 
