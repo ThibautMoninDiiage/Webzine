@@ -11,7 +11,7 @@
             <ul>
                 @foreach (var style in Model.ToList())
                 {
-                    <li><a asp-route-libelle="@style.Libelle" asp-controller="StyleSearch">@style.Libelle</a></li>
+                    <li><a asp-route-libelle="@style.Libelle" asp-controller="StyleSearch" asp-action="">@style.Libelle</a></li>
                 }
             </ul>
         </div>

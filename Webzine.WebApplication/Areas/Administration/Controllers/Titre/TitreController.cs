@@ -109,7 +109,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 .Where(style => idStyles.Contains(style.IdStyle) && !idStylesAlreadyInTitre.Contains(style.IdStyle))
                 .ToList();
 
-            //titre.TitresStyles.AddRange(newStyles);
+            titre.TitresStyles.AddRange(newStyles);
 
 
 
