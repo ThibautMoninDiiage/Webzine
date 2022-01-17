@@ -8,9 +8,9 @@ namespace Webzine.Repository.Db
     public class DbStyleRepository : IStyleRepository
     {
         private readonly WebzineDbContext _webzineDbContext;
-        public DbStyleRepository()
+        public DbStyleRepository(WebzineDbContext context)
         {
-            _webzineDbContext = new WebzineDbContext();
+            _webzineDbContext = context;
         }
 
         public void Add(Style style)

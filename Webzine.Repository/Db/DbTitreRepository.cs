@@ -9,9 +9,9 @@ namespace Webzine.Repository.Db
     {
         private readonly WebzineDbContext _webzineDbContext;
 
-        public DbTitreRepository()
+        public DbTitreRepository(WebzineDbContext context)
         {
-            _webzineDbContext = new WebzineDbContext();
+            _webzineDbContext = context;
         }
 
         public void AddTitre(Titre titre)

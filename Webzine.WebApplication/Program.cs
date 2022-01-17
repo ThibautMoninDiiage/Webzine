@@ -26,11 +26,25 @@ builder.Services.AddControllers();
 
 #endregion
 
-#region EFCore / SQLite
+#region Database
 
-builder.Services.AddDbContext<WebzineDbContext>(
-    options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
-);
+var database = builder.Configuration.GetSection("DatabaseType");
+
+switch (database.Value)
+{
+    case "SQLITE":
+        builder.Services.AddDbContext<WebzineDbContext>(
+            options => options.UseSqlite(builder.Configuration.GetConnectionString("WebzineDbContext"))
+        );
+        break;
+
+    case "POSTGRES":
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        builder.Services.AddDbContext<WebzineDbContext>(
+            options => options.UseNpgsql(builder.Configuration.GetConnectionString("WebzinePostgres"))
+        );
+    break;
+}
 
 #endregion
 
@@ -78,8 +92,9 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<WebzineDbContext>();
-        // Supprime et crÃ©Ã© la base de donnÃ©es.
+        var context = builder.Services.BuildServiceProvider().GetRequiredService<WebzineDbContext>();
+
+        // Supprime et créé la base de données.
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
     }
@@ -87,6 +102,8 @@ using (var scope = app.Services.CreateScope())
     {
         throw;
     }
+
+    var configuration = app.Configuration;
 
     var useDeezerApi = builder.Configuration.GetSection("UseDeezerApi");
     long idPlaylist = Int64.Parse(builder.Configuration.GetSection("idPlaylist").Value);
@@ -96,7 +113,7 @@ using (var scope = app.Services.CreateScope())
         // Seed la base de données
         switch (useDeezerApi.Value)
         {
-            case "false":
+            case "false" :
                 SeedDataDeezer.Initialize(services, false);
                 break;
 
