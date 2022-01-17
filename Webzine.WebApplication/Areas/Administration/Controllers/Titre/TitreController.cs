@@ -23,7 +23,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
         {
             var model = new TitleViewModel
             {
-                Titres = _titreRepository.FindAll()
+                Titres = _titreRepository.FindAll().OrderByDescending(t => t.DateCreation)
             };
             return this.View("Index", model);
         }
