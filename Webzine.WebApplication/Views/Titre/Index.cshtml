@@ -6,7 +6,7 @@
 
 <div>
     <br />
-    <h1><a asp-controller="artiste" asp-route-nomArtiste="@Model.Titre.Artiste.Nom">@Model.Titre.Artiste.Nom</a> - @Model.Titre.Libelle</h1>
+    <h1><a asp-action="" asp-controller="artiste" asp-route-nomArtiste="@Model.Titre.Artiste.Nom">@Model.Titre.Artiste.Nom</a> - @Model.Titre.Libelle</h1>
     <hr />
     <div class="row mt-4">
         <div class="col-xs-12 col-sm-3"><i class="fas fa-calendar"></i> Le @Model.Titre.DateCreation.ToString("dd/MM/yyyy à hh:mm")</div>
@@ -15,7 +15,7 @@
             <i class="fas fa-tags"></i> Styles :
             @foreach (var @style in @Model.Titre.TitresStyles)
             {
-                <a asp-controller="StyleSearch" asp-route-libelle="@style.Libelle">@style.Libelle</a>
+                <a asp-action="" asp-controller="StyleSearch" asp-route-libelle="@style.Libelle">@style.Libelle</a>
             }
         </div>
         <div class="col-xs-12 col-sm-1"></div>
