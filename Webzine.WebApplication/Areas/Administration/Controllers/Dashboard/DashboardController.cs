@@ -24,8 +24,8 @@ namespace Webzine.WebApplication.Areas.Administration.Controllers.Dashboard
             var model = new DashboardViewModel
             {
                 NbArtistes = _artisteRepository.FindAll().Count(), // ok
-                ArtistePlusChronique = _artisteRepository.FindAll().FirstOrDefault(),
-                ArtistePlusTitreAlbumsDistincts = _artisteRepository.FindAll().FirstOrDefault(),
+                ArtistePlusChronique = _artisteRepository.FindAll().OrderByDescending(a => a.Titres.Sum(t => t.NbLectures)).FirstOrDefault(), // ok
+                ArtistePlusTitreAlbumsDistincts = _artisteRepository.FindAll().OrderByDescending(a => a.Titres.Select(t => t.Album).Distinct().Count()).FirstOrDefault(),
                 NbBiographies = _artisteRepository.FindAll().Select(a => a.Biographie).Where(b => !string.IsNullOrEmpty(b)).Count(), // ok
                 TitreLePlusVu = _titreRepository.FindAll().OrderByDescending(titre => titre.NbLectures).FirstOrDefault(), // ok
                 NbTitres = _titreRepository.Count(), // ok
