@@ -11,7 +11,7 @@ using Webzine.Repository.Contracts;
 
 namespace Webzine.Models
 {
-    public class DeezerSeedData
+    public class SeedDataDeezer
     {
         /// <summary>
         /// Initialise les données de l'application avec les data de l'api de deezer.
