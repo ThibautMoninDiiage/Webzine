@@ -17,7 +17,6 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Administration\Views\Artiste\" />
-    <Folder Include="Areas\Administration\ViewModels\" />
     <Folder Include="Areas\Administration\Controllers\Artiste\" />
     <Folder Include="Areas\Administration\Views\Commentaire\" />
     <Folder Include="Areas\Administration\Controllers\Commentaire\" />
