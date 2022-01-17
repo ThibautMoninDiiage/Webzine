@@ -9,9 +9,9 @@ namespace Webzine.Repository.Db
     {
         private readonly WebzineDbContext _webzineDbContext;
 
-        public DbArtisteRepository()
+        public DbArtisteRepository(WebzineDbContext context)
         {
-            _webzineDbContext = new WebzineDbContext();
+            _webzineDbContext = context;
         }
 
         public void AddArtiste(Artiste artiste)

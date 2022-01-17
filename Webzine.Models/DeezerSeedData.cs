@@ -17,9 +17,9 @@ namespace Webzine.Models
         /// Initialise les données de l'application avec les data de l'api de deezer.
         /// </summary>
         /// <param name="serviceProvider"></param>
-        public async static void Initialize(IServiceProvider serviceProvider, IConfiguration configuration, bool useDeezerApi = true)
+        public async static void Initialize(IServiceProvider serviceProvider, bool useDeezerApi = true)
         {
-            using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>(), configuration))
+            using (var context = new WebzineDbContext(serviceProvider.GetRequiredService<DbContextOptions<WebzineDbContext>>()))
             {
                 // if there is no titles on the application
                 if (context.Titres.Any())

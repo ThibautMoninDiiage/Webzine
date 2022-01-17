@@ -83,7 +83,8 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<WebzineDbContext>();
+        var context = builder.Services.BuildServiceProvider().GetRequiredService<WebzineDbContext>();
+
         // Supprime et créé la base de données.
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
@@ -103,11 +104,11 @@ using (var scope = app.Services.CreateScope())
         switch (useDeezerApi.Value)
         {
             case "false" :
-                DeezerSeedData.Initialize(services, configuration, false);
+                DeezerSeedData.Initialize(services, false);
             break;
 
             default:
-                DeezerSeedData.Initialize(services, configuration, true);
+                DeezerSeedData.Initialize(services, true);
             break;
         }
     }
