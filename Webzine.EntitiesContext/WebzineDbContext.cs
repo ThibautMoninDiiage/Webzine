@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Webzine.Entity;
 
 namespace Webzine.EntitiesContext
@@ -12,20 +13,10 @@ namespace Webzine.EntitiesContext
         public DbSet<Commentaire> Commentaires { get; set; }
         public DbSet<Style> Styles { get; set; }
 
-        public WebzineDbContext()
-        {
-
-        }
-
         // Le constructeur défini le chemin d'accès de création de la base de données "locale"
         public WebzineDbContext(DbContextOptions<WebzineDbContext> options) : base(options)
         {
 
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlite("Data Source=Webzine.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

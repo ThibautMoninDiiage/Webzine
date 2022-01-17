@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Webzine.Business;
 using Webzine.EntitiesContext;
 using Webzine.Entity;
 using Webzine.Entity.DTO;
+using Webzine.Entity.Interfaces;
+using Webzine.Repository.Contracts;
 
 namespace Webzine.Models
 {
@@ -12,6 +15,7 @@ namespace Webzine.Models
     {
         /// <summary>
         ///  Methode qui initialise des donnees a partir de l'api de deezer ou des fichiers locaux json
+        /// Initialise les données de l'application avec les data de l'api de deezer.
         /// </summary>
         /// <param name="serviceProvider"></param>
         /// <param name="useDeezerApi">booleen qui definit l'utilisation de l'api ou des fichier locaux</param>
@@ -39,6 +43,7 @@ namespace Webzine.Models
                         allStyles = await GetStylesDeezer();
 
                         allTitres.ToList().ForEach(t => t.AlbumDTO.CoverXl = pictureService.SavePicture(t.AlbumDTO.CoverXl, t.IdTitre.ToString()));
+
 
                         jsonService.WriteJsonFile<List<TitreDTO>>(@"TitresFromDeezer.json", allTitres.ToList());
                         jsonService.WriteJsonFile<List<StyleDTO>>(@"StylesFromDeezer.json", allStyles.ToList());
@@ -87,7 +92,6 @@ namespace Webzine.Models
 
                     context.AddRange(titres);
                 }
-
                 // Save des changements effectués.
                 context.SaveChanges();
             }
@@ -128,6 +132,7 @@ namespace Webzine.Models
 
             return titres;
         }
+
 
         /// <summary>
         /// Methode pour recuperer les styles de l'api de deezer
