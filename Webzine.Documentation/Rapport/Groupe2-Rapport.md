@@ -77,4 +77,5 @@ J'ai rencontré des difficultés sur le seeding de la base de données, du côt�
 Je suis fier d'avoir participé à ce projet, car il nous a beaucoup appris à gérer un projet de A à Z, de l'organisation du projet au sein de l'équipe, de la gestion du temps, des la gestion des tâches, la répartition de ces tâches entre les membres du groupe.
 L'approche des différents problèmes et la manière de les résoudre.
 Le fait de proposer un projet qu'il est possible de maintenir et de faire évoluer est très satisfaisant.
-Je remercie tout le monde pour cette expérience enrichissante !
+Je remercie tous les intervenants, Richard DUCHANOY, Kevin JOSSELIN, Clement BEY, Hyacinthe BRIAND pour leurs interventions pertinentes et pour le temps qu'ils ont consacrés à nous aider.
+
