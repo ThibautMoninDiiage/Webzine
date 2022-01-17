@@ -61,8 +61,11 @@ La solution que nous avons trouvé la plus adapté est l'utilisation de DTO afin
 
 **_Conclusion_**
 
-Le projet Webzine a apporté énormément de compétences à l'ensemble du groupe. Plusieurs de ces compétences avaient déjà été apprises lors de précédents projet ( Travail équipe, gestion de projet) mais elle ont pu être améliorées et perfectionées lors de ce projet. 
-Nous avons aussi rencontrées de nouvelles difficultées mais grâce à l'entraide et au coups de mains des intervenants nous avons pu toutes les surmontées. La lecture et le respect d'un cahier des charges aussi détaillé fût très complexe. Le fait que ASP.Net 6 est une technologie très récente causa certains problèmes et rendu leurs résolution complexe.
+Le projet Webzine a apporté énormément de **compétences** à l'ensemble du groupe. Plusieurs de ces compétences avaient déjà été apprises lors de précédents projet ( Travail équipe, gestion de projet) mais elle ont pu être améliorées et perfectionées lors de ce projet. 
+Nous avons aussi rencontrées de nouvelles difficultées mais grâce à l'entraide et au coups de mains des intervenants nous avons pu toutes les surmontées. La lecture et le respect d'un cahier des charges aussi détaillé fût très complexe. Le fait que ASP.Net 6 est une **technologie très récente** causa certains problèmes et rendu leurs résolution complexe.
+
+**Thomas BERNARD :** Ce projet m'a énormément apporté, j'avais déjà utilisé de l'ASP.NET et EF CORE lors de mon BTS, ces technologies m'étaient donc pas étrangères. De plus je déceloppe en Xamarin dans mon entreprise, donc je connaissais déjà les injections de dépendances, les repositories etc... 
+Nous n'avons donc pas bloqué sur ces points là. En tant que chef de projet j'étais déçu de ne pas pouvoir passer mon temps à développer et devoir faire de la gestion de projet à la place ( répartition des tâches, call client etc...) mais ce fût tout de même une bonne expérience. Je tiens à remercier énormément Thibaut MONIN et Quentin RHIGHI d'avoir travaillé d'arrache pied afin de rendre les différents jalons.
 
 
 
