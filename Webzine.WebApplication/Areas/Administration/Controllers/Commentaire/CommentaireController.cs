@@ -19,7 +19,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
         {
             var model = new CommentViewModel
             {
-                Commentaires = _commentaireRepository.FindAll()
+                Commentaires = _commentaireRepository.FindAll().OrderByDescending(c => c.DateCreation).Take(10)
             };
 
             return this.View("Index", model);
