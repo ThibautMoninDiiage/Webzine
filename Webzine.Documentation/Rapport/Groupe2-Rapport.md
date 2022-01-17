@@ -36,7 +36,7 @@ Pour faciliter la vie du chef de projet, Azure devops permet de créer des **Das
 
 _Voici le dashboard de l'équipe :_
 
-![le logo de Framasoft](Images/TeamDashboard.png)
+![Dashboard](Images/TeamDashboard.png)
 
 On peut voir le nombre d'heures passé par chaque membre du projet lors du jalon et lors du projet entier. Le nombre de tâche/feature/usersories tôtales et toutes celles qui sont fermées. Finalement le **burndown** nous donne un résumé rapide de l'avancement du projet en plus d'une estimation du temps restant. Ce dashboard est très interessant pour le chef de projet comme le reste de l'équipe.
 
@@ -46,6 +46,12 @@ Comme outil de communication principal nous avons utilisé Teams. Grâce à cet 
 **_Analyse des problèmes_**
 
 Premièrement nous allons parler des différentes difficultées rencontrées dans la partie dev. Tout d'abord la mise en place de la base de données SQLite fut assez compliquée. En effet nous utilisons du code first, c'est à dire que nos entités génère notre base de donnée. 
+
+![Shéma code first](https://www.entityframeworktutorial.net/images/EF5/code-first.png)
+
+Certaines de nos classes ne se transformaient pas en table correctement, certaines clés primaires étaient manquantes... En lisant de la documentation et en modifiant certaines de nos entités les tâbles ont fini par se générer automatiquement. 
+
+
 
 
 
