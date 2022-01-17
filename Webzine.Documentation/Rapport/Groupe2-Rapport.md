@@ -1,129 +1,33 @@
-﻿# **Rapport de projet de développement d'un webzine**
-
-## Introduction
-
-    Nous avions pour projet de créer un Webzine de musiques
-    pendant 4 semaines. Les clients sont M. Richard DARNOY et M. Josselin KEVIN.
-
-    Un webzine est un magazine publié sous forme d'un site web, 
-    sans contrepartie imprimée. Le webzine peut être publié par des amateurs 
-    ou des journalistes professionnels. Il peut être gratuit ou payant.
-
-    Dans ce projet, le webzine regroupe une partie administration 
-    avec la possibilité d’ajouter des musiques avec des artistes, des
-    styles musicaux.
-
-    Chaque titre possède une chronique. Une chronique est un court article
-    qui est consacré au domaine concerné, ici un titre de musique. 
-    Les visiteurs peuvent aimer un titre et mettre un commentaire.
-
-## Organisation de l'équipe
-
-    L'équipe est composée de 4 développeurs et 1 réseau : 
-
-    * Quentin RHIGHI (réseau)
-    * Quentin BOURDELOT (développeur)
-    * Aurélien BISSEY (développeur)
-    * Thomas BERNARD (développeur | chef de projet)
-    * Thibaut MONIN (développeur)
-
-    Nous avons commencé par mettre en place un Azure Devops afin d'organiser proprement le projet grâce à la méthode Agile.
-    Nous avons analysé les besoins clients, en utilisant le cahier des charges 
-    donné par le client afin d’obtenir le résultat le plus convainquant pour le client.
-    Une fois l’analyse faite, nous pouvions commencer la répartition des tâches.
-
-    Chaque semaine, nous avions un jalon à valider (3 au total).
-    * Le jalon 1 consistait à mettre en place toutes les pages du webzine ainsi que le squelette du projet.
-
-        L'application se divise en plusieurs couches : 
-        * La WebApplication qui repésente le projet avec toutes les vues et les controllers,
-        * La documentation avec les rapports, les documents pour les installations a faire,
-        * Le repository pour tout ce qui concerne la gestion des données,
-        * La couche model pour les seeder,
-        * les entities qui représentent les données pour les bases,
-        * La couche business pour les services.
-
-        Pour vérifier à ce que le site soit bien construit, nous avons utilisés des fausses données.
-        Nous avons aussi fait des tests unitaires pour voir si la création des données était correcte.
-
-    * Le jalon 2 comporte la documentation, l'ajout de la base de données et un rendu dynamiques des pages.
-        Nous avons fait à ce que les données ne soient plus en local mais lié à une base de donnée. 
-        Nous avons utilisé SQLite comme base de donnée. De plus, pour compléter automatiquement cette base, nous avons ajouté la couche repository.
-
-    * Le jalon 3 représente la livraison avec l'application complète et fonctionnelle, les documents finis.
-        Nous avons ajouté la partie business pour avoir les services et l'api Deezer.
-        L'application peut maintenant aussi utilisé SQLServer ou PstGresSQL comme base de donnée avec les logs applicatifs.
-        Une gestion des erreurs a été réalisable grâce à l'utilisation des filtres.
-        
-    
-    Chaque jour, nous faisions un daily meeting afin de voir où en sont
-    chaque personne dans leurs tâches, s’ils ont rencontré des problèmes
-    spécifiques et surtout pour voir ce qu’il leurs reste à faire.
-
-    Durant les deux premiers jours, la communication avec les intervenants pour nous aidés dans le projet se faisait en présentiel, 
-    puis via des réunions vidéo et messages sur Teams.
-
-    Les tâches étaient terminées lorsqu’une pull request était validée. 
-    Il y a forcément deux personnes qui doivent valider pour la valider, 
-    donc faire du code review pour vérifier que le code est bon et qu’il n’y a pas d’erreur.
-    Une fois la tâche terminée, la personne assignée sur la tâche doit remplir le nombre
-    d’heures sur cette tâche et la clore.
-
-    Voici donc un tableau récapitulatif de la répartition des tâches par
-    personnes :
-
-    | Thomas         | Thibaut        | Aurélien       | Quentin R.     | Quentin B.     |  
-    |:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|
-    |Azure devops    |Main Page       |Rapport         |Zabbix          |Admin Page      |
-    |Artist page     |Test unitaire   |Contact page    |Fail2Ban        |Search bar      |
-    |EF Core + SQLite|Repository      |Layout          |NGINX           |View Component  |
-    |Deezer Api      |Seeder          |Docker file     |ELK             |Filtre error    |
-    |Commentaire     |Postgres        |SearchService   |Config AppArmor |Model State     |
+﻿#**RAPPORT D'EQUIPE**
 
 
+**_Introduction_**
 
-## Analyse des problèmes
+Le projet se nomme **Webzine** c'est une plateforme permettant de lire des chroniques musicales sur nos titres préférés. Ces titres peuvent être administrés : nous pouvons en créer des nouveaux, les éditer et finalement les supprimer. 
+Les clients de ce projet son **Richard DUCHANOY**, **Kevin JOSSELIN** et **Clement BEY**. Ils sont aussi nos intervenants pour les différents technologies à utiliser dans ce projet.
 
-    Durant ce projet nous avons rencontré différents problèmes.
+Le projet se déroule sur 4 semaines et se divise en 3 principaux jalons :
 
-    Le problème principal durant le premier jalon fut l’aspect visuel des pages. 
-    Etant donné que les clients voulaient un design précis, certaines pages/composants 
-    furent compliqués à mettre en place. Par exemple lors de l’affichage des pages d'un artiste, 
-    le nom de l’album n’est pas au-dessus de la jaquette. 
-    Nous avons du regarder précisement les exemples sur le cahier des charges. 
+    1. Premier jalon : du 13/12/21 au 20/12/21
+    2. Second jalon : du 20/12/21 au 08/01/22
+    3. Dernier jalon : du 08/01/22 au 18/01/22
 
-    Lors du déploiement test, la création du fichier DockerFile a été compliqué à cause des liens faussé vers les projets.
-    Nous avons tout d’abord créer le fichier à la main, puis nous avons utilisé le "container orchestrator" inscrit dans Visual Studio.
-    Malgré cela, il a fallut remodifier le fichier afin qu’il soit conforme.
+**La livraison finale du projet sera réalisée le 18/01/22 à 21h00**
 
-    Durant le deuxième, nous devions ajouter la base de donnée au projet. 
-    Cela nous a causé des problèmes, le dbContexte aisni que la génération des tables n'ont pas fonctionné.
-    
-    Le déploiement avec la base de donnée postGres nous a posé problème: 
-    il a été commencé trop tard, ce qui a fait que nous avons été en distanciel au moment ou nous nous y sommes 
-    intéressé. Or les vpn fournit par les enseignants ne nous permattait pas d'avoir accès correctement aux machines pour pratiquer le déploiement. 
-    Cependant nous avons pu tester notre base grâce a docker.
+Le projet était donné avec un cahier des charges très complet, nous savions exactement ce qu'il fallait livrer à chacun des jalon. Voici une liste des principales livraison que nous avons réalisé pour chaque jalon :
 
-## Conclusion
-    Ce projet fut une réussite. Tous les jalons ont été atteints : 
-    le visuel des pages a été respecté, elles sont fonctionnelles. 
-    L’administration permet bien la gestion des données du site.
+Les différentes livraisons : 
 
-    Il reste cependant quelques aspects qu’il serait intéressant
-    d’approfondir comme une connexion au site, pour gestionner les
-    utilisateurs.
+    1. Jalon 1 : Architecture de l'application, création du serveur de backup, création de premières métriques, création de zbbix en mode séparré
+    2. Jalon 2  : Application fonctionnant avec des données dynamiques. ELK, installation dashboard graphique, renforcement de VM (App Armor), sauvegardes fonctionnelles, CI/CD
+    3. Jalon 3 : Application entièrement finalisée, Firewalling de toutes les VM et services, création de toutes les métrqiues de Zabbix, rédaction du PRA, Remontée des logs ELK, Métrique Zabbix, App armor, déploiement Webzine + BDD + logs Webzine sur ELK, déploiement On Premise et finir documentation
 
-    Le faite que ce projet soit dans un domaine professionnel nous a
-    permis de nous immerger dans le travail plus facilement. L’aide apporté
-    par nos intervenants nous a aussi permis un travail confortable et
-    productif.
 
-    Ce projet fut une source de connaissances. Il a permis à chaque membre
-    de l’équipe d’apprendre de nouvelles notions tels que l’asp.net core, le mvc…
-    Il nous a permis aussi d’approfondir nos méthodes de gestion d’équipe,
-    du review de code, nos connaissances du langage C\# et des requêtes linq.
+**_Organisation de l'équipe_**
 
-    Il a été réussi grâce à une bonne cohésion d’équipe, du travail d'équipe entre les dev et l'ops. 
-    Il y a eu un effort continu de chacun pour fournir le meilleur résultat.
+Nous sommes l'équipe numéro 2, nous sommes composé de **quatre développeurs** : Thibaut MONIN, QUENTIN BOURDELOT, Aurelien BISSEY et d'**un OPS** Quentin RHIGHI. Le chef de projet est **Thomas BERNARD**
 
-## Annexes
+Nous utilisons Azure Devops pour la répartition des tâches, la gestion du code source, le monitoring du projet. [Lien Azure Devops](https://dev.azure.com/2024-D1-P3-E2/Webzine)
+
+Pour faciliter la vie du chef de projet, Azure devops permet de créer des **Dashboard** afin de diriger un projet. Nous avons alors créé deux différents dashboard, un pour montrer au client l'avancement du projet. Et un pour l'équipe pour faciliter la gestion des tâches et du nombre d'heures.
+
