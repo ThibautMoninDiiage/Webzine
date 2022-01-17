@@ -47,7 +47,7 @@ Comme outil de communication principal nous avons utilisé Teams. Grâce à cet 
 
 Premièrement nous allons parler des différentes difficultées rencontrées dans la partie dev. Tout d'abord la mise en place de la base de données SQLite fut assez compliquée. En effet nous utilisons du code first, c'est à dire que nos entités génère notre base de donnée. 
 
-![Shéma code first](https://www.entityframeworktutorial.net/images/EF5/code-first.png)
+![Schéma code first](https://www.entityframeworktutorial.net/images/EF5/code-first.png)
 
 Certaines de nos classes ne se transformaient pas en table correctement, certaines clés primaires étaient manquantes... En lisant de la documentation et en modifiant certaines de nos entités les tâbles ont fini par se générer automatiquement. 
 
@@ -55,7 +55,8 @@ Certaines de nos classes ne se transformaient pas en table correctement, certain
 Ensuite pour remplir (seeder) la base de données de notre application nous avions besoin d'utiliser une source de donnée (API Deezer ou Spotify). Nous avons choisi d'utiliser l'api de Deezer car nous l'avions déjà utilisé dans le passé et qu'elle ne nécessite pas de clé d'API. Nous avons alors eu plusieurs problème, les classes qu'utilise Deezer ne correspond pas aux notres. En effet la gestion des albums, le nom des différentes propriétés ne correspond pas à nos classes. Nous avons donc du trouver une solution pour adapter les données de Deezer avec nos données afin de les exploiter.
 
 La solution que nous avons trouvé la plus adapté est l'utilisation de DTO afin de rendre exploitable les données de deezer. Nous avons alors créé une classe DTO pour chaqu'une de nos classe afin de pouvoir "convertir" une classe de deezer à une de nos classe. On peut alors facilement déserialiser le JSON que Deezer nous envoi.
- 
+
+![Folder DTO](Images/FolderDTO.png)
 
 
 
