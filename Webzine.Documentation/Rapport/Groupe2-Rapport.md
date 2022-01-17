@@ -59,6 +59,11 @@ La solution que nous avons trouvé la plus adapté est l'utilisation de DTO afin
 ![Folder DTO](Images/FolderDTO.png)
 
 
+**_Conclusion_**
+
+Le projet Webzine a apporté énormément de compétences à l'ensemble du groupe. Plusieurs de ces compétences avaient déjà été apprises lors de précédents projet ( Travail équipe, gestion de projet) mais elle ont pu être améliorées et perfectionées lors de ce projet. 
+Nous avons aussi rencontrées de nouvelles difficultées mais grâce à l'entraide et au coups de mains des intervenants nous avons pu toutes les surmontées. La lecture et le respect d'un cahier des charges aussi détaillé fût très complexe. Le fait que ASP.Net 6 est une technologie très récente causa certains problèmes et rendu leurs résolution complexe.
+
 
 
 
