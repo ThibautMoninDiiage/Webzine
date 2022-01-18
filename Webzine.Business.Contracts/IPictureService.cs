@@ -3,9 +3,11 @@
     public interface IPictureService
     {
         /// <summary>
-        /// Enregistre une image en local dans un dossier du projet
+        /// Cette méthode permet d'enregistrer une photo en local à partir de son url dans wwwroot/xxx/filename
         /// </summary>
-        /// <param name="urlPicture">Url complet de l'image</param>
+        /// <param name="urlPicture">lien de l'image</param>
+        /// <param name="filename">nom du fichier à enregister</param>
+        /// <returns>Retourne le nom du fichier</returns>
         string SavePicture(string urlPicture, string filename);
     }
 }

@@ -5,17 +5,17 @@ namespace Webzine.Business.Contracts
     public interface IRechercheService
     {
         /// <summary>
-        /// Retourne une liste de titres qui correspond au mot clé passé en paramètre
+        /// Méthode qui permet de rechercher un artiste dans la base de données
         /// </summary>
-        /// <param name="keyword"></param>
-        /// <returns></returns>
+        /// <param name="keyword">Nom de l'artiste</param>
+        /// <returns>La liste d'artiste correspondant au mot clé</returns>
         IEnumerable<Titre> RechercherTitre(string keyword = "");
 
         /// <summary>
-        /// Retourne une liste d'artiste qui correspond au mot clé passé en paramètre
+        /// Méthode qui permet de rechercher un titre dans la base de données
         /// </summary>
-        /// <param name="keyword"></param>
-        /// <returns></returns>
+        /// <param name="keyword">Nom du titre</param>
+        /// <returns>La liste de titre correspondant au mot clé</returns>
         IEnumerable<Artiste> RechercherArtiste(string keyword = "");
     }
 }
