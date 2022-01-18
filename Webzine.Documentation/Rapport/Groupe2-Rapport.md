@@ -58,8 +58,6 @@ La solution que nous avons trouvé la plus adapté est l'**utilisation de DTO** 
 
 ![Folder DTO](Images/FolderDTO.png)
 
-Puis, certains design de pages furent compliqué à réalisé car difficile à reproduir du cahier des charges, la page Titre par exemple, avec ses nombreuses fonctions, à dû être retouché à plusieurs reprises, que ce soit pour le design, ou suite à des changements en back-end.
-
 
 **_Conclusion_**
 
@@ -82,6 +80,12 @@ Le fait de proposer un projet qu'il est possible de maintenir et de faire évolu
 Je remercie tous les intervenants, Richard DUCHANOY, Kevin JOSSELIN, Clement BEY, Hyacinthe BRIAND pour leurs interventions pertinentes et pour le temps qu'ils ont consacrés à nous aider.
 
 **Quentin BOURDELOT :** Ce projet fut très intéressant, utilisant des frameworks auquels je n'avais jamais touché auparavant, me permettant de découvrir comment utilisés des languages de programmations que je connaissaient déjà différement.
+Un cahier des charges très complet à rendu la compréhension du projet très facile comparé aux projets précédents, mais beaucoup de détail à fait que l'on avait beaucoup de contraintes et donc peu de liberté.
+Une ambiance d'équipe très agréable ainsi que des intervenants réactifs et à l'écoute ont rendu l'ambiance général de travail agréable.
+Malgré tout, des difficultés sont parvenues, tel que :
+- Le design à reproduire très précisement à fait qu'il a fallut plusieurs essaies avant d'avoir le bon.
+- L'utilisation de ModelState assez complexe à implémenter sur le code déjà existant.
+- L'Exception Filter, la solution ne paraissait pas fonctionner alors qu'elle fonctionnait bel et bien, ce qui a crée une perte de temps à rechercher une solution à un problème qui n'existait pas
 
 **BISSEY Aurélien  :** 
 Le projet était complet, ça m'a permis de voir de nouvelles méthodes de travail, de nouvelles technologies. 
