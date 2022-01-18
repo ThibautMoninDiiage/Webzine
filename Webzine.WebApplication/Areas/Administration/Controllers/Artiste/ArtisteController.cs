@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
 using Webzine.Entity;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
@@ -11,7 +10,6 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
     public class ArtisteController : Controller
     {
         private readonly IArtisteRepository _artisteRepository; // Repo of all artistes
-        private const String regex = @"^[/*_]*$";
 
         // Constructeur en injectant un IArtisteRepository
         public ArtisteController(IArtisteRepository artisteRepository)
@@ -42,11 +40,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         [ActionName("Create")]
         public IActionResult CreatePost(string nom, string biographie)
         {
-            bool regexMatch = Regex.IsMatch(nom, regex);
-            if (regexMatch == true)
-            {
-                ModelState.AddModelError(string.Empty, nom + " contient des caractères non valides !");
-            }
+           
             if (_artisteRepository.FindAll().Any(artisteRepo => artisteRepo.Nom == nom))
             {
                 ModelState.AddModelError(string.Empty, nom + " existe déjà !");
