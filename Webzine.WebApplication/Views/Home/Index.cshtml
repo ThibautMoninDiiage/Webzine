@@ -125,7 +125,7 @@
             {
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top" src="@titre.UrlJaquette" />
+                        <a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre"><img class="card-img-top" src="@titre.UrlJaquette" /></a>
                         <div class="card-body">
                             <h5 class="card-title"><a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
                             <h4 class="card-text">par <a asp-controller="artiste" asp-route-nomArtiste="@titre.Artiste.Nom">@titre.Artiste.Nom</a></h4>
