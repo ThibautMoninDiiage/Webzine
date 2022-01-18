@@ -58,13 +58,15 @@ La solution que nous avons trouvé la plus adapté est l'**utilisation de DTO** 
 
 ![Folder DTO](Images/FolderDTO.png)
 
+Puis, certains design de pages furent compliqué à réalisé car difficile à reproduir du cahier des charges, la page Titre par exemple, avec ses nombreuses fonctions, à dû être retouché à plusieurs reprises, que ce soit pour le design, ou suite à des changements en back-end.
+
 
 **_Conclusion_**
 
 Le projet Webzine a apporté énormément de **compétences** à l'ensemble du groupe. Plusieurs de ces compétences avaient déjà été apprises lors de précédents projet (Travail équipe, gestion de projet) mais elles ont pu être améliorées et perfectionées lors de ce projet. 
 Nous avons aussi rencontré de nouvelles difficultées mais grâce à l'entraide et aux coups de mains des intervenants nous avons pu toutes les surmontées. La lecture et le respect d'un cahier des charges aussi détaillé fût très complexe. Le fait que ASP.Net 6 est une **technologie très récente** causa certains problèmes et rendu leurs résolution complexe.
 
-**Thomas BERNARD :** Ce projet m'a énormément apporté, j'avais déjà utilisé de l'ASP.NET et EF CORE lors de mon BTS, ces technologies m'étaient donc pas étrangères. De plus je déceloppe en Xamarin dans mon entreprise, donc je connaissais déjà les injections de dépendances, les repositories etc... 
+**Thomas BERNARD :** Ce projet m'a énormément apporté, j'avais déjà utilisé de l'ASP.NET et EF CORE lors de mon BTS, ces technologies m'étaient donc pas étrangères. De plus je développe en Xamarin dans mon entreprise, donc je connaissais déjà les injections de dépendances, les repositories etc... 
 Nous n'avons donc pas bloqué sur ces points là. En tant que chef de projet j'étais déçu de ne pas pouvoir passer mon temps à développer et devoir faire de la gestion de projet à la place (répartition des tâches, call client etc...) mais ce fût tout de même une bonne expérience. Je tiens à remercier énormément Thibaut MONIN et Quentin RHIGHI d'avoir travaillé d'arrache pied afin de rendre les différents jalons.
 
 **Thibaut MONIN :** Tout d'abord, je tiens à remercier mon chef de projet Thomas BERNARD, qui a orchestré ce projet de la meilleure des manières en nous proposant régulièrement de l'aide grâce à son panel de compétences. Je tiens également à féliciter Quentin RHIGHI qui a été le seul OPS de ce groupe et qui s'en est sorti plus que respectablement étant donné la masse de travail qu'il a eut à réaliser durant ce projet.
@@ -79,3 +81,4 @@ L'approche des différents problèmes et la manière de les résoudre.
 Le fait de proposer un projet qu'il est possible de maintenir et de faire évoluer est très satisfaisant.
 Je remercie tous les intervenants, Richard DUCHANOY, Kevin JOSSELIN, Clement BEY, Hyacinthe BRIAND pour leurs interventions pertinentes et pour le temps qu'ils ont consacrés à nous aider.
 
+**Quentin BOURDELOT :** Ce projet fut très intéressant, utilisant des frameworks auquels je n'avais jamais touché auparavant, me permettant de découvrir comment utilisés des languages de programmations que je connaissaient déjà différement.
