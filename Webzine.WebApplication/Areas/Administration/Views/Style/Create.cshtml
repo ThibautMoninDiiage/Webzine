@@ -1,5 +1,4 @@
 ﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.StyleViewModel
-
 @{
     var action = "";
     var pageName = "";
@@ -17,29 +16,25 @@
     }
 }
 
-
-
-        <div>
-            <h1>@pageName un style</h1>
-            <hr />
+<h1>@pageName un style</h1>
+<hr />
+<div asp-validation-summary="All"></div>
+<form method="post" asp-action="@action">
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Libellé</label>
+        @if (Model != null)
+        {
+            <input type="hidden" name="idStyle" value="@Model.Style.IdStyle" />
+            <input name="libelle" class="col-md-3" asp-for="@Model.Style.Libelle">
+        }
+        else
+        {
+            <input name="libelle" class="col-md-3" asp-for="@Model.Style.Libelle">
+        }
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
         </div>
-        <div asp-validation-summary="All">
-
-        </div>
-        <form method="post" asp-action="@action">
-            <div class="row">
-                <label class="col-md-2 align-text-center">Libellé</label>
-                @if (Model != null)
-                {
-                    <input type="hidden" name="idStyle" value="@Model.Style.IdStyle" />
-                    <input name="libelle" class="col-md-3" asp-for="@Model.Style.Libelle">
-                }
-                else
-                {
-                    <input name="libelle" class="col-md-3" asp-for="@Model.Style.Libelle">
-                }
-                <button type="submit" class="btn btn-primary col-md-2 mx-2">Sauvegarder</button>
-            </div>
-            <br /><br /><br />
-            <a asp-action="">Retour à l'administration des styles</a>
-        </form>
+    </div>
+    <br /><br />
+    <a asp-action="">Retour à l'administration des styles</a>
+</form>

@@ -58,8 +58,6 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
             };
 
-
-
             if (this.ModelState.IsValid)
             {
                 _titreRepository.AddTitre(titre);

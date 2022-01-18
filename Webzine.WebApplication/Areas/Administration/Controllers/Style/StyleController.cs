@@ -34,6 +34,10 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Create")]
         public IActionResult CreatePost(string libelle)
         {
+            if (_styleRepository.FindAll().Any(styleRepo => styleRepo.Libelle == libelle))
+            {
+                ModelState.AddModelError(string.Empty, libelle + " existe déjà !");
+            }
             if (this.ModelState.IsValid)
             {
                 _styleRepository.Add(new Entity.Style() { Libelle = libelle });

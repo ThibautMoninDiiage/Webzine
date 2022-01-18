@@ -1,18 +1,16 @@
 ﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.ArtistViewModel
-
 @{
     ViewData["title"] = "Suppression artiste";
 }
 
-        <div>
-            <form method="post" asp-action="Delete">
-                <h1>Supprimer un artiste</h1>
-                <hr />
-                <h3>Etes-vous sur de vouloir supprimer l'artiste "@Model.Artiste.Nom" ?</h3>
-                <input name="IdArtiste" value="@Model.Artiste.IdArtiste" type="hidden"/>
-                <br />
-                <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
-            </form>
-        </div>
-        <br /><br /><br />
-        <a asp-controller="artistes" asp-action="">Retour à l'administration des artistes</a>
+<div>
+    <form method="post" asp-action="Delete">
+        <h1>Supprimer un artiste</h1>
+        <hr />
+        <p>Etes-vous sur de vouloir supprimer l'artiste "@Model.Artiste.Nom" ?</p>
+        <input name="IdArtiste" value="@Model.Artiste.IdArtiste" type="hidden"/>
+        <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
+    </form>
+</div>
+<br /><br /><br />
+<a asp-controller="artistes" asp-action="">Retour à l'administration des artistes</a>

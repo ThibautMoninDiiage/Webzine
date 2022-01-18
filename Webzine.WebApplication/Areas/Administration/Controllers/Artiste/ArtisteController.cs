@@ -40,7 +40,10 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
         {
             var artiste = new Artiste() { Nom = nom, Biographie = biographie };
 
-
+            if (_artisteRepository.FindAll().Any(artisteRepo => artisteRepo.Nom == nom))
+            {
+                ModelState.AddModelError(string.Empty, nom + " existe déjà !");
+            }
             if (this.ModelState.IsValid)
             {
                 _artisteRepository.AddArtiste(artiste);
