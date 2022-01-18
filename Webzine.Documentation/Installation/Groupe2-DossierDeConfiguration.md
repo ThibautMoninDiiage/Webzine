@@ -32,4 +32,10 @@ On peut aussi choisir la source de données si on utilise la base de données. E
 
 Nous permettons aussi à l'utilisateur de choisir la playlist à importer en remplacant la valeur de **idPlaylist** par l'identifiant de sa playlist présente dans l'url lorsque l'on consulte sa playlist sur deezer. Par défaut nous la laisson à **9917376642**, c'est une playlist gérée par les membres de la classe.
 
+![Exemple playlist deezer](Images/PlaylistDeezer.png)
+
+
+
 L'utilisateur de l'application peut aussi choisir le nombre de titres à afficher dans la page d'accueil de l'application. En modifiant **numberOfTitlePerPages** on peut choisir le nombre de titres à afficher par page. Si il y a des titres en plus à afficher l'utilisateur pourra donc naviguer parmis ces titres en utilisants les boutons dédiés.
+
+L'utilisateur peut finalement configurer la base de données à utiliser. Il a le choix entre **SQLITE** et **POSTGRES**, si l'utilisateur choisit SQLITE le fichier de base de données se créra à la racine de l'application. Sinon, l'application utilisera la chaine de connexion **WebzinePostgres** (Pensez à la modifier avec les valeurs de votre BDD). 
