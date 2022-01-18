@@ -1,6 +1,4 @@
 ﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.ArtistViewModel
-
-
 @{
     var action = "";
     if (Model == null)
@@ -13,76 +11,66 @@
         action = "edit";
         ViewData["title"] = "Edition artiste";
     }
-
 }
 
+<div>
+    @if (Model == null)
+    {
+        <h1>Créer un artiste</h1>
+    }
+    else
+    {
+        <h1>Editer un artiste</h1>
 
-<div class="container">
-    <div class="row">
-        <div>
+    }
+    <hr />
+</div>
+
+<div asp-validation-summary="All"></div>
+
+<form method="post" asp-action="@action">
+
+    @if (Model != null)
+    {
+        <input name="idArtiste" value="@Model.Artiste.IdArtiste" type="hidden" />
+    }
+
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Nom de l'artiste</label>
+        <div class="col-sm-10">
             @if (Model == null)
             {
-                <h1>Créer un artiste</h1>
+                <input name="nom" type="text" class="form-control" placeholder="Nom de l'artiste...">
             }
             else
             {
-                <h1>Editer un artiste</h1>
-
+                <input name="nom" type="text" class="form-control" asp-for="@Model.Artiste.Nom">
             }
-            <hr />
         </div>
+    </div>
 
-        <form method="post" asp-action="@action">
-
-            @if (Model != null)
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Biographie</label>
+        <div class="col-sm-10">
+            @if (Model == null)
             {
-                <input name="idArtiste" value="@Model.Artiste.IdArtiste" type="hidden" />
+                <textarea style="min-height:200px" name="biographie" type="text" class="form-control"></textarea>
+
             }
+            else
+            {
+                <textarea style="min-height:200px" name="biographie" type="text" class="form-control">@Model.Artiste.Biographie</textarea>
+            }
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Nom de l'artiste</label>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-
-                    @if (Model == null)
-                    {
-                        <input name="nom" type="text" class="form-control">
-                    }
-                    else
-                    {
-                        <input name="nom" type="text" class="form-control" value="@Model.Artiste.Nom">
-                    }
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Biographie</label>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @if (Model == null)
-                    {
-                        <textarea name="biographie" type="text" class="form-control"></textarea>
-
-                    }
-                    else
-                    {
-                        <textarea name="biographie" type="text" class="form-control">@Model.Artiste.Biographie</textarea>
-                    }
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-sm-6 col-lg-2">
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
-                </div>
-            </div>
-            <br />
-            <a asp-action="">Retour à l'administration des artistes</a>
-        </form>
-    </div>    
-</div>
+    <div class="row">
+        <span class="col-sm-2"></span>
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+    </div>
+    <br />
+    <br />
+    <a asp-action="">Retour à l'administration des artistes</a>
+</form>

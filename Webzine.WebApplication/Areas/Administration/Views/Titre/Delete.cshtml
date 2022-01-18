@@ -2,19 +2,14 @@
 @{
     ViewData["title"] = "Suppression titre";
 }
-<div class="container">
-    <div class="row">
-        <div>
-            <form method="post" asp-action="delete">
-                <h1>Supprimer un titre</h1>
-                <hr />
-                <h3>Etes vous sûr de vouloir supprimer le titre @Model.Titre.Libelle de @Model.Titre.Artiste.Nom ?</h3>
-                <input name="IdTitre" value="@Model.Titre.IdTitre" type="hidden" />
-                <br />
-                <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
-            </form>
-        </div>
-        <br /><br /><br />
-        <a asp-action="">Retour à l'administration des titres</a>
-    </div>
+<div>
+    <form method="post" asp-action="delete">
+        <h1>Supprimer un titre</h1>
+        <hr />
+        <p>Etes vous sûr de vouloir supprimer le titre "@Model.Titre.Libelle" de @Model.Titre.Artiste.Nom ?</p>
+        <input name="IdTitre" value="@Model.Titre.IdTitre" type="hidden" />
+        <button type="submit" class="btn btn-danger btn-lg">Supprimer</button>
+    </form>
 </div>
+<br /><br /><br />
+<a asp-controller="titres" asp-action="">Retour à l'administration des titres</a>

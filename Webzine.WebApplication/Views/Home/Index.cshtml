@@ -9,20 +9,13 @@
 	@*Partie principale de la chronique*@
     <div>
 
-        @if (Model.IsLastReleased)
-        {
-            <h1>Derniers titres chroniqués</h1>
-        }
-        else
-        {
-            <h1>Premiers titres chroniqués</h1>
-        }
+        <h1>Derniers titres chroniqués</h1>
 
-        <br/>
+        <br />
 
         @foreach (var titre in this.Model.OrderedTitles)
         {
-            <div class="row bg-light">
+            <div class="row bg-light m-3">
 
                 @*Image*@
                 <div class="col-sm-2 p-4">
@@ -32,16 +25,16 @@
                 @*Contenu*@
                 <div class="col-md-9">
                     @*Titre*@
-                    <div class="card-title"><h4>@titre.Libelle</h4></div>
+                    <div class="card-title"><h4 class="text-primary"><a asp-controller="artiste" asp-route-nomArtiste="@titre.Artiste.Nom">@titre.Artiste.Nom</a> - <a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h4></div>
                     @*Description*@
                     <div style="text-align: justify">
-                       @if (@titre.Chronique.Length >= 200)
-                       {
-                           @titre.Chronique.Substring(0, 200)<span>...</span>
-                       }
-                       else @titre.Chronique
+                        @if (@titre.Chronique.Length >= 200)
+                        {
+                            @titre.Chronique.Substring(0, 200)<span>...</span>
+                        }
+                        else @titre.Chronique
                     </div>
-                    <br/>
+                    <br />
 
                     @*Boutons / Informations*@
                     <div class="row align-self-end">
@@ -54,7 +47,7 @@
                             <div class="col-auto ">
                                 <p>
                                     <i class="fas fa-calendar-week"></i>&nbsp;
-                                    @titre.DateCreation.ToString("dd-M-yyyy") | @titre.DateSortie.ToString("dd:M:yyyy")
+                                    @titre.DateCreation.ToString("dd/MM/yyyy HH:mm:ss")
                                 </p>
                             </div>
                             <div class="col-auto ">
@@ -64,7 +57,7 @@
                                     {
                                         @foreach (var @style in titre.TitresStyles)
                                         {
-                                            <a asp-controller="StyleSearch" asp-route-styleId="@style.IdStyle" class="text-decoration-none text-primary">@style.Libelle</a>
+                                            <a asp-controller="StyleSearch" asp-route-libelle="@style.Libelle" class="text-decoration-none text-primary">@style.Libelle</a>
                                         }
                                     }
 
@@ -80,32 +73,67 @@
         <br />
 
         @*Boutons*@
+
+       
+        <nav aria-label="Page navigation example" class="mx-auto">
+            
+        </nav>
+
+
         <div class="d-flex justify-content-between mt-4">
-            <a asp-route-isLastReleased="true" class="btn btn-secondary w-10 col-md-4">Titres plus récents</a>
-            <a asp-route-isLastReleased="false" class="btn btn-secondary w-10 col-md-4">Titres plus anciens</a>
+            @if (Model.CurrentPage <= 1)
+            {
+                <a style="pointer-events:none" class="btn btn-light w-10 col-md-4" asp-controller="page" asp-action="@(Model.CurrentPage-1)">Titres plus récents</a>
+            }
+            else
+            {
+                <a class="btn btn-secondary w-10 col-md-4" asp-controller="page" asp-action="@(Model.CurrentPage-1)">Titres plus récents</a>
+            }
+           @* <ul class="pagination">
+                @for (int i = 1; i <= Model.NumberOfPages; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="page-item"><a style="color:black" asp-controller="page" asp-action="@i" class="page-link">@i</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a asp-controller="page" asp-action="@i" class="page-link">@i</a></li>
+                    }
+                }
+
+            </ul>*@
+            @if (Model.CurrentPage >= Model.NumberOfPages)
+            {
+                <a style="pointer-events:none" class="btn btn-light w-10 col-md-4" asp-controller="page" asp-action="@(Model.CurrentPage + 1)">Titres plus anciens</a>
+            }
+            else
+            {
+                <a class="btn btn-secondary w-10 col-md-4" asp-controller="page" asp-action="@(Model.CurrentPage + 1)">Titres plus anciens</a>
+            }
         </div>
-        <br/>
+        <br />
 
         <h1>Titres les plus populaires</h1>
-        <br/>
+        <br />
 
         @*Liste des titres populaires*@
 
-        
-    <div class="row mt-4">
-        @foreach (var titre in this.Model.MostPopularTitles)
-        {
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="@titre.UrlJaquette" />
-                    <div class="card-body">
-                        <h5 class="card-title"><a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
-                        <h4 class="card-text">par <a asp-controller="artiste" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a></h4>
+
+        <div class="row mt-4">
+            @foreach (var titre in this.Model.MostPopularTitles)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre"><img class="card-img-top" src="@titre.UrlJaquette" /></a>
+                        <div class="card-body">
+                            <h5 class="card-title"><a asp-controller="titre" asp-route-IdTitre="@titre.IdTitre">@titre.Libelle</a></h5>
+                            <h4 class="card-text">par <a asp-controller="artiste" asp-route-nomArtiste="@titre.Artiste.Nom">@titre.Artiste.Nom</a></h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
 
-    </div>
+        </div>
     </div>
 </div>

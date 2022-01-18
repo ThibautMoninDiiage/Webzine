@@ -1,218 +1,206 @@
 ﻿@model Webzine.WebApplication.Areas.Admin.ViewModels.TitleViewModel
-
 @{
     var action = "";
     var titre = "";
-
     @if (Model.Titre == null)
-        {
-            action = "Create";
-            titre = "Créer";
-        }
-        else
-        {
-            action = "Edit";
-            titre = "Editer";
-        }
+    {
+        action = "Create";
+        titre = "Créer";
+    }
+    else
+    {
+        action = "Edit";
+        titre = "Editer";
+    }
 
     ViewData["title"] = "Admin - Titres - Création";
 }
 
-<div class="container">
-    <div class="row">
-        <div>
-            <h1>@titre un titre</h1>
-            <hr />
+<div>
+    <h1>@titre un titre</h1>
+    <hr />
+</div>
+<div asp-validation-summary="All"></div>
+<form asp-action="@action" method="post">
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Nom de l'artiste</label>
+        <div class="col-sm-10">
+            <select name="idArtiste" class="form-control">
+                @foreach (var artiste in Model.Artistes)
+                {
+                    <option value="@artiste.IdArtiste">@artiste.Nom</option>
+                }
+            </select>
         </div>
-        <form asp-action="@action" method="post">
-            <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Nom de l'artiste</label>
-                </div>
+    </div>
 
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <select name="idArtiste" class="w-100">
-                        @foreach (var artiste in Model.Artistes)
-                        {
-                            <option value="@artiste.IdArtiste">@artiste.Nom</option>
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Titre</label>
+        <div class="col-sm-10">
+            @if (Model.Titre == null)
+            {
+                <input name="nomTitre" type="text" class="form-control" placeholder="Titre...">
+            }
+            else
+            {
+                <input asp-for="@Model.Titre.IdTitre" name="idTitre" type="hidden" />
+                <input name="nomTitre" type="text" class="form-control" asp-for="@Model.Titre.Libelle">
+            }
+        </div>
+    </div>
 
-                        }
-                    </select>
-                </div>
-            </div>
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Album</label>
+        <div class="col-sm-10">
+            @if (Model.Titre == null)
+            {
+                <input name="nomAlbum" type="text" class="form-control" placeholder="Album..."/>
+            }
+            else
+            {
+                <input name="nomAlbum" type="text" class="form-control" asp-for="@Model.Titre.Album" />
+            }
+        </div>
+    </div>
 
-            <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Titre</label>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @if (Model.Titre == null)
-                    {
-                        <input name="nomTitre" type="text" class="form-control">
-                    }
-                    else
-                    {
-                            <input value="@Model.Titre.IdTitre" name="idTitre" type="hidden"/>
-                        <input name="nomTitre" type="text" class="form-control" value="@Model.Titre.Libelle">
-                    }
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Album</label>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @if (Model.Titre == null)
-                    {
-                        <input name="nomAlbum" type="text" class="form-control" />
-                    }
-                    else
-                    {
-                        <input name="nomAlbum" type="text" class="form-control" value="@Model.Titre.Album"/>
-                    }
-                </div>
-            </div>
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Chronique</label>
+        <div class="col-sm-10">
+            @if (Model.Titre == null)
+            {
+                <textarea name="chronique" type="text" class="form-control" placeholder="Chronique..."></textarea>
+            }
+            else
+            {
+                <textarea name="chronique" type="text" class="form-control">@Model.Titre.Chronique</textarea>
+            }
+        </div>
+    </div>
 
 
-            <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Chronique</label>
-                </div>
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Date de sortie</label>
 
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @if (Model.Titre == null)
-                    {
-                        <textarea name="chronique" type="text" class="form-control"></textarea>
-
-                    }
-                    else
-                    {
-                        <textarea name="chronique" type="text" class="form-control">@Model.Titre.Chronique</textarea>
-                    }
-                </div>
-            </div>
-
-
-            <div class="row mb-4">
-                <div class="col-sm-4 col-lg-2">
-                    <label>Date de sortie</label>
-                </div>
-
-                <div class="col-xs-5 col-sm-2 col-lg-4">
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-md-5">
                     @if (Model.Titre == null)
                     {
                         <input name="datesortie" type="date" class="form-control">
-
-
                     }
                     else
                     {
-                        <input name="datesortie" type="date" class="form-control" value="@Model.Titre.DateSortie">
-
+                        <input name="datesortie" type="date" class="form-control" asp-for="@Model.Titre.DateSortie">
                     }
                 </div>
-
-                <div class="col-sm-4 col-lg-2">
-                    <label>Durée en seconde</label>
+                <div class="col-auto text-center">
+                    <label class="col-form-label control-label">Durée en seconde</label>
                 </div>
-
-                <div class="col-xs-5 col-sm-2 col-lg-4">
-                    @if (Model.Titre == null)
-                    {
-                        <input name="duree" type="number" class="form-control">
-                    }
-                    else
-                    {
-                        <input name="duree" type="number" class="form-control" value="@Model.Titre.Duree">
-                    }
-                </div>
-            </div>
-
-             <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Jaquette de l'album</label>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @if (Model.Titre == null)
-                    {
-                        <input name="urlJaquette" type="text" class="form-control">
-                    }
-                    else
-                    {
-                        <input name="urlJaquette" type="text" class="form-control" value="@Model.Titre.UrlJaquette">
-                    }
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>URL d'écoute</label>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @if (Model.Titre == null)
-                    {
-                        <input name="urlEcoute" type="text" class="form-control">
-                    }
-                    else
-                    {
-                        <input name="urlEcoute" type="text" class="form-control" value="@Model.Titre.UrlEcoute">
-                    }
-                </div>
-            </div>
-
-
-            <div class="row mb-4">
-                <div class="col-sm-6 col-lg-2">
-                    <label>Styles</label>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    @foreach (var style in Model.Styles)
-                        {
-
-
-                    <div class="col-md-2">
-                        @if (Model.Titre != null)
-                        {
-                            @if (Model.Titre.TitresStyles.FirstOrDefault(t => t.IdStyle == style.IdStyle) != null)
+                <div class="col">
+                    <div class="input-group">
+                        <div>
+                            @if (Model.Titre == null)
                             {
-                                <input value="@style.IdStyle" type="checkbox" name="idStyles" checked />
+                                <input name="duree" type="number" class="form-control">
                             }
                             else
                             {
-                                <input value="@style.IdStyle" type="checkbox" name="idStyles" />
+                                <input name="duree" type="number" class="form-control" asp-for="@Model.Titre.Duree">
                             }
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">secondes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3 row form-group required">
+        <label class="col-sm-2 col-form-label control-label">Jaquette de l'album</label>
+        <div class="col-sm-10">
+            @if (Model.Titre == null)
+            {
+                <input name="urlJaquette" type="text" class="form-control" placeholder="URL vers la jaquette...">
+            }
+            else
+            {
+                <input name="urlJaquette" type="text" class="form-control" asp-for="@Model.Titre.UrlJaquette">
+            }
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label control-label">URL d'écoute</label>
+
+        <div class="col-sm-10">
+            @if (Model.Titre == null)
+            {
+                <input name="urlEcoute" type="text" class="form-control" placeholder="URL d'écoute...">
+            }
+            else
+            {
+                <input name="urlEcoute" type="text" class="form-control" asp-for="@Model.Titre.UrlEcoute">
+            }
+        </div>
+    </div>
+
+
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Styles</label>
+        <div class="col-sm-10">
+            @foreach (var style in Model.Styles)
+            {
+                <div class="col-md-2">
+                    @if (Model.Titre != null)
+                    {
+                        @if (Model.Titre.TitresStyles.FirstOrDefault(t => t.IdStyle == style.IdStyle) != null)
+                        {
+                            <input value="@style.IdStyle" type="checkbox" name="idStyles" checked />
                         }
                         else
                         {
                             <input value="@style.IdStyle" type="checkbox" name="idStyles" />
                         }
-                        <label for="styleInput">@style.Libelle</label>
-                    </div>
-                        }
+                    }
+                    else
+                    {
+                        <input value="@style.IdStyle" type="checkbox" name="idStyles" />
+                    }
+                    <label for="styleInput">@style.Libelle</label>
                 </div>
-            </div>
-
-
-
-
-
-            <br />
-            <br />
-            <div class="row">
-                <div class="col-sm-6 col-lg-2">
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-10">
-                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
-                </div>
-            </div>
-            <br />
-            <a asp-action="">Retour à l'administration des titres</a>
-        </form>
+            }
+        </div>
     </div>
-</div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Nb de lectures</label>
+        <div class="col-sm-10">
+            @if (Model.Titre != null)
+            {
+                <input value="@Model.Titre.NbLectures" class="form-control-plaintext" readonly/>
+            }
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Nb de likes</label>
+        <div class="col-sm-10">
+            @if (Model.Titre != null)
+            { 
+                <input value="@Model.Titre.NbLikes" class="form-control-plaintext" readonly/>
+            }
+        </div>
+    </div>
+
+    <br /><br />
+    <div class="mb-3 row">
+        <span class="col-sm-2"></span>
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </div>
+    </div>
+    <br /><br />
+    <a asp-action="">Retour à l'administration des titres</a>
+</form>

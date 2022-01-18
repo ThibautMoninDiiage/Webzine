@@ -16,9 +16,12 @@
 
         <div class="col background-white mt-3">
             <div class="clearfix">
-                <img style="height:100px; width: auto" src="@titre.UrlJaquette" class="img-fluid me-3 rounded float-sm-start" alt="Jaquette Titre">
+                <a asp-route-IdTitre="@titre.IdTitre" asp-controller="titre">
+                    <img style="height:100px; width: auto" src="@titre.UrlJaquette" class="img-fluid me-3 rounded float-sm-start" alt="Jaquette Titre">
+                </a>
+                
                 <br />
-                <p class="m-0"><a asp-controller="artiste" asp-route-IdArtiste="@titre.IdArtiste">@titre.Artiste.Nom</a> - <a asp-route-IdTitre="@titre.IdTitre" asp-controller="titre">@titre.Libelle</a></p>
+                <p class="m-0"><a asp-controller="artiste" asp-route-nomArtiste="@titre.Artiste.Nom">@titre.Artiste.Nom</a> - <a asp-route-IdTitre="@titre.IdTitre" asp-controller="titre">@titre.Libelle</a></p>
                 <p class="m-0">Durée : @TimeSpan.FromSeconds(titre.Duree).ToString(@"mm\:ss")</p>
             </div>
         </div>

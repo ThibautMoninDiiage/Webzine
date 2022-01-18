@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity
 {
-    public class Titre
+    public class Titre : ITitre
     {
         [Key]
         public int IdTitre { get; set; }
@@ -13,6 +15,7 @@ namespace Webzine.Entity
         [Display(Name = "Titre")]
         [MinLength(1)]
         [MaxLength(200)]
+        [JsonProperty("title")]
         public string Libelle { get; set; }
 
         [Required]
@@ -24,6 +27,7 @@ namespace Webzine.Entity
         [Display(Name = "Date de création")]
         public DateTime DateCreation { get; set; }
 
+        [Required]
         [Display(Name = "Durée en secondes")]
         public int Duree { get; set; }
 
@@ -53,5 +57,47 @@ namespace Webzine.Entity
         public string Album { get; set; }
         public List<Style> TitresStyles { get; set; }
         public List<Commentaire> Commentaires { get; set; }
+
+        public Titre()
+        {
+
+        }
+
+        public Titre(ITitre titre)
+        {
+            this.IdArtiste = titre.IdArtiste;
+            this.IdArtiste = titre.IdArtiste;
+            this.Artiste = titre.Artiste;
+            this.Libelle = titre.Libelle;
+            this.Chronique = titre.Chronique;
+            this.DateCreation = titre.DateCreation;
+            this.Duree = titre.Duree;
+            this.DateSortie = titre.DateSortie;
+            this.UrlJaquette = titre.UrlJaquette;
+            this.UrlEcoute = titre.UrlEcoute;
+            this.NbLectures = titre.NbLectures;
+            this.NbLikes = titre.NbLikes;
+            this.Album = titre.Album;
+            this.TitresStyles = titre.TitresStyles;
+            this.Commentaires = titre.Commentaires;
+        }
+
+        public Titre(int idTitre, int idArtiste, Artiste artiste, string libelle, string chronique, DateTime dateCreation, int duree, DateTime dateSortie, string urlJaquette, string urlEcoute, int nbLectures, int nbLikes, string album, List<Style> titresStyles)
+        {
+            IdTitre = idTitre;
+            IdArtiste = idArtiste;
+            Artiste = artiste;
+            Libelle = libelle;
+            Chronique = chronique;
+            DateCreation = dateCreation;
+            Duree = duree;
+            DateSortie = dateSortie;
+            UrlJaquette = urlJaquette;
+            UrlEcoute = urlEcoute;
+            NbLectures = nbLectures;
+            NbLikes = nbLikes;
+            Album = album;
+            TitresStyles = titresStyles;
+        }
     }
 }

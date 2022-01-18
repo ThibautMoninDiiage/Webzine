@@ -6,7 +6,7 @@
 
 <div>
     <br />
-    <h1>Résultat de la recherche pour @Model.Keyword</h1>
+    <h1>Résultat de la recherche pour "@Model.Keyword"</h1>
     <hr />
 
 
@@ -15,13 +15,23 @@
 
     <h3>Artistes</h3>
 
+    @if(Model.Artistes.Count() == 0)
+    {
+        <p>Aucun artiste.</p>
+    }
+
     @foreach (var artiste in Model.Artistes)
     {
-        <p class="m-0"><i class="fas fa-user"></i> <a asp-controller="artiste" asp-route-IdArtiste="@artiste.IdArtiste">@artiste.Nom</a></p>
+        <p class="m-0"><i class="fas fa-user"></i> <a asp-controller="artiste" asp-route-nomArtiste="@artiste.Nom">@artiste.Nom</a></p>
     }
     <br />
 
     <h3>Titres</h3>
+
+    @if(Model.Titres.Count() == 0)
+    {
+        <p>Aucun titre.</p>
+    }
 
     @foreach (var titre in Model.Titres)
     {
@@ -29,7 +39,7 @@
             <div class="clearfix">
                 <img style="height:100px; width: auto" alt="Image Titre" src="@titre.UrlJaquette" class="img-fluid me-3 rounded float-sm-start">
                 <br />
-                <p class="m-0"><a asp-controller="artiste" asp-route-IdArtiste="@titre.Artiste.IdArtiste">@titre.Artiste.Nom</a> - <a asp-controller="titre" asp-route-idTitre="@titre.IdTitre">@titre.Libelle</a></p>
+                <p class="m-0"><a asp-controller="artiste" asp-route-nomArtiste="@titre.Artiste.Nom">@titre.Artiste.Nom</a> - <a asp-controller="titre" asp-route-idTitre="@titre.IdTitre">@titre.Libelle</a></p>
                 @{
                     TimeSpan time = TimeSpan.FromSeconds(titre.Duree);
                     var formatedTime = time.ToString(@"mm\:ss");

@@ -12,17 +12,18 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-tools"></i> Administration</a>
                     <ul class="dropdown-menu">
-                        <li><a asp-area="administration" asp-controller="artiste" asp-action="" class="dropdown-item"><i class="fas fa-users"></i> Artistes</a></li>
-                        <li><a asp-area="administration" asp-controller="commentaire" asp-action="" class="dropdown-item"><i class="fas fa-comments"></i> Commentaires</a></li>
-                        <li><a asp-area="administration" asp-controller="style" asp-action="" class="dropdown-item"><i class="fas fa-tags"></i> Styles</a></li>
-                        <li><a asp-area="administration" asp-controller="titre" asp-action="" class="dropdown-item"><i class="fas fa-music"></i> Titres</a></li>
+                        <li><a asp-area="administration" asp-controller="artistes" asp-action="" class="dropdown-item"><i class="fas fa-users"></i> Artistes</a></li>
+                        <li><a asp-area="administration" asp-controller="commentaires" asp-action="" class="dropdown-item"><i class="fas fa-comments"></i> Commentaires</a></li>
+                        <li><a asp-area="administration" asp-controller="styles" asp-action="" class="dropdown-item"><i class="fas fa-tags"></i> Styles</a></li>
+                        <li><a asp-area="administration" asp-controller="titres" asp-action="" class="dropdown-item"><i class="fas fa-music"></i> Titres</a></li>
+                        <li><a asp-area="administration" asp-controller="dashboard" asp-action="" class="dropdown-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a asp-area="" asp-controller="contact" asp-action="" class="nav-link"><i class="fas fa-envelope"></i> Contact </a>
                 </li>
             </ul>
-            <form method="post" asp-area="" asp-controller="recherche" class="form-inline my-2 my-lg-0">
+            <form method="post" asp-area="" asp-action="" asp-controller="recherche" class="form-inline my-2 my-lg-0">
                 <div class="input-group">
                     <input name="keyword" id="searchbar" class="form-control mr-sm-2" type="search" placeholder="Trouver un artiste / titre" aria-label="Trouver un artiste / titre" aria-describedby="search-addon">
                     <button type="submit" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-search"></i></button>

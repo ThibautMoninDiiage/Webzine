@@ -8,20 +8,24 @@ namespace Webzine.WebApplication.Controllers.StyleSearch
     {
         private readonly ILogger<StyleSearchController> _logger;
         private readonly IStyleRepository _styleRepository;
+        private readonly ITitreRepository _titreRepository;
 
-        public StyleSearchController(IStyleRepository styleRepository, ILogger<StyleSearchController> logger)
+        public StyleSearchController(IStyleRepository styleRepository, ITitreRepository titreRepository, ILogger<StyleSearchController> logger)
         {
             _styleRepository = styleRepository;
+            _titreRepository = titreRepository;
             _logger = logger;
         }
 
-        public IActionResult Index(int styleId)
+        public IActionResult Index(string libelle)
         {
             _logger.LogInformation("L'utilisateur fait une recherche de styles.");
 
+            var style = _styleRepository.FindAll().Where(style => style.Libelle == libelle).FirstOrDefault();
+
             var model = new StyleSearchViewModel()
             {
-                Style = _styleRepository.Find(styleId)
+                Style = _styleRepository.Find(style.IdStyle)
             };
 
             return this.View(model);

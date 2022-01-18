@@ -7,8 +7,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
     [Area("Administration")]
     public class StyleController : Controller
     {
-        private IStyleRepository _styleRepository;
-
+        private readonly IStyleRepository _styleRepository;
 
         public StyleController(IStyleRepository styleRepository)
         {
@@ -34,8 +33,17 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Create")]
         public IActionResult CreatePost(string libelle)
         {
-            _styleRepository.Add(new Entity.Style() { Libelle = libelle });
-            return Index();
+            if (_styleRepository.FindAll().Any(styleRepo => styleRepo.Libelle == libelle))
+            {
+                ModelState.AddModelError(string.Empty, libelle + " existe déjà !");
+            }
+            if (this.ModelState.IsValid)
+            {
+                _styleRepository.Add(new Entity.Style() { Libelle = libelle });
+                return Index();
+            }
+            return Create();
+
         }
 
         public IActionResult Edit(int idStyle)
@@ -52,8 +60,12 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Edit")]
         public IActionResult EditPost(int idStyle, string libelle)
         {
-            _styleRepository.Update(new Entity.Style() { IdStyle = idStyle, Libelle = libelle });
-            return Index();
+            if (this.ModelState.IsValid)
+            {
+                _styleRepository.Update(new Entity.Style() { IdStyle = idStyle, Libelle = libelle });
+                return Index();
+            }
+            return Edit(idStyle);
         }
 
         public IActionResult Delete(int idStyle)

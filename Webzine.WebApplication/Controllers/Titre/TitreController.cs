@@ -8,7 +8,7 @@ namespace Webzine.WebApplication.Controllers.Title
     public class TitreController : Controller
     {
         private readonly ILogger<TitreController> _logger;
-        private ITitreRepository _titreRepository;
+        private readonly ITitreRepository _titreRepository;
         private readonly ICommentaireRepository _commentaireRepository;
 
 
@@ -21,7 +21,7 @@ namespace Webzine.WebApplication.Controllers.Title
 
         public IActionResult Index(int idTitre)
         {
-            _logger.LogInformation("Accès à la page titre.");
+            _logger.LogInformation("Acc?s ? la page titre.");
             var titre = _titreRepository.Find(idTitre);
             _titreRepository.IncrementNbLectures(titre);
 
@@ -43,21 +43,16 @@ namespace Webzine.WebApplication.Controllers.Title
         }
 
         [HttpPost]
-        public IActionResult Commenter(int idTitre, string nom, string contenu)
+        public IActionResult Commenter(Commentaire commentaire)
         {
-            var commentaire = new Commentaire()
+            commentaire.DateCreation = DateTime.Now;
+
+            if (this.ModelState.IsValid)
             {
-                Auteur = nom,
-                Contenu = contenu,
-                DateCreation = DateTime.Now,
-                IdTitre = idTitre
-            };
+                _commentaireRepository.Add(commentaire);
+            }
 
-
-            _commentaireRepository.Add(commentaire);
-
-
-            return this.Index(idTitre);
+            return this.Index(commentaire.IdTitre);
         }
 
     }
