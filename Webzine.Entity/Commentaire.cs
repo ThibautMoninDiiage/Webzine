@@ -22,7 +22,9 @@ namespace Webzine.Entity
         [Required]
         [Display(Name = "Date de création")]
         public DateTime DateCreation { get; set; }
+
+
         public int IdTitre { get; set; }
-        public Titre Titre { get; set; }
+        public Titre? Titre { get; set; }
     }
 }

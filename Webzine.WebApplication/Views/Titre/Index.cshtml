@@ -61,7 +61,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-lg-9">
-            <input name="nom" type="text" class="form-control" placeholder="Votre nom">
+            <input asp-for="@Model.Commentaire.Auteur" name="auteur" class="form-control" placeholder="Votre nom">
         </div>
     </div>
     <br />
@@ -70,9 +70,9 @@
             <label>Commentaire</label>
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-9">
-            <input name="contenu" type="text" class="form-control" placeholder="Votre commentaire">
+            <input asp-for="@Model.Commentaire.Contenu" name="contenu" class="form-control" placeholder="Votre commentaire">
             <br />
-            <input type="hidden" name="idTitre" value="@Model.Titre.IdTitre" />
+            <input asp-for="@Model.Commentaire.IdTitre" type="hidden" name="idTitre" value="@Model.Titre.IdTitre" />
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
     </div>
