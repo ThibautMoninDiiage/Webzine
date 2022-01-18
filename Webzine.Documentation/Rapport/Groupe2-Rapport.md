@@ -82,3 +82,16 @@ Le fait de proposer un projet qu'il est possible de maintenir et de faire évolu
 Je remercie tous les intervenants, Richard DUCHANOY, Kevin JOSSELIN, Clement BEY, Hyacinthe BRIAND pour leurs interventions pertinentes et pour le temps qu'ils ont consacrés à nous aider.
 
 **Quentin BOURDELOT :** Ce projet fut très intéressant, utilisant des frameworks auquels je n'avais jamais touché auparavant, me permettant de découvrir comment utilisés des languages de programmations que je connaissaient déjà différement.
+
+**BISSEY Aurélien  :** 
+Le projet était complet, ça m'a permis de voir de nouvelles méthodes de travail, de nouvelles technologies. 
+L'équipe a vraiment été un bon point pour la réussite de ce projet, il a eu une bonne ambiance. 
+J'avais déjà réalisé un projet avec Thomas comme chef de projet auparavant, je savais donc comment il travaillait, ce qu'il attendait de moi.
+
+Malgré tout, j'ai eu un peu de mal sur certains points, notamment l'utilisation de regex pour les modelState, l'utilisation des services.
+Grâce aux cours des intervenants, aux fiches techniques, et à l'aide apporté par mes camarades, j'ai pu surpassé les problèmes rencontrés.
+
+C'est le premier projet de cette année avec un cahier des charges aussi complet, cela était très appréciable de la part des clients.
+Je pense cependant qu'il y a certaines parties du projet qui pouvait se faire différement, notament le nom des routes 
+(je pense que le nom des artistes/titres dans les routes est discutable).
+
