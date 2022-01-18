@@ -59,7 +59,10 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
             };
 
 
-
+            if (_styleRepository.FindAll().Any(titreRepo => titreRepo.Libelle == nomTitre))
+            {
+                ModelState.AddModelError(string.Empty, nomTitre + " existe déjà !");
+            }
             if (this.ModelState.IsValid)
             {
                 _titreRepository.AddTitre(titre);
