@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
@@ -9,7 +8,6 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
     public class StyleController : Controller
     {
         private readonly IStyleRepository _styleRepository;
-        private const String regex = @"^[/*_]*$";
 
         public StyleController(IStyleRepository styleRepository)
         {
@@ -35,11 +33,6 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
         [ActionName("Create")]
         public IActionResult CreatePost(string libelle)
         {
-            bool regexMatch = Regex.IsMatch(libelle, regex);
-            if (regexMatch == true)
-            {
-                ModelState.AddModelError(string.Empty, libelle + " contient des caractères non valides !");
-            }
             if (_styleRepository.FindAll().Any(styleRepo => styleRepo.Libelle == libelle))
             {
                 ModelState.AddModelError(string.Empty, libelle + " existe déjà !");
