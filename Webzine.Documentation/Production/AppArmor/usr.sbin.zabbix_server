@@ -1,0 +1,24 @@
+# Last Modified: Wed Jan  5 09:43:56 2022
+#include <tunables/global>
+
+/usr/sbin/zabbix_server {
+  #include <abstractions/base>
+  #include <abstractions/dovecot-common>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/postfix-common>
+
+  capability dac_override,
+
+  /etc/gss/mech.d/ r,
+  /usr/sbin/zabbix_server mr,
+  owner /etc/zabbix/zabbix_server.conf r,
+  owner /run/zabbix/zabbix_server.pid k,
+  owner /run/zabbix/zabbix_server.pid w,
+  owner /run/zabbix/zabbix_server_alerter.sock w,
+  owner /run/zabbix/zabbix_server_lld.sock w,
+  owner /run/zabbix/zabbix_server_preprocessing.sock w,
+  owner /var/log/zabbix/zabbix_server.log r,
+  owner /var/log/zabbix/zabbix_server.log w,
+
+}
