@@ -12,12 +12,14 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "WebzineDbContext": "Data Source=Webzine.db"
+    "WebzineDbContext": "Data Source=Webzine.db",
+    "WebzinePostgres": "Server=localhost;Port=5432;Database=webzinedb;User Id=webzineuser;Password=webzinedbpassword;"
   },
   "DataContext": "DB",
   "UseDeezerApi": "true",
   "idPlaylist": "9917376642",
-  "numberOfTitlePerPages" : "3"
+  "numberOfTitlePerPages" : "8",
+  "DatabaseType" :  "SQLITE"
 }
 
 ```
