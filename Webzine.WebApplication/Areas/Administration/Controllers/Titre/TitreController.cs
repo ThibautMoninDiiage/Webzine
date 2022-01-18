@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
@@ -10,7 +11,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
         private readonly ITitreRepository _titreRepository;
         private readonly IStyleRepository _styleRepository;
         private readonly IArtisteRepository _artisteRepository;
-
+        private const String regex = @"^[/*_]*$";
 
         public TitreController(ITitreRepository titreRepository, IStyleRepository styleRepository, IArtisteRepository artisteRepository)
         {
@@ -58,6 +59,11 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
                 TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
             };
 
+            bool regexMatch = Regex.IsMatch(nomTitre, regex);
+            if (regexMatch == true)
+            {
+                ModelState.AddModelError(string.Empty, nomTitre + " contient des caractères non valides !");
+            }
             if (this.ModelState.IsValid)
             {
                 _titreRepository.AddTitre(titre);
