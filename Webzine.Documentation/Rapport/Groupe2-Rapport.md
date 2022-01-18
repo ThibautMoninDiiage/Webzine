@@ -4,7 +4,7 @@
 **_Introduction_**
 
 Le projet se nomme **Webzine** c'est une plateforme permettant de lire des chroniques musicales sur nos titres préférés. Ces titres peuvent être administrés : nous pouvons en créer des nouveaux, les éditer et finalement les supprimer. 
-Les clients de ce projet son **Richard DUCHANOY**, **Kevin JOSSELIN** et **Clement BEY**. Ils sont aussi nos intervenants pour les différents technologies à utiliser dans ce projet.
+Les clients de ce projet son **Richard DUCHANOY**, **Kevin JOSSELIN** et **Clement BEY**. Ils sont aussi nos intervenants pour les différentes technologies à utiliser dans ce projet.
 
 Le projet se déroule sur 4 semaines et se divise en 3 principaux jalons :
 
@@ -14,19 +14,19 @@ Le projet se déroule sur 4 semaines et se divise en 3 principaux jalons :
 
 **La livraison finale du projet sera réalisée le 18/01/22 à 21h00**
 
-Le projet était donné avec un cahier des charges très complet, nous savions exactement ce qu'il fallait livrer à chacun des jalon. Voici une liste des principales livraison que nous avons réalisé pour chaque jalon :
+Le projet était donné avec un cahier des charges très complet, nous savions exactement ce qu'il fallait livrer à chacun des jalons. Voici une liste des principales livraisons que nous avons réalisé pour chaque jalon :
 
 Les différentes livraisons : 
 
     1. Jalon 1 : Architecture de l'application, création du serveur de backup, création de premières métriques, création de zbbix en mode séparré
-    2. Jalon 2  : Application fonctionnant avec des données dynamiques. ELK, installation dashboard graphique, renforcement de VM (App Armor), sauvegardes fonctionnelles, CI/CD
+    2. Jalon 2 : Application fonctionnant avec des données dynamiques. ELK, installation dashboard graphique, renforcement de VM (App Armor), sauvegardes fonctionnelles, CI/CD
     3. Jalon 3 : Application entièrement finalisée, Firewalling de toutes les VM et services, création de toutes les métrqiues de Zabbix, rédaction du PRA, Remontée des logs ELK, Métrique Zabbix, App armor, déploiement Webzine + BDD + logs Webzine sur ELK, déploiement On Premise et finir documentation
 
 
 **_Organisation de l'équipe_**
 
-Nous sommes l'équipe numéro 2, nous sommes composé de **quatre développeurs** : Thibaut MONIN, QUENTIN BOURDELOT, Aurelien BISSEY et d'**un OPS** Quentin RHIGHI. Le chef de projet est **Thomas BERNARD**.
-**Thibaut MONIN** s'est placé en tant que Lead developper lors de ce projet. Maitrisant différentes technologies comme Docker, EF Core et ASP.NET il fut de très bon conseils et n'a pas hésité à réaliser des TOS pour transmettre ses compétences au reste de l'équipe.
+Nous sommes l'équipe numéro 2, nous sommes composés de **quatre développeurs** : Thibaut MONIN, QUENTIN BOURDELOT, Aurelien BISSEY et d'**un OPS** Quentin RHIGHI. Le chef de projet est **Thomas BERNARD**.
+**Thibaut MONIN** s'est placé en tant que Lead developper lors de ce projet. Maitrisant différentes technologies comme Docker, EF Core et ASP.NET il fut de très bons conseils et n'a pas hésité à réaliser des TOS pour transmettre ses compétences au reste de l'équipe.
 
 Lors de ce projet nous avons travaillé en utilisant la méthode Agile. Nous avons donc énormément communiqué avec le client et l'équipe par le biais de différents outils que nous allons détailler ci dessous. Nous avons aussi réalisé des Daily meetings afin de faire un compte rendu du travail de la veille et de ce que nous allons réaliser.
 
@@ -45,27 +45,27 @@ Comme outil de communication principal nous avons utilisé Teams. Grâce à cet 
 
 **_Analyse des problèmes_**
 
-Premièrement nous allons parler des différentes difficultées rencontrées dans la partie dev. Tout d'abord la mise en place de la base de données SQLite fut assez compliquée. En effet nous utilisons du code first, c'est à dire que nos entités génère notre base de donnée. 
+Premièrement nous allons parler des différentes difficultées rencontrées dans la partie dev. Tout d'abord la mise en place de la base de données SQLite fut assez compliquée. En effet nous utilisons du code first, c'est à dire que nos entités génèrent notre base de donnée. 
 
 ![Schéma code first](https://www.entityframeworktutorial.net/images/EF5/code-first.png)
 
 Certaines de nos classes ne se transformaient pas en table correctement, certaines clés primaires étaient manquantes... En lisant de la documentation et en modifiant certaines de nos entités les tâbles ont fini par se générer automatiquement. 
 
 
-Ensuite pour **remplir (seeder) la base de données** de notre application nous avions besoin d'utiliser une source de donnée (API Deezer ou Spotify). Nous avons choisi d'utiliser l'api de Deezer car nous l'avions déjà utilisé dans le passé et qu'elle ne nécessite pas de clé d'API. Nous avons alors eu plusieurs problèmes, les classes qu'utilise Deezer ne correspondent pas aux notres. En effet la gestion des albums, le nom des différentes propriétés ne correspond pas à nos classes. Nous avons donc du trouver une solution pour adapter les données de Deezer avec nos données afin de les exploiter.
+Ensuite pour **remplir (seeder) la base de données** de notre application nous avions besoin d'utiliser une source de donnée (API Deezer ou Spotify). Nous avons choisi d'utiliser l'api de Deezer car nous l'avions déjà utilisé dans le passé et qu'elle ne nécessite pas de clé d'API. Nous avons alors eu plusieurs problèmes, les classes qu'utilise Deezer ne correspondent pas aux notres. En effet la gestion des albums, le nom des différentes propriétés ne correspond pas à nos classes. Nous avons donc dû trouver une solution pour adapter les données de Deezer avec nos données afin de les exploiter.
 
-La solution que nous avons trouvé la plus adapté est l'**utilisation de DTO** afin de rendre exploitable les données de deezer. Nous avons alors créé une classe DTO pour chaqu'une de nos classe afin de pouvoir "convertir" une classe de deezer à une de nos classe. On peut alors facilement déserialiser le JSON que Deezer nous envoi.
+La solution que nous avons trouvé la plus adapté est l'**utilisation de DTO** afin de rendre exploitable les données de deezer. Nous avons alors créé une classe DTO pour chaqu'une de nos classes afin de pouvoir "convertir" une classe de deezer à une de nos classes. On peut alors facilement déserialiser le JSON que Deezer nous envoi.
 
 ![Folder DTO](Images/FolderDTO.png)
 
 
 **_Conclusion_**
 
-Le projet Webzine a apporté énormément de **compétences** à l'ensemble du groupe. Plusieurs de ces compétences avaient déjà été apprises lors de précédents projet ( Travail équipe, gestion de projet) mais elle ont pu être améliorées et perfectionées lors de ce projet. 
-Nous avons aussi rencontrées de nouvelles difficultées mais grâce à l'entraide et au coups de mains des intervenants nous avons pu toutes les surmontées. La lecture et le respect d'un cahier des charges aussi détaillé fût très complexe. Le fait que ASP.Net 6 est une **technologie très récente** causa certains problèmes et rendu leurs résolution complexe.
+Le projet Webzine a apporté énormément de **compétences** à l'ensemble du groupe. Plusieurs de ces compétences avaient déjà été apprises lors de précédents projet (Travail équipe, gestion de projet) mais elles ont pu être améliorées et perfectionées lors de ce projet. 
+Nous avons aussi rencontré de nouvelles difficultées mais grâce à l'entraide et aux coups de mains des intervenants nous avons pu toutes les surmontées. La lecture et le respect d'un cahier des charges aussi détaillé fût très complexe. Le fait que ASP.Net 6 est une **technologie très récente** causa certains problèmes et rendu leurs résolution complexe.
 
 **Thomas BERNARD :** Ce projet m'a énormément apporté, j'avais déjà utilisé de l'ASP.NET et EF CORE lors de mon BTS, ces technologies m'étaient donc pas étrangères. De plus je déceloppe en Xamarin dans mon entreprise, donc je connaissais déjà les injections de dépendances, les repositories etc... 
-Nous n'avons donc pas bloqué sur ces points là. En tant que chef de projet j'étais déçu de ne pas pouvoir passer mon temps à développer et devoir faire de la gestion de projet à la place ( répartition des tâches, call client etc...) mais ce fût tout de même une bonne expérience. Je tiens à remercier énormément Thibaut MONIN et Quentin RHIGHI d'avoir travaillé d'arrache pied afin de rendre les différents jalons.
+Nous n'avons donc pas bloqué sur ces points là. En tant que chef de projet j'étais déçu de ne pas pouvoir passer mon temps à développer et devoir faire de la gestion de projet à la place (répartition des tâches, call client etc...) mais ce fût tout de même une bonne expérience. Je tiens à remercier énormément Thibaut MONIN et Quentin RHIGHI d'avoir travaillé d'arrache pied afin de rendre les différents jalons.
 
 **Thibaut MONIN :** Tout d'abord, je tiens à remercier mon chef de projet Thomas BERNARD, qui a orchestré ce projet de la meilleure des manières en nous proposant régulièrement de l'aide grâce à son panel de compétences. Je tiens également à féliciter Quentin RHIGHI qui a été le seul OPS de ce groupe et qui s'en est sorti plus que respectablement étant donné la masse de travail qu'il a eut à réaliser durant ce projet.
 Concernant les technologies utilisées, j'avais déjà utilisé ASP.NET Core et EF Core dans mon année de BTS.
