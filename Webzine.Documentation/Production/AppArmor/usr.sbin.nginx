@@ -1,0 +1,40 @@
+# Last Modified: Mon Jan 17 13:55:55 2022
+#include <tunables/global>
+
+/usr/sbin/nginx flags=(complain) {
+  #include <abstractions/apache2-common>
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/ssl_keys>
+  #include <abstractions/totem>
+  #include <abstractions/web-data>
+
+  capability dac_override,
+  capability dac_read_search,
+  capability setgid,
+  capability setuid,
+
+  deny / rw,
+  deny /bin/bash r,
+
+  /usr/local/modsecurity/lib/lib*so* mr,
+  /usr/sbin/nginx mr,
+  /var/log/modsec_audit.log wk,
+  /var/log/nginx/*.log w,
+  owner /etc/nginx/bots.d/*.conf r,
+  owner /etc/nginx/conf.d/*.conf r,
+  owner /etc/nginx/custom-config/*.conf r,
+  owner /etc/nginx/mime.types r,
+  owner /etc/nginx/modsec/*.conf r,
+  owner /etc/nginx/modsec/owasp-modsecurity-crs/**.conf r,
+  owner /etc/nginx/modsec/owasp-modsecurity-crs/**.data r,
+  owner /etc/nginx/modsec/unicode.mapping r,
+  owner /etc/nginx/nginx.conf r,
+  owner /etc/nginx/sites-available/* r,
+  owner /etc/nginx/uwsgi_params r,
+  owner /run/nginx.pid rw,
+  owner /usr/share/GeoIP/*.mmdb r,
+  owner /var/cache/nginx/** rw,
+
+}
