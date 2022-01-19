@@ -230,7 +230,7 @@ app.UseEndpoints(endpoints =>
     #region Style
     endpoints.MapControllerRoute(
         name: "style",
-        pattern: "titres/styles/{libelle}",
+        pattern: "titres/style/{libelle}",
         defaults: new { controller = "stylesearch", action = "index" });
     #endregion
 
