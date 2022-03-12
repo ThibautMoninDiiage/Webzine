@@ -3,7 +3,7 @@ using Webzine.Entity;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
 
-namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
+namespace Webzine.WebApplication.Areas.Admin.Controllers
 {
 
     [Area("Administration")]
@@ -38,21 +38,18 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
 
         [HttpPost]
         [ActionName("Create")]
-        public IActionResult CreatePost(string nom, string biographie)
+        public IActionResult CreatePost(Artiste artiste)
         {
-           
-            if (_artisteRepository.FindAll().Any(artisteRepo => artisteRepo.Nom == nom))
-            {
-                ModelState.AddModelError(string.Empty, nom + " existe déjà !");
-            }
             // Si le model n'est pas valide
             if (!this.ModelState.IsValid)
             {
                 return Create();
             }
-
-            // On créé un nouvel artiste avec les données renseignées
-            var artiste = new Artiste() { Nom = nom, Biographie = biographie };
+            if (_artisteRepository.FindAll().Any(artisteRepo => artisteRepo.Nom == artiste.Nom))
+            {
+                ModelState.AddModelError(string.Empty, artiste.Nom + " existe déjà !");
+            }
+            
             _artisteRepository.AddArtiste(artiste);
             return Index(); // redirect to index page
         }
@@ -83,14 +80,13 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
 
         [HttpPost]
         [ActionName("Edit")]
-        public IActionResult EditPost(int idArtiste, string nom, string biographie)
+        public IActionResult EditPost(Artiste artiste)
         {
             if (!this.ModelState.IsValid)
             {
-                return Edit(idArtiste);
+                return Edit(artiste.IdArtiste);
             }
 
-            var artiste = new Artiste() { IdArtiste = idArtiste, Nom = nom, Biographie = biographie, UrlSite = "" };
             _artisteRepository.UpdateArtiste(artiste);
             return Index();
         }
@@ -115,10 +111,24 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Artist
 
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult DeletePost(int idArtiste)
+        public IActionResult DeletePost(Artiste artiste)
         {
-            _artisteRepository.DeleteArtiste(new Artiste { IdArtiste = idArtiste });
+            _artisteRepository.DeleteArtiste(artiste);
             return Index();
         }
+
+        //public IActionResult click()
+        //{
+        //    //MessageBox("Etes-vous sure de vouloir apporter ces modifications ?", Yes);
+        //    DialogResult dialogResult = MessageBox.Show("Sure", "Some Title", MessageBoxButtons.YesNo);
+        //    if (dialogResult == DialogResult.Yes)
+        //    {
+        //        //do something
+        //    }
+        //    else if (dialogResult == DialogResult.No)
+        //    {
+        //        //do something else
+        //    }
+        //}
     }
 }

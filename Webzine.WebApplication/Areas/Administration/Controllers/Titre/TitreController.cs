@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
+using Webzine.Entity;
 
-namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
+namespace Webzine.WebApplication.Areas.Admin.Controllers
 {
     [Area("Administration")]
     public class TitreController : Controller
@@ -41,21 +42,21 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
 
         [HttpPost]
         [ActionName("Create")]
-        public IActionResult CreatePost(int idArtiste, string nomTitre, string nomAlbum, string chronique, DateTime datesortie, int duree, List<int> idStyles, string urlJaquette, string urlEcoute)
+        public IActionResult CreatePost(Titre titre)
         {
-            var titre = new Entity.Titre()
-            {
-                IdArtiste = idArtiste,
-                Libelle = nomTitre,
-                Album = nomAlbum,
-                Chronique = chronique,
-                DateSortie = datesortie,
-                DateCreation = DateTime.Now,
-                Duree = duree,
-                UrlJaquette = urlJaquette,
-                UrlEcoute = urlEcoute,
-                TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
-            };
+            //var titre = new Entity.Titre()
+            //{
+            //    IdArtiste = idArtiste,
+            //    Libelle = nomTitre,
+            //    Album = nomAlbum,
+            //    Chronique = chronique,
+            //    DateSortie = datesortie,
+            //    DateCreation = DateTime.Now,
+            //    Duree = duree,
+            //    UrlJaquette = urlJaquette,
+            //    UrlEcoute = urlEcoute,
+            //    TitresStyles = _styleRepository.FindAll().Where(s => idStyles.Contains(s.IdStyle)).ToList()
+            //};
 
             if (this.ModelState.IsValid)
             {
@@ -120,7 +121,7 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
 
 
             _titreRepository.Update(titre);
-            
+
             return Index();
         }
 
@@ -138,9 +139,9 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Titre
 
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult DeletePost(int idTitre)
+        public IActionResult DeletePost(Titre titre)
         {
-            _titreRepository.DeleteTitre(new Entity.Titre { IdTitre = idTitre });
+            _titreRepository.DeleteTitre(titre);
             return Index();
         }
     }

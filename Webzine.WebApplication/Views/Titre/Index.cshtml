@@ -57,7 +57,7 @@
 <form method="post" asp-action="commenter">
     <div class="row">
         <div class="col-sm-6 col-lg-3">
-            <label>Nom</label>
+            <label>Nom<span class="text-danger">*</span></label>
         </div>
 
         <div class="col-xs-12 col-sm-6 col-lg-9">
@@ -67,7 +67,7 @@
     <br />
     <div class="row">
         <div class="col-sm-6 col-lg-3">
-            <label>Commentaire</label>
+            <label>Commentaire<span class="text-danger">*</span></label>
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-9">
             <input asp-for="@Model.Commentaire.Contenu" name="contenu" class="form-control" placeholder="Votre commentaire">

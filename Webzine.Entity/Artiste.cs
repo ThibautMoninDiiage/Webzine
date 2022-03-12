@@ -10,23 +10,20 @@ namespace Webzine.Entity
         [JsonProperty("id")]
         public int IdArtiste { get; set; }
 
-        [Required]
-        [MinLength(1)]
-        [MaxLength(50)]
+        [Required(ErrorMessage = "Vous devez remplir les champs requis!")]
+        [MinLength(1, ErrorMessage = "Vous devez au moins mettre un charactère!")]
+        [MaxLength(50, ErrorMessage = "Vous devez pas mettre plus de 50 charactères!")]
+        [RegularExpression(@"^[A-Za-zÀ-ÿ0-9.]*$", ErrorMessage = "/, * et _ ne sont pas autorisés!")]
         [Display(Name = "Nom de l'artiste")]
         [JsonProperty("name")]
         public string Nom { get; set; }
 
-        [Required]
         public string Biographie { get; set; }
 
-        [Required]
         public List<Titre> Titres { get; set; }
 
-        [Required]
         public DateTime DateNaissance { get; set; }
 
-        [Required]
         [JsonProperty("link")]
         public string UrlSite { get; set; }
 

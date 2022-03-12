@@ -40,10 +40,9 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Comment
 
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult DeletePost(int idCommentaire)
+        public IActionResult DeletePost(Commentaire commentaire)
         {
-            _commentaireRepository.Delete(new Commentaire() { IdCommentaire = idCommentaire });
-
+            _commentaireRepository.Delete(commentaire);
             return Index();
         }
     }

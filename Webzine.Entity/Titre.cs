@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Webzine.Entity.Interfaces;
 
 namespace Webzine.Entity
@@ -8,22 +9,28 @@ namespace Webzine.Entity
     {
         [Key]
         public int IdTitre { get; set; }
+
+        [ForeignKey(nameof(Artiste))]
         public int IdArtiste { get; set; }
+
         public Artiste Artiste { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vous devez remplir les champs requis!")]
         [Display(Name = "Titre")]
-        [MinLength(1)]
-        [MaxLength(200)]
+        [MinLength(1, ErrorMessage = "Vous devez au moins mettre un charactère!")]
+        [MaxLength(200, ErrorMessage = "Vous devez pas mettre plus de 200 charactères!")]
+        [RegularExpression(@"^[A-Za-zÀ-ÿ0-9.]*$", ErrorMessage = "/, * et _ ne sont pas autorisés!")]
         [JsonProperty("title")]
         public string Libelle { get; set; }
 
-        [Required]
-        [MinLength(10)]
-        [MaxLength(4000)]
+        [Required(ErrorMessage = "Vous devez remplir les champs requis!")]
+        [MinLength(10, ErrorMessage = "Vous devez au moins mettre 10 charactères!")]
+        [MaxLength(4000, ErrorMessage = "Vous devez pas mettre plus de 4000 charactères!")]
+        [RegularExpression(@"^[A-Za-zÀ-ÿ0-9.]*$", ErrorMessage = "/, * et _ ne sont pas autorisés!")]
         public string Chronique { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vous devez remplir les champs requis!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyyHH:mm}")]
         [Display(Name = "Date de création")]
         public DateTime DateCreation { get; set; }
 
@@ -31,18 +38,19 @@ namespace Webzine.Entity
         [Display(Name = "Durée en secondes")]
         public int Duree { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vous devez remplir les champs requis!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         [Display(Name = "Date de sortie")]
         public DateTime DateSortie { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vous devez remplir les champs requis!")]
         [Display(Name = "Jaquette de l'album")]
-        [MaxLength(250)]
+        [MaxLength(250, ErrorMessage = "Vous devez pas mettre plus de 250 charactères!")]
         public string UrlJaquette { get; set; }
 
         [Display(Name = "URL d'écoute")]
-        [MinLength(13)]
-        [MaxLength(250)]
+        [MinLength(13, ErrorMessage = "Vous devez au moins mettre 13 charactères!")]
+        [MaxLength(250, ErrorMessage = "Vous devez pas mettre plus de 250 charactères!")]
         public string UrlEcoute { get; set; }
 
         [Required]

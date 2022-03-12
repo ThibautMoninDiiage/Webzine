@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webzine.Repository.Contracts;
 using Webzine.WebApplication.Areas.Admin.ViewModels;
+using Webzine.Entity;
 
-namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
+namespace Webzine.WebApplication.Areas.Admin.Controllers//.Style
 {
     [Area("Administration")]
     public class StyleController : Controller
@@ -31,17 +32,18 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 
         [HttpPost]
         [ActionName("Create")]
-        public IActionResult CreatePost(string libelle)
+        public IActionResult CreatePost(Style style)
         {
-            if (_styleRepository.FindAll().Any(styleRepo => styleRepo.Libelle == libelle))
-            {
-                ModelState.AddModelError(string.Empty, libelle + " existe déjà !");
-            }
             if (this.ModelState.IsValid)
             {
-                _styleRepository.Add(new Entity.Style() { Libelle = libelle });
+                _styleRepository.Add(new Entity.Style() { Libelle = style.Libelle });
                 return Index();
             }
+            if (_styleRepository.FindAll().Any(styleRepo => styleRepo.Libelle == style.Libelle))
+            {
+                ModelState.AddModelError(string.Empty, style + " existe déjà !");
+            }
+            
             return Create();
 
         }
@@ -58,14 +60,14 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 
         [HttpPost]
         [ActionName("Edit")]
-        public IActionResult EditPost(int idStyle, string libelle)
+        public IActionResult EditPost(Style style)
         {
             if (this.ModelState.IsValid)
             {
-                _styleRepository.Update(new Entity.Style() { IdStyle = idStyle, Libelle = libelle });
+                _styleRepository.Update(style);
                 return Index();
             }
-            return Edit(idStyle);
+            return Edit(style.IdStyle);
         }
 
         public IActionResult Delete(int idStyle)
@@ -79,10 +81,15 @@ namespace Webzine.WebApplication.Areas.Admin.Controllers.Style
 
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult DeletePost(int idStyle)
+        public IActionResult DeletePost(Style style)
         {
-            _styleRepository.Delete(new Entity.Style() { IdStyle = idStyle });
-
+            
+            //MessageBox.Show("Are you sure to delete this style?", "Delete Style", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            //case MessageBoxResult.Yes:
+            _styleRepository.Delete(style);
+            //      break;
+			//case MessageBoxResult.No:
+            //      break;
             return Index();
         }
     }
